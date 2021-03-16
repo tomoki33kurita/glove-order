@@ -3,54 +3,50 @@ export const thumbHook = (ctx: CanvasRenderingContext2D, color: string): void =>
   ctx.strokeStyle = '#383838'
   ctx.fillStyle = color
 
+
   ctx.beginPath()
-
-  // 結びの玉部分
-  ctx.moveTo(593, 518) // 真左
-  ctx.lineTo(600, 527) // 左下
-  ctx.lineTo(619, 534) // 右下
-  ctx.lineTo(636, 527) // 右斜め上方向
-  ctx.lineTo(616, 511) //
-  ctx.lineTo(600, 510) //
-  ctx.lineTo(593, 518) //
-  ctx.closePath()
-
-  // 結びの玉の右上部にある小さい結び玉部分
-  ctx.moveTo(620, 514) // 真左
-  ctx.lineTo(635, 525) // 左下
-  ctx.lineTo(639, 522) // 右下
-  ctx.lineTo(640, 506) // 右上
-  ctx.lineTo(620, 514) // 真左＿開始地点
-  ctx.closePath()
-
-  // 上部の紐の先端
-  ctx.moveTo(628, 510) // 左下
-  ctx.lineTo(639, 506) // 右下
-  ctx.quadraticCurveTo(640, 490, 667, 468) // 最上部
-  ctx.quadraticCurveTo(630, 475, 629, 509) // 左下_開始地点
-  ctx.closePath()
-
-  // 下部の紐の先端
-  ctx.moveTo(603, 529) // 左上
-  ctx.quadraticCurveTo(582, 543, 585, 570) // 真下
-  ctx.quadraticCurveTo(590, 545, 617, 534) // 右上
-  ctx.lineTo(603, 529) // 左上_開始地点
-  ctx.closePath()
-
-  // 根元上
-  ctx.moveTo(600, 495) // 左下
-  ctx.lineTo(609, 502) // 右下
-  ctx.lineTo(625, 490) // 右上
-  ctx.lineTo(627, 479) // 右上
-  ctx.closePath()
-
-  // 根元下
-  ctx.moveTo(565, 530) // 左下
-  ctx.lineTo(572, 533) // 右下
-  ctx.lineTo(584, 519) // 右上
-  ctx.lineTo(580, 512) // 右上
-  ctx.closePath()
-
+  // 一番右
+  ctx.moveTo(627, 473) // 左上
+  ctx.quadraticCurveTo(633, 517, 625, 583) // 
+  ctx.quadraticCurveTo(630, 577, 641, 595) // 先端
+  ctx.quadraticCurveTo(637, 538, 652, 482) // 右上＿三角右下 
+  ctx.quadraticCurveTo(643, 461, 633, 452) // 右上
+  ctx.quadraticCurveTo(627, 473, 627, 473) // 
   ctx.stroke()
   ctx.fill()
+  ctx.moveTo(627, 473) // 左上
+  ctx.quadraticCurveTo(635, 485, 652, 484) // 
+  ctx.stroke()
+  ctx.closePath()
+
+
+  ctx.beginPath()
+  // 真ん中
+  ctx.moveTo(603, 509) // 左上
+  ctx.quadraticCurveTo(611, 507, 617, 517) // 左下内直角
+  ctx.quadraticCurveTo(618, 560, 606, 603) // 
+  ctx.quadraticCurveTo(609, 607, 609, 607) // 先端 
+  ctx.quadraticCurveTo(629, 590, 629, 590) // 
+  ctx.quadraticCurveTo(638, 557, 637, 525) // 右上_カーブ前 
+  ctx.quadraticCurveTo(638, 501, 617, 491) // 右上
+  ctx.quadraticCurveTo(603, 509, 603, 509) //  
+  ctx.stroke()
+  ctx.fill()
+  ctx.closePath()
+
+  ctx.beginPath()
+  // 一番左
+  ctx.moveTo(574, 542) // 左上
+  ctx.quadraticCurveTo(595, 550, 597, 576) // 左下内直角
+  ctx.quadraticCurveTo(580, 600, 542, 601) // 
+  ctx.quadraticCurveTo(538, 612, 538, 612) // 
+  ctx.quadraticCurveTo(582, 609, 618, 582) // 
+  ctx.quadraticCurveTo(624, 556, 595, 520) // 右上 
+  ctx.quadraticCurveTo(577, 543, 574, 542) // 
+  ctx.stroke()
+  ctx.fill()
+  ctx.closePath()
+
+
+
 }
