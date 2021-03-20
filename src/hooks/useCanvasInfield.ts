@@ -21,14 +21,14 @@ export const useCanvasInfieldBack = (ctx: CanvasRenderingContext2D, state: State
   // catchSurFace(ctx, state.catchFace.color)
   // // 親指指袋_手口ベルト
   // thumbAndListBelt(ctx, state.indexAndThumb.color)
-  // // 人差し指＿右
-  // indexRight(ctx, state.edge.color)
-  // // 人差し指＿左
-  // indexLeft(ctx, state.edge.color)
-  // // 中指＿右
-  // middleRight(ctx, state.edge.color)
-  // // 中指＿左
-  // middleLeft(ctx, state.edge.color)
+  // 人差し指＿右
+  indexRight(ctx, state.edge.color)
+  // 人差し指＿左
+  indexLeft(ctx, state.edge.color)
+  // 中指＿右
+  middleRight(ctx, state.edge.color)
+  // 中指＿左
+  middleLeft(ctx, state.edge.color)
   // // 薬指＿右
   // ringRight(ctx, state.edge.color)
   // // 薬指＿左
@@ -45,10 +45,10 @@ export const useCanvasInfieldBack = (ctx: CanvasRenderingContext2D, state: State
   // edges(ctx, state.edge.color)
   // // ウェブ本体
   // web(ctx, state.web.color)
-  // ステッチ
+  // // ステッチ
   // stitch(ctx, state.stitch.color)
-  // // 革紐
-  leatherStrap(ctx, state.strap.color)
+  // 革紐
+  // leatherStrap(ctx, state.strap.color)
   // // 小指掛け紐
   // littleHook(ctx, state.littleHook.color)
 }
