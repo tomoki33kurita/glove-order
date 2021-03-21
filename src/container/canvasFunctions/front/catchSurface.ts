@@ -1,7 +1,7 @@
 export const catchSurface = (ctx: CanvasRenderingContext2D, color: string): void => {
-  ctx.lineWidth = 1.5
-  ctx.strokeStyle = 'blue' //'#383838'
-  // ctx.fillStyle = color
+  ctx.lineWidth = 1.0
+  ctx.strokeStyle = '#383838'
+  ctx.fillStyle = color
 
   // 輪郭
   ctx.beginPath()
@@ -40,8 +40,22 @@ export const catchSurface = (ctx: CanvasRenderingContext2D, color: string): void
   ctx.quadraticCurveTo(327, 284, 284, 341) // 親指ウェブ横＿付け根
   ctx.quadraticCurveTo(261, 299, 237, 271) 
   ctx.quadraticCurveTo(219, 250, 197, 258) 
-  // ctx.fill()
+  ctx.fill()
   ctx.stroke()
   ctx.closePath()
-  
+
+  // 親指＿内側
+  ctx.beginPath()
+  ctx.moveTo(283, 340) 
+  ctx.quadraticCurveTo(297, 374, 321, 399) 
+  ctx.stroke()
+  ctx.closePath()
+
+  // 小指＿内側
+  ctx.beginPath()
+  ctx.moveTo(645, 295) 
+  ctx.quadraticCurveTo(627, 330, 610, 348) 
+  ctx.stroke()
+  ctx.closePath()
+
 }
