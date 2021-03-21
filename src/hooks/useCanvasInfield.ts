@@ -15,8 +15,11 @@ import { littleHook } from 'src/container/canvasFunctions/back/littleHook'
 import { selectedLabel } from 'src/container/canvasFunctions/back/hatakeyamaLabel'
 import { stitch } from 'src/container/canvasFunctions/back/stitch'
 import { leatherStrap } from 'src/container/canvasFunctions/back/leatherStrap'
+import { lining } from 'src/container/canvasFunctions/back/lining'
 
 export const useCanvasInfieldBack = (ctx: CanvasRenderingContext2D, state: State): void => {
+  // 裏革
+  lining(ctx, state.linings.color)
   // // 捕球面 / ウェブ下折り返し
   // catchSurFace(ctx, state.catchFace.color)
   // // 親指指袋_手口ベルト
