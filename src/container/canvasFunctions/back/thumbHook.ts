@@ -1,5 +1,5 @@
 export const thumbHook = (ctx: CanvasRenderingContext2D, color: string): void => {
-  ctx.lineWidth = 1.5
+  ctx.lineWidth = 1.0
   ctx.strokeStyle = '#383838'
   ctx.fillStyle = color
 
@@ -11,10 +11,10 @@ export const thumbHook = (ctx: CanvasRenderingContext2D, color: string): void =>
   ctx.quadraticCurveTo(630, 577, 641, 595) // 先端
   ctx.quadraticCurveTo(637, 538, 652, 482) // 右上＿三角右下 
   ctx.quadraticCurveTo(643, 461, 633, 452) // 右上
-  ctx.quadraticCurveTo(627, 473, 627, 473) // 
-  ctx.stroke()
+  ctx.quadraticCurveTo(624, 473, 624, 473) // 
   ctx.fill()
-  ctx.moveTo(627, 473) // 左上
+  ctx.stroke()
+  ctx.moveTo(624, 473) // 左上
   ctx.quadraticCurveTo(635, 485, 652, 484) // 
   ctx.stroke()
   ctx.closePath()
@@ -28,10 +28,10 @@ export const thumbHook = (ctx: CanvasRenderingContext2D, color: string): void =>
   ctx.quadraticCurveTo(609, 607, 609, 607) // 先端 
   ctx.quadraticCurveTo(629, 590, 629, 590) // 
   ctx.quadraticCurveTo(638, 557, 637, 525) // 右上_カーブ前 
-  ctx.quadraticCurveTo(638, 501, 617, 491) // 右上
+  ctx.quadraticCurveTo(638, 501, 615, 491) // 右上
   ctx.quadraticCurveTo(603, 509, 603, 509) //  
-  ctx.stroke()
   ctx.fill()
+  ctx.stroke()
   ctx.closePath()
 
   ctx.beginPath()
@@ -43,8 +43,8 @@ export const thumbHook = (ctx: CanvasRenderingContext2D, color: string): void =>
   ctx.quadraticCurveTo(582, 609, 618, 582) // 
   ctx.quadraticCurveTo(624, 556, 595, 520) // 右上 
   ctx.quadraticCurveTo(577, 543, 574, 542) // 
-  ctx.stroke()
   ctx.fill()
+  ctx.stroke()
   ctx.closePath()
 
 

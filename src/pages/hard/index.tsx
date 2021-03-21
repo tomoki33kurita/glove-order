@@ -8,7 +8,7 @@ export const stateContext = React.createContext('')
 
 const Index: React.FC = () => {
   const [state, dispatch] = React.useReducer(reducer, initialState)
-  const [figurePanelNum, setFigurePanelNum] = React.useState(1)
+  const [figurePanelNum, setFigurePanelNum] = React.useState(0)
   const handleFigurePanelNum = (event: any, newValue: number) => setFigurePanelNum(newValue)
 
   return (
