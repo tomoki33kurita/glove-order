@@ -4,7 +4,7 @@ import { webKnots } from 'src/container/canvasFunctions/back/leatherStrap/webKno
 import { webKnotUpward, webKnotDownward } from 'src/container/canvasFunctions/back/leatherStrap/webKnotSingle'
 import { listCross } from 'src/container/canvasFunctions/back/leatherStrap/listCross'
 import { connectWebToIndex,connectWebToIndexTop, connectWebToThumb, connectWebToThumbTop } from 'src/container/canvasFunctions/back/leatherStrap/connectWebAndFinger'
-import { fingerTop } from 'src/container/canvasFunctions/back/leatherStrap/fingerTop'
+import { fingerTop, littleTop } from 'src/container/canvasFunctions/back/leatherStrap/fingerTop'
 import { indexToMiddle, middleToRing } from 'src/container/canvasFunctions/back/leatherStrap/fingerToFinger'
 
 
@@ -41,7 +41,7 @@ export const leatherStrap = (ctx: CanvasRenderingContext2D, color: string): void
   fingerTop(ctx, color,0,0) // 人差し指先端
   fingerTop(ctx, color, -160, 115, -15) // 中指先端
   fingerTop(ctx, color, -343, 218, -35) // 薬指先端
-  // 小指先端
+  littleTop(ctx, color) // 小指先端
 
   indexToMiddle(ctx, color) // 人差し指と中指の連結
   middleToRing(ctx, color, 10, 0) // 中指と薬指の連結

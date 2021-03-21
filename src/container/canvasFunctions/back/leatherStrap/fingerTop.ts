@@ -31,3 +31,26 @@ export const fingerTop = (
     ctx.restore()
   }
 }
+export const littleTop = (
+  ctx: CanvasRenderingContext2D,
+  color: string,   
+) => {
+  ctx.lineWidth = 1.0
+  ctx.strokeStyle = '#383838'
+  ctx.fillStyle = color
+  ctx.beginPath()
+  ctx.moveTo(210, 167) // 左上
+  ctx.quadraticCurveTo(200, 180, 205, 185)　// 左下 
+  ctx.quadraticCurveTo(220, 170, 220, 170)　// 右下 
+  ctx.quadraticCurveTo(225, 165, 225, 155)　// 右上 
+  ctx.quadraticCurveTo(217, 160, 210, 167)　// 左上 
+  ctx.stroke()
+  ctx.fill()
+  ctx.closePath()
+  // 側面ライン
+  ctx.beginPath()
+  ctx.moveTo(203, 180) // 左上
+  ctx.quadraticCurveTo(210, 170, 223, 164)　// 左下 
+  ctx.stroke()
+  ctx.closePath()
+}

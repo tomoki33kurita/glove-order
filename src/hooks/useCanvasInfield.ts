@@ -29,26 +29,26 @@ export const useCanvasInfieldBack = (ctx: CanvasRenderingContext2D, state: State
   middleRight(ctx, state.edge.color)
   // 中指＿左
   middleLeft(ctx, state.edge.color)
-  // // 薬指＿右
-  // ringRight(ctx, state.edge.color)
-  // // 薬指＿左
-  // ringLeft(ctx, state.edge.color)
-  // // 小指＿右
-  // littleRight(ctx, state.edge.color)
-  // // 小指＿左
-  // littleLeft(ctx, state.edge.color)
-  // // 親指掛け紐
-  // thumbHook(ctx, state.thumbHook.color)
-  // // // ハミダシ
-  // hamidashi(ctx, state.edge.color)
-  // // ヘリ革
-  // edges(ctx, state.edge.color)
-  // // ウェブ本体
-  // web(ctx, state.web.color)
-  // // ステッチ
+  // 薬指＿右
+  ringRight(ctx, state.edge.color)
+  // 薬指＿左
+  ringLeft(ctx, state.edge.color)
+  // 小指＿右
+  littleRight(ctx, state.edge.color)
+  // 小指＿左
+  littleLeft(ctx, state.edge.color)
+  // 親指掛け紐
+  thumbHook(ctx, state.thumbHook.color)
+  // // ハミダシ
+  hamidashi(ctx, state.edge.color)
+  // ヘリ革
+  edges(ctx, state.edge.color)
+  // ウェブ本体
+  web(ctx, state.web.color)
+  // ステッチ
   // stitch(ctx, state.stitch.color)
   // 革紐
-  // leatherStrap(ctx, state.strap.color)
-  // // 小指掛け紐
+  leatherStrap(ctx, state.strap.color)
+  // 小指掛け紐
   // littleHook(ctx, state.littleHook.color)
 }

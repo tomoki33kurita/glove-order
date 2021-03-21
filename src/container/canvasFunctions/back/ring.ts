@@ -21,7 +21,7 @@ export const ringLeft = (ctx: CanvasRenderingContext2D, color: string): void => 
   ctx.beginPath()
   ctx.moveTo(277, 92)  // 右上
   ctx.quadraticCurveTo(237, 154, 236, 214)
-  ctx.quadraticCurveTo(236, 322, 273, 424) //左下
+  ctx.quadraticCurveTo(236, 322, 273, 426) //左下
   ctx.quadraticCurveTo(294, 400, 294, 400) //右下
   ctx.quadraticCurveTo(236, 222, 277, 92) //右上
   ctx.stroke()
