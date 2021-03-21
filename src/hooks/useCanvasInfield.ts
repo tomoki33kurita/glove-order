@@ -20,10 +20,10 @@ import { lining } from 'src/container/canvasFunctions/back/lining'
 export const useCanvasInfieldBack = (ctx: CanvasRenderingContext2D, state: State): void => {
   // 裏革
   lining(ctx, state.linings.color)
-  // // 捕球面 / ウェブ下折り返し
-  // catchSurFace(ctx, state.catchFace.color)
-  // // 親指指袋_手口ベルト
-  // thumbAndListBelt(ctx, state.indexAndThumb.color)
+  // 捕球面 / ウェブ下折り返し
+  catchSurFace(ctx, state.catchFace.color)
+  // 親指指袋_手口ベルト
+  thumbAndListBelt(ctx, state.indexAndThumb.color)
   // 人差し指＿右
   indexRight(ctx, state.edge.color)
   // 人差し指＿左
@@ -49,9 +49,9 @@ export const useCanvasInfieldBack = (ctx: CanvasRenderingContext2D, state: State
   // ウェブ本体
   web(ctx, state.web.color)
   // ステッチ
-  // stitch(ctx, state.stitch.color)
+  stitch(ctx, state.stitch.color)
   // 革紐
-  leatherStrap(ctx, state.strap.color)
+  // leatherStrap(ctx, state.strap.color)
   // 小指掛け紐
   // littleHook(ctx, state.littleHook.color)
 }
