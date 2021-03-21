@@ -42,7 +42,7 @@ export const useCanvasInfieldBack = (ctx: CanvasRenderingContext2D, state: State
   littleLeft(ctx, state.edge.color)
   // 親指掛け紐
   thumbHook(ctx, state.thumbHook.color)
-  // // ハミダシ
+  // ハミダシ
   hamidashi(ctx, state.edge.color)
   // ヘリ革
   edges(ctx, state.edge.color)
@@ -51,7 +51,7 @@ export const useCanvasInfieldBack = (ctx: CanvasRenderingContext2D, state: State
   // ステッチ
   stitch(ctx, state.stitch.color)
   // 革紐
-  // leatherStrap(ctx, state.strap.color)
+  leatherStrap(ctx, state.strap.color)
   // 小指掛け紐
   // littleHook(ctx, state.littleHook.color)
 }
