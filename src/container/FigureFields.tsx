@@ -5,7 +5,7 @@ import { State } from 'src/types'
 import FigureFront from 'src/container/FigureFront'
 import FigureBack from 'src/container/FigureBack'
 
-const devToolStyle = { backgroundImage: `url(${'/glove-back.jpeg'})`, backgroundRepeat: "no-repeat", backgroundPosition: 'center', backgroundSize: '70%', maxWidth: '100%' }
+const devToolStyle = { backgroundImage: `url(${'/glove-front.jpeg'})`, backgroundRepeat: "no-repeat", backgroundPosition: 'center', backgroundSize: '70%', maxWidth: '100%' }
 
 export const a11yProps = (index: number): any => {
   return {
@@ -43,7 +43,7 @@ const FigureFields: React.FC<Props> = ({ state, figurePanelNum, handleFigurePane
           state={state}
           // 開発で座標を取得したいときは以下を有効にする
           devTools={{ cordinateX, cordinateY, isCopy, setCopy }}
-          devToolStyle={{...devToolStyle, backgroundImage:'url(/glove-front.jpeg'}}
+          devToolStyle={devToolStyle}
           handleCoordinate={handleCoordinate}
         />
       </TabPanel>

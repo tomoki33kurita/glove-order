@@ -2,7 +2,7 @@ import React from 'react'
 import { DevTools, State } from 'src/types'
 import DevTool from 'src/container/devTools'
 // 捕球面の描画
-import { useCanvasCMittFront } from 'src/hooks/useCanvasCMittFront'
+import { useCanvasInfieldFront } from 'src/hooks/useCanvasInfieldFront'
 
 type Props = {
   state: State
@@ -13,11 +13,11 @@ type Props = {
 
 const FigureFront: React.FC<Props> = ({ state, devTools, devToolStyle, handleCoordinate }) => {
   React.useEffect(() => {
-    // const canvas = document.getElementById('canvas') as HTMLCanvasElement
-    // const ctx = canvas.getContext('2d')
-    // ctx.strokeStyle = '#383838'
-    // ctx.lineWidth = 2
-    // useCanvasCMittFront(ctx, state)
+    const canvas = document.getElementById('canvas') as HTMLCanvasElement
+    const ctx = canvas.getContext('2d')
+    ctx.strokeStyle = '#383838'
+    ctx.lineWidth = 2
+    useCanvasInfieldFront(ctx, state)
   }, [state])
 
   return (

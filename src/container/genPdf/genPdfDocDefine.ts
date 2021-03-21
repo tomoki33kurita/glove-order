@@ -1,7 +1,7 @@
 // 捕球面の描画
 import { useCanvasCMittFront } from 'src/hooks/useCanvasCMittFront'
 // 背面の描画
-import { useCanvasInfieldBack } from 'src/hooks/useCanvasInfield'
+import { useCanvasInfieldBack } from 'src/hooks/useCanvasInfieldBack'
 import { Personal, State } from 'src/types'
 
 const genImgFromCanvas = (state: State, face: 'front' | 'back') => {

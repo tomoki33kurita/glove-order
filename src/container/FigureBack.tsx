@@ -2,7 +2,7 @@ import React from 'react'
 import { DevTools, State } from 'src/types'
 import DevTool from 'src/container/devTools'
 // 背面の描画
-import { useCanvasInfieldBack } from 'src/hooks/useCanvasInfield'
+import { useCanvasInfieldBack } from 'src/hooks/useCanvasInfieldBack'
 
 type Props = {
   state: State
