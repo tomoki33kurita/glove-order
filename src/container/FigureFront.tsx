@@ -24,7 +24,8 @@ const FigureFront: React.FC<Props> = ({ state, devTools, devToolStyle, handleCoo
     <>
       {devTools && handleCoordinate ? (
         <>
-          <canvas width={900} height={652} id="canvas" style={devToolStyle} onClick={(e) => handleCoordinate(e)}></canvas>
+          {/* <canvas width={900} height={652} id="canvas" style={devToolStyle} onClick={(e) => handleCoordinate(e)}></canvas> */}
+          <canvas width={900} height={652} id="canvas" onClick={(e) => handleCoordinate(e)}></canvas>
           <DevTool devTools={devTools} />
         </>
       ) : (

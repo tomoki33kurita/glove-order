@@ -27,14 +27,10 @@ export const webTop = (
   ctx.quadraticCurveTo(202 + locationX, 190 + locationY, 202 + locationX, 199 + locationY) 
   ctx.stroke()
   ctx.fill()
-
+  // 側面ライン
   ctx.closePath()
-  ctx.beginPath()
-  ctx.moveTo(201 + locationX, 195 + locationY) // 左上
+  ctx.moveTo(203 + locationX, 195 + locationY) // 左上
   ctx.quadraticCurveTo(213 + locationX, 190 + locationY,　222 + locationX, 208 + locationY)　// 右下
-  ctx.quadraticCurveTo(201 + locationX, 195 + locationY,　206 + locationX, 204 + locationY)　// 左下
-  ctx.quadraticCurveTo(200 + locationX, 200 + locationY, 201 + locationX, 195 + locationY)　// 左上
-  ctx.closePath()
   ctx.stroke()
 
   if(numerator !== undefined) {
@@ -67,17 +63,16 @@ export const webTop2 = (
   }
   // 右から２番目
   ctx.moveTo(285 + locationX, 80 + locationY) // 左上
-  ctx.quadraticCurveTo(291  + locationX, 94 + locationY, 289 + locationX, 112 + locationY)　// 左下
+  ctx.quadraticCurveTo(288  + locationX, 94 + locationY, 289 + locationX, 112 + locationY)　// 左下
   ctx.quadraticCurveTo(299  + locationX, 107 + locationY, 299 + locationX, 107 + locationY) 
   ctx.quadraticCurveTo(306  + locationX, 92 + locationY,　298 + locationX, 74 + locationY) 
   ctx.quadraticCurveTo(290  + locationX, 75 + locationY, 285 + locationX, 80 + locationY) 
   ctx.stroke()
   ctx.fill()
   ctx.closePath()
-  ctx.beginPath()
+  // 側面ライン
   ctx.moveTo(285 + locationX, 80 + locationY) // 左上
   ctx.quadraticCurveTo(295 + locationX, 92 + locationY,289 + locationX, 110 + locationY)　// 右下
-  ctx.closePath()
   ctx.stroke()
 
   if(numerator !== undefined) {

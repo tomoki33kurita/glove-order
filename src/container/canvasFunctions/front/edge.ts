@@ -44,7 +44,7 @@ export const edges = (ctx: CanvasRenderingContext2D, color: string): void => {
   // 左下 
   ctx.beginPath()
   ctx.moveTo(320, 587) // 左下
-  ctx.quadraticCurveTo(364, 591, 395, 578) // 右下
+  ctx.quadraticCurveTo(364, 591, 395, 576) // 右下
   ctx.quadraticCurveTo(373, 572, 373, 572) // 右上
   ctx.quadraticCurveTo(350, 577, 339, 571) // 左上
   ctx.quadraticCurveTo(338, 585, 320, 587) // 左下

@@ -6,11 +6,11 @@ export const hamidashi = (ctx: CanvasRenderingContext2D, color: string): void =>
   // 親指＿横方向
   ctx.beginPath()
   ctx.moveTo(180, 284) // 左＿左上
-  ctx.quadraticCurveTo(176, 291, 184, 301) // 左＿下
+  ctx.quadraticCurveTo(176, 291, 182, 301) // 左＿下
   ctx.quadraticCurveTo(180, 285, 197, 286) // 右＿下
   ctx.quadraticCurveTo(197, 279, 197, 279) // 右＿上
   ctx.quadraticCurveTo(185, 277, 180, 284) // 右＿上
-  // ctx.fill()
+  ctx.fill()
   ctx.stroke()
   ctx.closePath()  
 

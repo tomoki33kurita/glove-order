@@ -7,7 +7,7 @@ export const catchSurface = (ctx: CanvasRenderingContext2D, color: string): void
   ctx.beginPath()
   ctx.moveTo(197, 258) // 親指先端
   ctx.quadraticCurveTo(177, 264, 178, 293) 
-  ctx.quadraticCurveTo(219, 373, 259, 474) // 親指ヘリ革地点＿外側
+  ctx.quadraticCurveTo(219, 373, 263, 474) // 親指ヘリ革地点＿外側
   ctx.quadraticCurveTo(262, 461, 276, 455) // // 親指ヘリ革地点＿中央
   ctx.quadraticCurveTo(289, 448, 298, 462) // // 親指ヘリ革地点＿内側
   ctx.quadraticCurveTo(325, 535, 360, 548) 
