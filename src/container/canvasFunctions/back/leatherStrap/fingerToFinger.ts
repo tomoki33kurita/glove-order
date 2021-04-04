@@ -16,7 +16,6 @@ export const indexToMiddle = (
   ctx.fill()
   ctx.closePath()
     // 側面ライン
-  ctx.beginPath()
   ctx.moveTo(398, 82) // 左上
   ctx.quadraticCurveTo(410, 71, 443, 85)　// 左下 
   ctx.stroke()
@@ -24,18 +23,18 @@ export const indexToMiddle = (
 
   // 捕球面側
   ctx.beginPath()
-  ctx.moveTo(422, 82) // 左上
-  ctx.quadraticCurveTo(422, 90, 418, 99)　// 左下 
+  ctx.moveTo(419, 82) // 左上
+  ctx.quadraticCurveTo(420, 90, 418, 99)　// 左下 
   ctx.quadraticCurveTo(441, 87, 441, 85)　// 右下
-  ctx.quadraticCurveTo(431, 80, 422, 82)　// 左上 
+  ctx.quadraticCurveTo(431, 80, 419, 82)　// 左上 
   ctx.fill()
   ctx.stroke()
   ctx.closePath()
 
 }
 
-export const middleToRing = (
-  ctx: CanvasRenderingContext2D,
+export const middleToRing = ( // same ringTolittle part
+  ctx: CanvasRenderingContext2D, 
   color: string,   
   locationX: number,
   locationY: number,
@@ -59,7 +58,6 @@ export const middleToRing = (
   ctx.fill()
   ctx.closePath()
     // 側面ライン
-  ctx.beginPath()
   ctx.moveTo(297 + locationX, 124 + locationY) // 左
   ctx.quadraticCurveTo(300 + locationX, 105 + locationY, 322 + locationX, 116 + locationY)　// 左下 
   ctx.stroke()

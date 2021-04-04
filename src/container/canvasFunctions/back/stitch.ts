@@ -1,6 +1,6 @@
 export const stitch = (ctx: CanvasRenderingContext2D, color: string): void => {
   ctx.lineWidth = 1.5
-  ctx.strokeStyle = 'blue' //color
+  ctx.strokeStyle = color
   ctx.beginPath()
   ctx.setLineDash([5, 5])
 

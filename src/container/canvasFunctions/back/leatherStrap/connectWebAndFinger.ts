@@ -14,8 +14,7 @@ export const connectWebToIndexTop = (
   ctx.stroke()
   ctx.fill()
   ctx.closePath()
-    // 側面ライン
-  ctx.beginPath()
+  // 側面ライン
   ctx.moveTo(539, 39) // 左上
   ctx.quadraticCurveTo(552, 29, 567, 49)　// 左下 
   ctx.stroke()
@@ -43,7 +42,6 @@ export const connectWebToIndex = (
   ctx.fill()
   ctx.closePath()
   // 側面ライン
-  ctx.beginPath()
   ctx.moveTo(502 + locationX, 168 + locationY) // 左上
   ctx.quadraticCurveTo(506 + locationX, 168 + locationY, 512 + locationX, 171 + locationY)　// 左下 
   ctx.stroke()
@@ -54,7 +52,7 @@ export const connectWebToThumbTop = (
   ctx: CanvasRenderingContext2D,
   color: string,   
 ) => {
-  ctx.lineWidth = 1.0
+  ctx.lineWidth = 2.5
   ctx.strokeStyle = '#383838'
   ctx.fillStyle = color
   ctx.beginPath()
@@ -89,7 +87,6 @@ export const connectWebToThumb = (
   ctx.fill()
   ctx.closePath()
   // 側面ライン
-  ctx.beginPath()
   ctx.moveTo(632 + locationX, 343 + locationY) // 上
   ctx.quadraticCurveTo(634 + locationX, 352 + locationY, 634 + locationX, 352 + locationY)　// 左下 
   ctx.stroke()

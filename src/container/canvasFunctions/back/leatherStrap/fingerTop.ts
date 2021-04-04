@@ -21,8 +21,7 @@ export const fingerTop = (
   ctx.stroke()
   ctx.fill()
   ctx.closePath()
-    // 側面ライン
-  ctx.beginPath()
+  // 側面ライン
   ctx.moveTo(480 + locationX, 34 + locationY) // 左上
   ctx.quadraticCurveTo(506 + locationX, 23 + locationY, 536 + locationX, 35 + locationY)　// 左下 
   ctx.stroke()
@@ -48,7 +47,6 @@ export const littleTop = (
   ctx.fill()
   ctx.closePath()
   // 側面ライン
-  ctx.beginPath()
   ctx.moveTo(203, 180) // 左上
   ctx.quadraticCurveTo(210, 170, 223, 164)　// 左下 
   ctx.stroke()

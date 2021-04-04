@@ -2,15 +2,15 @@ export const listCross = (
   ctx: CanvasRenderingContext2D,
   color: string, 
 ): void => {
-  ctx.lineWidth = 1.0
+  ctx.lineWidth = 2.5
   ctx.strokeStyle = '#383838'
    ctx.fillStyle = color
   // 左上右下方向の革紐
   ctx.beginPath()
   ctx.moveTo(283, 526) // 左上
   ctx.quadraticCurveTo(291, 561, 321, 572)　// 
-  ctx.quadraticCurveTo(333, 568, 335, 568)　// 右下
-  ctx.quadraticCurveTo(329, 561, 331, 561)　// 右上
+  ctx.quadraticCurveTo(335, 568, 335, 568)　// 右下
+  ctx.quadraticCurveTo(325, 561, 325, 561)　// 右上
   ctx.quadraticCurveTo(299, 553, 287, 524)　// 右上
   ctx.quadraticCurveTo(281, 520, 283, 526)　// 左上
   ctx.stroke()

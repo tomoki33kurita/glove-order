@@ -6,9 +6,11 @@ import { web } from 'src/container/canvasFunctions/front/web'
 import { hamidashi } from 'src/container/canvasFunctions/front/hamidashi'
 import { leatherStrap } from 'src/container/canvasFunctions/front/leatherStrap'
 import { stitch } from 'src/container/canvasFunctions/front/stitch'
-
+import { listLining } from 'src/container/canvasFunctions/front/listLining'
 
 export const useCanvasInfieldFront = (ctx: CanvasRenderingContext2D, state: State): void => {
+  // 裏革
+  listLining(ctx, state.listLiningsMaterial.color)
   // ウェブ本体
   web(ctx, state.web.color)
   // 捕球面 

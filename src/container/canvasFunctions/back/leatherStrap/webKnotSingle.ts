@@ -2,7 +2,7 @@ export const webKnotUpward = (
   ctx: CanvasRenderingContext2D,
   color: string, 
 ): void => {
-  ctx.lineWidth = 1.0
+  ctx.lineWidth = 2.0
   ctx.strokeStyle = '#383838'
    ctx.fillStyle = color
   ctx.beginPath()
@@ -49,7 +49,7 @@ export const webKnotDownward = (
   ctx: CanvasRenderingContext2D,
   color: string, 
 ): void => {
-  ctx.lineWidth = 1.0
+  ctx.lineWidth = 2.5
   ctx.strokeStyle = '#383838'
   ctx.fillStyle = color
   // 結び目1段目

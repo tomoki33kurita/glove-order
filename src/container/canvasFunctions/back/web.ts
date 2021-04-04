@@ -1,5 +1,5 @@
 export const web = (ctx: CanvasRenderingContext2D, color: string): void => {
-  ctx.lineWidth = 1.5
+  ctx.lineWidth = 2.0
   ctx.strokeStyle = '#383838'
   ctx.fillStyle = color
 

@@ -1,5 +1,5 @@
 export const edges = (ctx: CanvasRenderingContext2D, color: string): void => {
-  ctx.lineWidth = 1.5
+  ctx.lineWidth = 1.0
   ctx.strokeStyle = '#383838'
   ctx.fillStyle = color
 
@@ -16,7 +16,6 @@ export const edges = (ctx: CanvasRenderingContext2D, color: string): void => {
 
 
   // 指根元
-  ctx.beginPath()
   ctx.moveTo(321, 588) // 手口左下左
   ctx.quadraticCurveTo(287, 531,268, 477) // 手口左上、右カーブ前
   ctx.quadraticCurveTo(258, 448,275, 423) // 

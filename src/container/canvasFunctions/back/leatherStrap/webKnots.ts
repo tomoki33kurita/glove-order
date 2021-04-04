@@ -6,7 +6,7 @@ export const webKnots = (
   numerator?: number,
   scaleSize?: number,
 ): void => {
-  ctx.lineWidth = 1.0
+  ctx.lineWidth = 2.5
   ctx.strokeStyle = '#383838'
   ctx.fillStyle = color
   // ウェブ先端側の結び目

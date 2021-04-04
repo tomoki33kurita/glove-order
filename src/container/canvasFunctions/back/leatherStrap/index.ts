@@ -31,8 +31,6 @@ export const leatherStrap = (ctx: CanvasRenderingContext2D, color: string): void
   connectWebToIndex(ctx, color, 2, 0) // Hウェブ左下＿下段
   connectWebToIndex(ctx, color, 18, -38) // Hウェブ左下＿上段
   connectWebToIndex(ctx, color, 45, -92) // Hウェブ左下＿上段
-
-
   connectWebToThumbTop(ctx, color)
   connectWebToThumb(ctx, color, 0, 0) // Hウェブ右下＿下段
   connectWebToThumb(ctx, color, 30, -29) // Hウェブ右下＿上段
