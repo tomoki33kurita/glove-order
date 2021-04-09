@@ -100,4 +100,27 @@ export const hamidashi = (ctx: CanvasRenderingContext2D, color: string): void =>
   ctx.stroke()
   ctx.closePath()  
 
+  // 人差し指＿縦方向
+  ctx.beginPath()
+  ctx.moveTo(392, 37) // 左上
+  ctx.quadraticCurveTo(391, 39, 391, 39) // 左下 
+  ctx.quadraticCurveTo(394, 38, 398, 40) // 右下
+  ctx.quadraticCurveTo(403, 37, 403, 37) // 右上
+  ctx.quadraticCurveTo(392, 37, 392, 37) // 左上
+  ctx.fill()
+  ctx.stroke()
+  ctx.closePath()  
+
+  // 中指＿縦方向
+  ctx.beginPath()
+  ctx.moveTo(534, 56) // 左＿右
+  ctx.quadraticCurveTo(542, 60, 542, 60) // 
+  ctx.quadraticCurveTo(548, 60, 548, 60) // 
+  ctx.quadraticCurveTo(543, 57, 543, 57) // 
+  ctx.quadraticCurveTo(534, 56, 534, 56) // 
+  ctx.fill()
+  ctx.stroke()
+  ctx.closePath()  
+
+
 }

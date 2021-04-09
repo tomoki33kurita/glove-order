@@ -5,12 +5,11 @@ export const indexTopOver = (
   ctx.lineWidth = 1.0
   ctx.strokeStyle = '#383838'
   ctx.fillStyle = color
-  // 小指芯固定用の紐
   ctx.beginPath()
   ctx.moveTo(347, 53) // 左上
   ctx.quadraticCurveTo(348, 55, 351, 61)　// 左下
-  ctx.quadraticCurveTo(358, 54, 355, 58)　// 右下
-  ctx.quadraticCurveTo(355, 51, 369, 43) // 右上
+  ctx.quadraticCurveTo(358, 54, 353, 58)　// 右下
+  ctx.quadraticCurveTo(355, 51, 365, 43) // 右上
   ctx.quadraticCurveTo(354, 45, 347, 53) // 左上
   ctx.stroke()
   ctx.fill()
@@ -24,7 +23,6 @@ export const indexTop = (
   ctx.lineWidth = 1.0
   ctx.strokeStyle = '#383838'
   ctx.fillStyle = color
-  // 小指芯固定用の紐
   ctx.beginPath()
   ctx.moveTo(352, 68) // 左上
   ctx.quadraticCurveTo(354, 72, 354, 79)　// 左下
