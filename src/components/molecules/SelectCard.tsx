@@ -50,9 +50,7 @@ const SelectCard: React.FC<Props> = ({ summary, selectedLabel, selectedColor, ob
           <Button
             key={obj.value}
             value={obj.value}
-            onClick={() => {
-              handleChange(obj.value, index)
-            }}
+            onClick={() => handleChange(obj.value, index)}
             variant={obj.label === selectedLabel ? 'contained' : 'outlined'}
             disabled={disabled}
             style={{ marginRight: '8px', marginBottom: '4px' }}

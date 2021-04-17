@@ -21,23 +21,23 @@ export const useCanvasInfieldFront = (ctx: CanvasRenderingContext2D, state: Stat
   // 捕球面 
   catchSurface(ctx, state.catchFace.color)
   // 親指背面＿外側
-  thumbBackOut(ctx, 'red')
+  thumbBackOut(ctx, state.thumbOut.color)
   // 親指背面＿ウェブ側
-  thumbBackWebSide(ctx, 'red')
+  thumbBackWebSide(ctx, state.thumbWeb.color)
   // 人差し指背面＿ウェブ側
-  indexBackWebSide(ctx, 'red')
+  indexBackWebSide(ctx, state.indexWeb.color)
   // 人差し指背面＿中指側
-  indexBackMiddleSide(ctx, 'red')
+  indexBackMiddleSide(ctx, state.indexMiddle.color)
   // 中指背面＿人差し指側
-  middleBackIndexSide(ctx, 'red')
+  middleBackIndexSide(ctx, state.middleIndex.color)
   // 中指背面＿薬指側
-  middleBackRingSide(ctx, 'red')
+  middleBackRingSide(ctx, state.middleRing.color)
   // 薬指背面＿小指側
-  ringBackLittleSide(ctx, 'red')
+  ringBackLittleSide(ctx, state.ringLittle.color)
   // 小指背面＿薬指側
-  littleBackRingSide(ctx, 'red')
+  littleBackRingSide(ctx, state.littleRing.color)
   // 小指背面＿外側
-  littleBackOut(ctx, 'red')
+  littleBackOut(ctx, state.littleOut.color)
   // 親指掛け紐
   // thumbHook(ctx, state.thumbHook.color)
   // ハミダシ

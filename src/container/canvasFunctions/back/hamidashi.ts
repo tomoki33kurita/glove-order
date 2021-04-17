@@ -1,7 +1,7 @@
 export const hamidashi = (ctx: CanvasRenderingContext2D, color: string): void => {
   ctx.lineWidth = 2.0
   ctx.strokeStyle = '#383838' 
-  ctx.fillStyle = '#fff' // color
+  ctx.fillStyle = color
   ctx.beginPath()
   ctx.moveTo(218, 150) // 小指先端左
   ctx.quadraticCurveTo(160, 394, 322, 590) // 小指末端左

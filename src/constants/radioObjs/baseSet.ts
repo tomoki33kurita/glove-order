@@ -28,7 +28,6 @@ export const backStyleObjs = [
   { label: 'Aバック', value: 'A_back' },
   { label: 'Bバック', value: 'B_back' },
   { label: 'axバック', value: 'ax_back' },
-  { label: 'シェラームーブ', value: 'shellarmove' },
 ]
 
 export const padModleObjs = [

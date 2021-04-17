@@ -1,5 +1,5 @@
 // 捕球面の描画
-import { useCanvasCMittFront } from 'src/hooks/useCanvasCMittFront'
+import { useCanvasInfieldFront } from 'src/hooks/useCanvasInfieldFront'
 // 背面の描画
 import { useCanvasInfieldBack } from 'src/hooks/useCanvasInfieldBack'
 import { Personal, State } from 'src/types'
@@ -10,8 +10,8 @@ const genImgFromCanvas = (state: State, face: 'front' | 'back') => {
   ctx.clearRect(0, 0, 900, 652)
   ctx.strokeStyle = '#383838'
   ctx.lineWidth = 2
-  // if (face === 'front') useCanvasCMittFront(ctx, state)
-  // if (face === 'back') useCanvasCMittBack(ctx, state)
+  if (face === 'front') useCanvasInfieldFront(ctx, state)
+  if (face === 'back') useCanvasInfieldBack(ctx, state)
   return canvas.toDataURL()
 }
 
@@ -26,7 +26,7 @@ export const genPdfDocDefine = (state: State, personalData: Personal) => {
   return {
     content: [
       {
-        text: 'ハタケヤマゴールドオーダー',
+        text: 'オーダー仕様書',
         style: { fontSize: 18 },
       },
       {
@@ -38,11 +38,11 @@ export const genPdfDocDefine = (state: State, personalData: Personal) => {
         table: {
           body: [
             [
-              genCellContent('お客様名', personalData?.userName || ''),
-              genCellContent('お名前(カナ)', personalData?.userNameKana || ''),
-              genCellContent('住所', personalData?.address || ''),
+              genCellContent('お客様名', personalData?.userName || '山田太郎'),
+              genCellContent('お名前(カナ)', personalData?.userNameKana || 'ヤマダタロウ'),
+              genCellContent('住所', personalData?.address || '東京都新宿区1-1-1テスト'),
             ],
-            [genCellContent('お電話番号', personalData?.phoneNumber || ''), genCellContent('メールアドレス', personalData?.mailAddress || ''), ['']],
+            [genCellContent('お電話番号', personalData?.phoneNumber || '123-4567-8910'), genCellContent('メールアドレス', personalData?.mailAddress || 'test@gmail.com'), ['']],
           ],
         },
       },
@@ -69,10 +69,13 @@ export const genPdfDocDefine = (state: State, personalData: Personal) => {
             ],
             [
               genCellContent('指カバー', state.fingerGuardType.label),
-              genCellContent('座ブトンスポンジ', state.zabutonSponge.label),
-              genCellContent('EX機能', state.exFunction.label),
+              genCellContent('', ''),
+              genCellContent('', ''),
+              // genCellContent('座ブトンスポンジ', state.zabutonSponge.label),
+              // genCellContent('EX機能', state.exFunction.label),
             ],
-            [genCellContent('ピンキーパターン', state.pinkiePattern.label), '', ''],
+            // [genCellContent('ピンキーパターン', state.pinkiePattern.label), '', ''],
+            [genCellContent('', ''), '', ''],
           ],
         },
       },
@@ -93,8 +96,10 @@ export const genPdfDocDefine = (state: State, personalData: Personal) => {
             ],
             [
               genCellContent(`ハミダシ`, state.hamidashi.label),
-              genCellContent(`親指マチカラー`, state.thumbMachi.label),
-              genCellContent(`小指マチカラー`, state.littleMachi.label),
+              genCellContent('', ''),
+              genCellContent('', ''),
+              // genCellContent(`親指マチカラー`, state.thumbHook),
+              // genCellContent(`小指マチカラー`, state.littleMachi.label),
             ],
             [
               genCellContent(`親指掛け紐カラー`, state.thumbHook.label),
@@ -102,16 +107,22 @@ export const genPdfDocDefine = (state: State, personalData: Personal) => {
               genCellContent(`人差し指カバーカラー`, state.indexCover.label),
             ],
             [
-              genCellContent(`シェラームーブカラー`, state.shellarmove.label),
-              genCellContent(`台カラー`, state.bagFoundation.label),
-              genCellContent(`薬指小指袋カラー`, state.ringAndLittle.label),
+              genCellContent('', ''),
+              genCellContent('', ''),
+              genCellContent('', ''),
+              // genCellContent(`シェラームーブカラー`, state.shellarmove.label),
+              // genCellContent(`台カラー`, state.bagFoundation.label),
+              // genCellContent(`薬指小指袋カラー`, state.ringAndLittle.label),
             ],
             [
-              genCellContent(`中指袋カラー`, state.middle.label),
-              genCellContent(`人差し指親指袋カラー`, state.indexAndThumb.label),
+              // genCellContent(`中指袋カラー`, state.middle.label),
+              // genCellContent(`人差し指親指袋カラー`, state.indexAndThumb.label),
+              genCellContent('', ''),
+              genCellContent('', ''),
               genCellContent(`手口ベルトカラー`, state.listBelt.label),
             ],
-            [genCellContent(`裏革カラー`, state.linings.label), genCellContent(`ターゲット加工`, state.target.label), genCellContent(`ラベル`, state.hatakeyamaLabel.label)],
+            // [genCellContent(`裏革カラー`, state.linings.label), genCellContent(`ターゲット加工`, state.target.label), genCellContent(`ラベル`, state.hatakeyamaLabel.label)],
+            [genCellContent(`裏革カラー`, state.linings.label), genCellContent('', ''), genCellContent('', '')],
           ],
         },
       },
@@ -138,7 +149,8 @@ export const genPdfDocDefine = (state: State, personalData: Personal) => {
       {
         table: {
           // headerRows: 2,
-          body: [[genCellContent(`その他ご要望`, state.personal.remarks, 'left')]],
+          body: [[genCellContent(`その他ご要望`, state?.personal?.remarks, 'left')]],
+          // body: [[genCellContent(`その他ご要望`, state?.personal?.remarks, 'left')]],
         },
       },
 

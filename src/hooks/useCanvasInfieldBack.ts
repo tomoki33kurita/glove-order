@@ -23,27 +23,27 @@ export const useCanvasInfieldBack = (ctx: CanvasRenderingContext2D, state: State
   // 捕球面 / ウェブ下折り返し
   catchSurFace(ctx, state.catchFace.color)
   // 親指指袋_手口ベルト
-  thumbAndListBelt(ctx, state.indexAndThumb.color)
+  thumbAndListBelt(ctx, state.thumbWeb.color)
   // 人差し指＿右
-  indexRight(ctx, state.edge.color)
+  indexRight(ctx, state.indexWeb.color)
   // 人差し指＿左
-  indexLeft(ctx, state.edge.color)
+  indexLeft(ctx, state.indexMiddle.color)
   // 中指＿右
-  middleRight(ctx, state.edge.color)
+  middleRight(ctx, state.middleIndex.color)
   // 中指＿左
-  middleLeft(ctx, state.edge.color)
+  middleLeft(ctx, state.middleRing.color)
   // 薬指＿右
-  ringRight(ctx, state.edge.color)
+  ringRight(ctx, state.ringMiddle.color)
   // 薬指＿左
-  ringLeft(ctx, state.edge.color)
+  ringLeft(ctx, state.ringLittle.color)
   // 小指＿右
-  littleRight(ctx, state.edge.color)
+  littleRight(ctx, state.littleRing.color)
   // 小指＿左
-  littleLeft(ctx, state.edge.color)
+  littleLeft(ctx, state.littleOut.color)
   // 親指掛け紐
   thumbHook(ctx, state.thumbHook.color)
   // ハミダシ
-  hamidashi(ctx, state.edge.color)
+  hamidashi(ctx, state.hamidashi.color)
   // ヘリ革
   edges(ctx, state.edge.color)
   // ウェブ本体

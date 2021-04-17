@@ -17,7 +17,7 @@ const handleGenPdf = (state: State, personalData: Personal) => {
   const docDefine = genPdfDocDefine(state, personalData)
   // eslint-disable-next-line
   // @ts-ignore
-  pdfMake.createPdf(docDefine).download(`オーダー内容/${personalData.userName}様.pdf`) // margin設定によって構文チェックエラーになっている。
+  pdfMake.createPdf(docDefine).download(`オーダー内容/${personalData?.userName || '名無しの権兵衛'}様.pdf`) // margin設定によって構文チェックエラーになっている。
 }
 
 type Props = {
@@ -39,10 +39,10 @@ const PdfDialog: React.FC<Props> = ({ state, open, handleClose, dispatch }) => {
     { head: '芯の硬さ', label: state.coreMaterialHardness.label },
     { head: '芯の厚さ：', label: state.coreMaterialThickness.label },
     { head: '指カバー：', label: state.fingerGuardType.label },
-    { head: '座ブトンスポンジ：', label: state.zabutonSponge.label },
-    { head: 'EX機能：', label: state.exFunction.label },
-    { head: 'ピンキーパターン：', label: state.pinkiePattern.label },
-    { head: 'TB刻印：', label: state.tbEngraved.label },
+    // { head: '座ブトンスポンジ：', label: state.zabutonSponge.label },
+    // { head: 'EX機能：', label: state.exFunction.label },
+    // { head: 'ピンキーパターン：', label: state.pinkiePattern.label },
+    // { head: 'TB刻印：', label: state.tbEngraved.label },
   ]
 
   const colorCells = [
@@ -53,20 +53,20 @@ const PdfDialog: React.FC<Props> = ({ state, open, handleClose, dispatch }) => {
     { head: 'ステッチカラー：', label: state.stitch.label, color: state.stitch.color },
     { head: '手首裏の素材：', label: state.listLiningsMaterial.label, color: state.listLiningsMaterial.color },
     { head: 'ハミダシ：', label: state.hamidashi.label, color: state.hamidashi.color },
-    { head: '親指マチカラー：', label: state.thumbMachi.label, color: state.thumbMachi.color },
-    { head: '小指マチカラー：', label: state.littleMachi.label, color: state.littleMachi.color },
-    { head: '親指掛け紐カラー：', label: state.thumbHook.label, color: state.thumbMachi.color },
-    { head: '小指掛け紐カラー：', label: state.littleHook.label, color: state.littleMachi.color },
+    { head: '親指掛け紐カラー：', label: state.thumbHook.label, color: state.thumbHook.color },
+    { head: '小指掛け紐カラー：', label: state.littleHook.label, color: state.littleHook.color },
     { head: '人差し指カバーカラー：', label: state.indexCover.label, color: state.indexCover.color },
-    { head: '台カラー：', label: state.bagFoundation.label, color: state.bagFoundation.color },
-    { head: '薬指小指袋カラー：', label: state.ringAndLittle.label, color: state.ringAndLittle.color },
-    { head: '中指袋カラー：', label: state.middle.label, color: state.middle.color },
-    { head: '人差し指親指袋カラー：', label: state.indexAndThumb.label, color: state.indexAndThumb.color },
-    { head: 'シェラームーブカラー：', label: state.shellarmove.label, color: state.shellarmove.color },
     { head: '手口ベルトカラー：', label: state.listBelt.label, color: state.listBelt.color },
     { head: '裏革カラー：', label: state.linings.label, color: state.linings.color },
-    { head: 'ターゲット加工：', label: state.target.label, color: state.target.color },
-    { head: 'ラベル：', label: state.hatakeyamaLabel.label, color: state.hatakeyamaLabel.color },
+    // { head: '親指マチカラー：', label: state.thumbMachi.label, color: state.thumbMachi.color },
+    // { head: '小指マチカラー：', label: state.littleMachi.label, color: state.littleMachi.color },
+    // { head: '台カラー：', label: state.bagFoundation.label, color: state.bagFoundation.color },
+    // { head: '薬指小指袋カラー：', label: state.ringAndLittle.label, color: state.ringAndLittle.color },
+    // { head: '中指袋カラー：', label: state.middle.label, color: state.middle.color },
+    // { head: '人差し指親指袋カラー：', label: state.indexAndThumb.label, color: state.indexAndThumb.color },
+    // { head: 'シェラームーブカラー：', label: state.shellarmove.label, color: state.shellarmove.color },
+    // { head: 'ターゲット加工：', label: state.target.label, color: state.target.color },
+    // { head: 'ラベル：', label: state.hatakeyamaLabel.label, color: state.hatakeyamaLabel.color },
   ]
   const { register, handleSubmit } = useForm()
   const [personalData, setPersonalData] = React.useState<Personal>()

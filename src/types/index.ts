@@ -25,33 +25,30 @@ export type State = {
   padModel: stateObj
   catchFace: stateObj
   edge: stateObj
-  target: stateObj
   leatherHardness: stateObj
   coreMaterialHardness: stateObj
   coreMaterialThickness: stateObj
   linings: stateObj
-  hamidashi: stateObj
   fingerGuardType: stateObj
-  zabutonSponge: stateObj
-  exFunction: stateObj
-  pinkiePattern: stateObj
+  hamidashi: stateObj
   strap: stateObj
-  hatakeyamaLabel: stateObj
-  tbEngraved: stateObj
   listLiningsMaterial: stateObj
   stitch: stateObj
   web: stateObj
-  thumbMachi: stateObj
-  littleMachi: stateObj
   thumbHook: stateObj
   littleHook: stateObj
   listBelt: stateObj
   indexCover: stateObj
-  bagFoundation: stateObj
-  ringAndLittle: stateObj
-  middle: stateObj
-  indexAndThumb: stateObj
-  shellarmove: stateObj
+  thumbOut: stateObj
+  thumbWeb: stateObj
+  indexWeb: stateObj
+  indexMiddle: stateObj
+  middleIndex: stateObj
+  middleRing: stateObj
+  ringMiddle: stateObj
+  ringLittle: stateObj
+  littleRing: stateObj
+  littleOut: stateObj
   embroideries: Embroidery[]
   personal: Personal
 }
