@@ -46,9 +46,9 @@ const DesignationBase: React.FC<Props> = ({ state, figurePanelNum, dispatch }) =
       <ColoringSet state={state} value={value} figurePanelNum={figurePanelNum} dispatch={dispatch} />
       <EmbroiderySet state={state} value={value} dispatch={dispatch} />
       <Box display="flex" justifyContent="space-around" my={2}>
-        <Button variant="outlined" onClick={hendleLinkToTop}>
+        {/* <Button variant="outlined" onClick={hendleLinkToTop}>
           トップに戻る
-        </Button>
+        </Button> */}
         <Button variant="outlined" onClick={handleReset}>
           リセット
         </Button>
