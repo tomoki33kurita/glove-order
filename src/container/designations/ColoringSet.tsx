@@ -12,7 +12,7 @@ import {
   listLiningMaterialObjs,
   catchFacePartsObjs,
   backFacePartsObjs,
-  partsObjs,
+  partsObjs
 } from 'src/constants/radioObjs/coloring'
 import {
   SET_SELECTED_PARTS,
@@ -28,16 +28,16 @@ import {
   SET_THUMB_HOOK,
   SET_LITTLE_HOOK,
   SET_INDEX_COVER_COLOR,
-  SET_THUMB_OUT_COLOR, 
-  SET_THUMB_WEB_COLOR, 
-  SET_INDEX_WEB_COLOR, 
-  SET_INDEX_MIDDLE_COLOR, 
-  SET_MIDDLE_INDEX_COLOR, 
-  SET_MIDDLE_RING_COLOR, 
-  SET_RING_MIDDLE_COLOR, 
-  SET_RING_LITTLE_COLOR, 
-  SET_LITTLE_RING_COLOR, 
-  SET_LITTLE_OUT_COLOR,
+  SET_THUMB_OUT_COLOR,
+  SET_THUMB_WEB_COLOR,
+  SET_INDEX_WEB_COLOR,
+  SET_INDEX_MIDDLE_COLOR,
+  SET_MIDDLE_INDEX_COLOR,
+  SET_MIDDLE_RING_COLOR,
+  SET_RING_MIDDLE_COLOR,
+  SET_RING_LITTLE_COLOR,
+  SET_LITTLE_RING_COLOR,
+  SET_LITTLE_OUT_COLOR
 } from 'src/constants/ActionTypes'
 
 interface SortType {
@@ -81,34 +81,122 @@ const ColoringSet: React.FC<Props> = ({ state, value, figurePanelNum, dispatch }
   } = state
   const partKey = parts.value as keyof SortType
   const handle = {
-    all: (selected: string) => dispatch({ type: SET_ALL_LEATHER_COLOR, all: colorObjs.filter((prev) => prev.value === selected)[0] }),
-    selectParts: (selected: string) => dispatch({ type: SET_SELECTED_PARTS, parts: partsObjs.filter((prev) => prev.value === selected)[0] }),
-    leather: (selected: string) => dispatch({ type: sortReducerType[partKey], catchFace: colorObjs.filter((prev) => prev.value === selected)[0] }),
-    web: (selected: string) => dispatch({ type: sortReducerType[partKey], web: colorObjs.filter((prev) => prev.value === selected)[0] }),
-    edge: (selected: string) => dispatch({ type: sortReducerType[partKey], edge: colorObjs.filter((prev) => prev.value === selected)[0] }),
-    thumbHook: (selected: string) => dispatch({ type: sortReducerType[partKey], thumbHook: colorObjs.filter((prev) => prev.value === selected)[0] }),
-    littleHook: (selected: string) => dispatch({ type: sortReducerType[partKey], littleHook: colorObjs.filter((prev) => prev.value === selected)[0] }),
-    indexCover: (selected: string) => dispatch({ type: sortReducerType[partKey], indexCover: colorObjs.filter((prev) => prev.value === selected)[0] }),
-    stitch: (selected: string) => dispatch({ type: SET_STITCH_COLOR, stitch: stitchColorObjs.filter((prev) => prev.value === selected)[0] }),
-    linings: (selected: string) => dispatch({ type: SET_LININGS, linings: liningsObjs.filter((prev) => prev.value === selected)[0] }),
-    strap: (selected: string) => dispatch({ type: SET_STRAP_COLOR, strap: strapColorObjs.filter((prev) => prev.value === selected)[0] }),
+    all: (selected: string) =>
+      dispatch({
+        type: SET_ALL_LEATHER_COLOR,
+        all: colorObjs.filter((prev) => prev.value === selected)[0]
+      }),
+    selectParts: (selected: string) =>
+      dispatch({
+        type: SET_SELECTED_PARTS,
+        parts: partsObjs.filter((prev) => prev.value === selected)[0]
+      }),
+    leather: (selected: string) =>
+      dispatch({
+        type: sortReducerType[partKey],
+        catchFace: colorObjs.filter((prev) => prev.value === selected)[0]
+      }),
+    web: (selected: string) =>
+      dispatch({
+        type: sortReducerType[partKey],
+        web: colorObjs.filter((prev) => prev.value === selected)[0]
+      }),
+    edge: (selected: string) =>
+      dispatch({
+        type: sortReducerType[partKey],
+        edge: colorObjs.filter((prev) => prev.value === selected)[0]
+      }),
+    thumbHook: (selected: string) =>
+      dispatch({
+        type: sortReducerType[partKey],
+        thumbHook: colorObjs.filter((prev) => prev.value === selected)[0]
+      }),
+    littleHook: (selected: string) =>
+      dispatch({
+        type: sortReducerType[partKey],
+        littleHook: colorObjs.filter((prev) => prev.value === selected)[0]
+      }),
+    indexCover: (selected: string) =>
+      dispatch({
+        type: sortReducerType[partKey],
+        indexCover: colorObjs.filter((prev) => prev.value === selected)[0]
+      }),
+    stitch: (selected: string) =>
+      dispatch({
+        type: SET_STITCH_COLOR,
+        stitch: stitchColorObjs.filter((prev) => prev.value === selected)[0]
+      }),
+    linings: (selected: string) =>
+      dispatch({
+        type: SET_LININGS,
+        linings: liningsObjs.filter((prev) => prev.value === selected)[0]
+      }),
+    strap: (selected: string) =>
+      dispatch({
+        type: SET_STRAP_COLOR,
+        strap: strapColorObjs.filter((prev) => prev.value === selected)[0]
+      }),
     listLiningsMaterial: (selected: string) =>
       dispatch({
         type: SET_LIST_LINING_MATERIAL,
-        listLiningsMaterial: listLiningMaterialObjs.filter((prev) => prev.value === selected)[0],
+        listLiningsMaterial: listLiningMaterialObjs.filter((prev) => prev.value === selected)[0]
       }),
-    hamidashi: (selected: string) => dispatch({ type: SET_HAMIDASHI, hamidashi: hamidashiObjs.filter((prev) => prev.value === selected)[0] }),
+    hamidashi: (selected: string) =>
+      dispatch({
+        type: SET_HAMIDASHI,
+        hamidashi: hamidashiObjs.filter((prev) => prev.value === selected)[0]
+      }),
 
-    thumbOut: (selected: string) => dispatch({ type: sortReducerType[partKey], thumbOut: colorObjs.filter((prev) => prev.value === selected)[0] }),
-    thumbWeb: (selected: string) => dispatch({ type: sortReducerType[partKey], thumbWeb: colorObjs.filter((prev) => prev.value === selected)[0] }),
-    indexWeb: (selected: string) => dispatch({ type: sortReducerType[partKey], indexWeb: colorObjs.filter((prev) => prev.value === selected)[0] }),
-    indexMiddle: (selected: string) => dispatch({ type: sortReducerType[partKey], indexMiddle: colorObjs.filter((prev) => prev.value === selected)[0] }),
-    middleIndex: (selected: string) => dispatch({ type: sortReducerType[partKey], middleIndex: colorObjs.filter((prev) => prev.value === selected)[0] }),
-    middleRing: (selected: string) => dispatch({ type: sortReducerType[partKey], middleRing: colorObjs.filter((prev) => prev.value === selected)[0] }),
-    ringMiddle: (selected: string) => dispatch({ type: sortReducerType[partKey], ringMiddle: colorObjs.filter((prev) => prev.value === selected)[0] }),
-    ringLittle: (selected: string) => dispatch({ type: sortReducerType[partKey], ringLittle: colorObjs.filter((prev) => prev.value === selected)[0] }),
-    littleRing: (selected: string) => dispatch({ type: sortReducerType[partKey], littleRing: colorObjs.filter((prev) => prev.value === selected)[0] }),
-    littleOut: (selected: string) => dispatch({ type: sortReducerType[partKey], littleOut: colorObjs.filter((prev) => prev.value === selected)[0] }),
+    thumbOut: (selected: string) =>
+      dispatch({
+        type: sortReducerType[partKey],
+        thumbOut: colorObjs.filter((prev) => prev.value === selected)[0]
+      }),
+    thumbWeb: (selected: string) =>
+      dispatch({
+        type: sortReducerType[partKey],
+        thumbWeb: colorObjs.filter((prev) => prev.value === selected)[0]
+      }),
+    indexWeb: (selected: string) =>
+      dispatch({
+        type: sortReducerType[partKey],
+        indexWeb: colorObjs.filter((prev) => prev.value === selected)[0]
+      }),
+    indexMiddle: (selected: string) =>
+      dispatch({
+        type: sortReducerType[partKey],
+        indexMiddle: colorObjs.filter((prev) => prev.value === selected)[0]
+      }),
+    middleIndex: (selected: string) =>
+      dispatch({
+        type: sortReducerType[partKey],
+        middleIndex: colorObjs.filter((prev) => prev.value === selected)[0]
+      }),
+    middleRing: (selected: string) =>
+      dispatch({
+        type: sortReducerType[partKey],
+        middleRing: colorObjs.filter((prev) => prev.value === selected)[0]
+      }),
+    ringMiddle: (selected: string) =>
+      dispatch({
+        type: sortReducerType[partKey],
+        ringMiddle: colorObjs.filter((prev) => prev.value === selected)[0]
+      }),
+    ringLittle: (selected: string) =>
+      dispatch({
+        type: sortReducerType[partKey],
+        ringLittle: colorObjs.filter((prev) => prev.value === selected)[0]
+      }),
+    littleRing: (selected: string) =>
+      dispatch({
+        type: sortReducerType[partKey],
+        littleRing: colorObjs.filter((prev) => prev.value === selected)[0]
+      }),
+    littleOut: (selected: string) =>
+      dispatch({
+        type: sortReducerType[partKey],
+        littleOut: colorObjs.filter((prev) => prev.value === selected)[0]
+      })
   }
   const sortReducerType = {
     catch_face: SET_LEATHER_COLOR,
@@ -122,7 +210,7 @@ const ColoringSet: React.FC<Props> = ({ state, value, figurePanelNum, dispatch }
     lining: SET_LININGS,
     list_lining_material: SET_LIST_LINING_MATERIAL,
     hamidashi: SET_HAMIDASHI,
-    
+
     thumb_out: SET_THUMB_OUT_COLOR,
     thumb_web: SET_THUMB_WEB_COLOR,
     index_web: SET_INDEX_WEB_COLOR,
@@ -182,7 +270,7 @@ const ColoringSet: React.FC<Props> = ({ state, value, figurePanelNum, dispatch }
     ring_middle: ringMiddle.label,
     ring_little: ringLittle.label,
     little_ring: littleRing.label,
-    little_out: littleOut.label,
+    little_out: littleOut.label
   }
   const sortColor = {
     catch_face: catchFace.color,
@@ -207,7 +295,7 @@ const ColoringSet: React.FC<Props> = ({ state, value, figurePanelNum, dispatch }
     ring_middle: ringMiddle.color,
     ring_little: ringLittle.color,
     little_ring: littleRing.color,
-    little_out: littleOut.color,
+    little_out: littleOut.color
   }
   const sortValue = {
     all: all.value,
@@ -223,7 +311,7 @@ const ColoringSet: React.FC<Props> = ({ state, value, figurePanelNum, dispatch }
     strap: strap.value,
     list_lining_material: listLiningsMaterial.value,
     hamidashi: hamidashi.value,
-    
+
     thumb_out: thumbOut.value,
     thumb_web: thumbWeb.value,
     index_web: indexWeb.value,
@@ -233,7 +321,7 @@ const ColoringSet: React.FC<Props> = ({ state, value, figurePanelNum, dispatch }
     ring_middle: ringMiddle.value,
     ring_little: ringLittle.value,
     little_ring: littleRing.value,
-    little_out: littleOut.value,
+    little_out: littleOut.value
   }
   return (
     <TabPanel value={value} index={1}>
