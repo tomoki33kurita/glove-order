@@ -99,7 +99,7 @@ export const edges = (ctx: CanvasRenderingContext2D, color: string): void => {
   ctx.quadraticCurveTo(667, 121, 692, 202) //
   ctx.quadraticCurveTo(724, 274, 713, 357) //
   ctx.quadraticCurveTo(706, 437, 675, 497) //
-  ctx.quadraticCurveTo(647, 560, 614, 591) //
+  ctx.quadraticCurveTo(647, 560, 614, 593) //
   ctx.stroke()
   ctx.closePath()
 

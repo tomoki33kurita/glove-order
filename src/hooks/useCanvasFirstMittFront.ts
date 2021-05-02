@@ -5,6 +5,7 @@ import { catchSurface } from 'src/container/canvasFirstMitt/front/catchSurface'
 import { thumbHook } from 'src/container/canvasFirstMitt/front/hook'
 import { thumbBackOut, backAroundWeb } from 'src/container/canvasFirstMitt/front/thumbBack'
 import { stitch } from 'src/container/canvasFirstMitt/front/stitch'
+import { leatherStrap } from 'src/container/canvasFirstMitt/front/leatherStrap'
 
 export const useCanvasFirstMittFront = (ctx: CanvasRenderingContext2D, state: State): void => {
   // 裏革
@@ -25,8 +26,8 @@ export const useCanvasFirstMittFront = (ctx: CanvasRenderingContext2D, state: St
   // edges(ctx, state.edge.color)
   // ステッチ
   stitch(ctx, state.stitch.color)
-  // // // 革紐
-  // leatherStrap(ctx, state.strap.color)
+  // 革紐
+  leatherStrap(ctx, state.strap.color)
   // 小指掛け紐
   // littleHook(ctx, state.littleHook.color)
 }

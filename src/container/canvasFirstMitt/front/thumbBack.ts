@@ -32,7 +32,7 @@ export const backAroundWeb = (ctx: CanvasRenderingContext2D, color: string): voi
   ctx.quadraticCurveTo(204, 297, 209, 315) //
   ctx.quadraticCurveTo(221, 332, 238, 359) //
   ctx.quadraticCurveTo(252, 400, 285, 450) // 左下
-  ctx.quadraticCurveTo(195, 254, 212, 211) // 右上
+  ctx.quadraticCurveTo(225, 254, 212, 211) // 右上
   ctx.quadraticCurveTo(203, 190, 180, 201) // 右上
   ctx.fill()
   ctx.stroke()
