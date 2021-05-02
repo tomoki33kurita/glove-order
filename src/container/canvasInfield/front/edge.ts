@@ -5,7 +5,7 @@ export const edges = (ctx: CanvasRenderingContext2D, color: string): void => {
 
   // ヘリ革
   ctx.beginPath()
-  ctx.moveTo(278, 487) // 
+  ctx.moveTo(278, 487) //
   ctx.quadraticCurveTo(262, 486, 263, 468) //
   ctx.quadraticCurveTo(266, 458, 282, 454) //
   ctx.quadraticCurveTo(294, 451, 299, 467) // // 左上円部分＿内側
@@ -25,23 +25,23 @@ export const edges = (ctx: CanvasRenderingContext2D, color: string): void => {
   ctx.fill()
   ctx.stroke()
   ctx.closePath()
-  // 左側＿つなぎ目の線  
+  // 左側＿つなぎ目の線
   ctx.beginPath()
-  ctx.moveTo(274, 470) // 
+  ctx.moveTo(274, 470) //
   ctx.quadraticCurveTo(283, 474, 286, 467) //
   ctx.quadraticCurveTo(302, 525, 340, 560) //
   ctx.stroke()
   ctx.closePath()
 
-  // 右側＿つなぎ目の線  
+  // 右側＿つなぎ目の線
   ctx.beginPath()
-  ctx.moveTo(643, 446) // 
+  ctx.moveTo(643, 446) //
   ctx.quadraticCurveTo(645, 450, 649, 448) //
   ctx.quadraticCurveTo(617, 588, 497, 582) //
   ctx.stroke()
   ctx.closePath()
 
-  // 左下 
+  // 左下
   ctx.beginPath()
   ctx.moveTo(320, 587) // 左下
   ctx.quadraticCurveTo(364, 591, 395, 576) // 右下
@@ -51,6 +51,4 @@ export const edges = (ctx: CanvasRenderingContext2D, color: string): void => {
   ctx.stroke()
   ctx.fill()
   ctx.closePath()
-
-
 }

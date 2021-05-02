@@ -5,12 +5,26 @@ import { State } from 'src/types'
 import FigureFront from 'src/container/FigureFront'
 import FigureBack from 'src/container/FigureBack'
 
-const devToolStyle = { backgroundImage: `url(${'/glove-front.jpeg'})`, backgroundRepeat: "no-repeat", backgroundPosition: 'center', backgroundSize: '70%', maxWidth: '100%' }
+const devToolStyleFront = {
+  backgroundImage: `url(${'/fmitt-front.jpeg'})`,
+  backgroundRepeat: 'no-repeat',
+  backgroundPosition: 'center',
+  backgroundSize: '70%',
+  maxWidth: '100%'
+}
+
+const devToolStyleBack = {
+  backgroundImage: `url(${'/fmitt-back.jpeg'})`,
+  backgroundRepeat: 'no-repeat',
+  backgroundPosition: 'center',
+  backgroundSize: '70%',
+  maxWidth: '100%'
+}
 
 export const a11yProps = (index: number): any => {
   return {
     id: `simple-tab-${index}`,
-    'aria-controls': `simple-tabpanel-${index}`,
+    'aria-controls': `simple-tabpanel-${index}`
   }
 }
 
@@ -42,8 +56,8 @@ const FigureFields: React.FC<Props> = ({ state, figurePanelNum, handleFigurePane
         <FigureFront
           state={state}
           // 開発で座標を取得したいときは以下を有効にする
-          // devTools={{ cordinateX, cordinateY, isCopy, setCopy }}
-          // devToolStyle={devToolStyle}
+          devTools={{ cordinateX, cordinateY, isCopy, setCopy }}
+          devToolStyle={devToolStyleFront}
           handleCoordinate={handleCoordinate}
         />
       </TabPanel>
@@ -51,13 +65,17 @@ const FigureFields: React.FC<Props> = ({ state, figurePanelNum, handleFigurePane
         <FigureBack
           state={state}
           // 開発で座標を取得したいときは以下を有効にする
-          // devTools={{ cordinateX, cordinateY, isCopy, setCopy }}
-          // devToolStyle={devToolStyle}
+          devTools={{ cordinateX, cordinateY, isCopy, setCopy }}
+          devToolStyle={devToolStyleBack}
           handleCoordinate={handleCoordinate}
         />
       </TabPanel>
       <AppBar position="static">
-        <Tabs value={figurePanelNum} onChange={handleFigurePanelNum} aria-label="simple tabs example">
+        <Tabs
+          value={figurePanelNum}
+          onChange={handleFigurePanelNum}
+          aria-label="simple tabs example"
+        >
           <Tab label="捕球面" {...a11yProps(0)} />
           <Tab label="背面" {...a11yProps(1)} />
         </Tabs>

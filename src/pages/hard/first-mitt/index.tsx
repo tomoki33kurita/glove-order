@@ -15,13 +15,17 @@ const Index: React.FC = () => {
     <Box p={2}>
       <Box p={2}>
         <Box component="span" fontWeight="bold">
-          硬式 / ゴールドオーダー
+          硬式 / ファーストミット
         </Box>
         を選択中
       </Box>
       <Grid container>
         <Grid item xs={12} md={7}>
-          <FigureFields state={state} figurePanelNum={figurePanelNum} handleFigurePanelNum={handleFigurePanelNum} />
+          <FigureFields
+            state={state}
+            figurePanelNum={figurePanelNum}
+            handleFigurePanelNum={handleFigurePanelNum}
+          />
         </Grid>
         <Grid item xs={12} md={5}>
           <DesignationBase state={state} dispatch={dispatch} figurePanelNum={figurePanelNum} />
