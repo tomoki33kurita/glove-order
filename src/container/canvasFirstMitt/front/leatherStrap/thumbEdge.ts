@@ -2,6 +2,7 @@ export const thumbEdge0 = (ctx: CanvasRenderingContext2D, color: string): void =
   ctx.lineWidth = 1.0
   ctx.strokeStyle = '#383838'
   ctx.fillStyle = color
+  ctx.beginPath()
   ctx.moveTo(190, 207) // 左左
   ctx.quadraticCurveTo(194, 203, 194, 203) // 左下
   ctx.quadraticCurveTo(189, 189, 203, 188) //
@@ -9,7 +10,7 @@ export const thumbEdge0 = (ctx: CanvasRenderingContext2D, color: string): void =
   ctx.quadraticCurveTo(225, 183, 209, 181) // 右上
   ctx.quadraticCurveTo(179, 177, 190, 207) // 左上
   ctx.stroke()
-  // ctx.fill()
+  ctx.fill()
   ctx.closePath()
   // 側面ライン
   ctx.moveTo(187, 197) // 左上

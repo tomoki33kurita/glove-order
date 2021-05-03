@@ -7,6 +7,16 @@ import {
   thumbEdge4
 } from 'src/container/canvasFirstMitt/front/leatherStrap/thumbEdge'
 import { bankEdge1, bankEdge2 } from 'src/container/canvasFirstMitt/front/leatherStrap/bankEdge'
+import {
+  littleEdge,
+  littleEdge2,
+  littleEdge3,
+  littleEdge4,
+  littleEdge4_1,
+  littleEdge5,
+  littleEdge6
+} from 'src/container/canvasFirstMitt/front/leatherStrap/littleToIndexEdge'
+import { boomerang, boomerang2 } from 'src/container/canvasFirstMitt/front/leatherStrap/boomerang'
 
 export const leatherStrap = (ctx: CanvasRenderingContext2D, color: string): void => {
   // ウェブ先端
@@ -42,4 +52,33 @@ export const leatherStrap = (ctx: CanvasRenderingContext2D, color: string): void
   bankEdge2(ctx, color, 35, 5)
   bankEdge2(ctx, color, -39, 90, -10)
   bankEdge2(ctx, color, 0, 93, -10)
+
+  // 小指->人差し指ヘリ革周り
+  littleEdge(ctx, color, 0, 0)
+  littleEdge(ctx, color, -30, 30, -5)
+  littleEdge2(ctx, color)
+  littleEdge3(ctx, color, 0, 0)
+  littleEdge3(ctx, color, -170, 140, -20)
+  littleEdge3(ctx, color, -145, 110, -20)
+  littleEdge3(ctx, color, -180, 117, -25)
+  littleEdge3(ctx, color, -265, 145, -35)
+  littleEdge3(ctx, color, -298, 140, -40)
+  littleEdge3(ctx, color, -484, 177, -58)
+  littleEdge3(ctx, color, -512, 153, -63)
+  littleEdge3(ctx, color, -562, 127, -70)
+  littleEdge4(ctx, color, 0, 0)
+  littleEdge4(ctx, color, -62, 70, -10)
+  littleEdge4_1(ctx, color)
+  littleEdge5(ctx, color, 39, -135, 15)
+  littleEdge5(ctx, color, 0, 0)
+  littleEdge5(ctx, color, -30, -7, 1)
+  littleEdge6(ctx, color, 0, 0)
+  littleEdge6(ctx, color, -43, 72, -9)
+
+  // 人差し指 - 小指のブーメラン芯部分
+  boomerang(ctx, color)
+  boomerang2(ctx, color, -250, 225, -35)
+  boomerang2(ctx, color, 0, 0)
+  boomerang2(ctx, color, 85, -270, 30)
+  boomerang2(ctx, color, 105, -379, 45) // 小指一番下
 }

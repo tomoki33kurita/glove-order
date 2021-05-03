@@ -25,7 +25,7 @@ export const useCanvasFirstMittFront = (ctx: CanvasRenderingContext2D, state: St
   // ヘリ革
   // edges(ctx, state.edge.color)
   // ステッチ
-  stitch(ctx, state.stitch.color)
+  // stitch(ctx, state.stitch.color)
   // 革紐
   leatherStrap(ctx, state.strap.color)
   // 小指掛け紐
