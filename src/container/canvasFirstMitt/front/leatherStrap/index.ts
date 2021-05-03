@@ -17,6 +17,18 @@ import {
   littleEdge6
 } from 'src/container/canvasFirstMitt/front/leatherStrap/littleToIndexEdge'
 import { boomerang, boomerang2 } from 'src/container/canvasFirstMitt/front/leatherStrap/boomerang'
+import {
+  hingeUpper,
+  hingeUpper2,
+  hingeLower,
+  hingeLower2,
+  hingeLower3
+} from 'src/container/canvasFirstMitt/front/leatherStrap/hinge'
+import {
+  bankMaterial,
+  bankMaterial2
+} from 'src/container/canvasFirstMitt/front/leatherStrap/bankMaterial'
+import { connectCross } from 'src/container/canvasFirstMitt/front/leatherStrap/connectCross'
 
 export const leatherStrap = (ctx: CanvasRenderingContext2D, color: string): void => {
   // ウェブ先端
@@ -81,4 +93,23 @@ export const leatherStrap = (ctx: CanvasRenderingContext2D, color: string): void
   boomerang2(ctx, color, 0, 0)
   boomerang2(ctx, color, 85, -270, 30)
   boomerang2(ctx, color, 105, -379, 45) // 小指一番下
+
+  // ヒンジ部分
+  hingeUpper(ctx, color)
+  hingeUpper2(ctx, color, 0, 0)
+  hingeUpper2(ctx, color, -130, 120, -20)
+  hingeLower3(ctx, color)
+  hingeLower2(ctx, color)
+  hingeLower(ctx, color)
+
+  // 親指芯 -> 土手芯
+  bankMaterial(ctx, color)
+  bankMaterial2(ctx, color, 0, 0)
+  bankMaterial2(ctx, color, 85, 8)
+
+  // クロス
+  connectCross(ctx, color, 0, 0)
+  connectCross(ctx, color, -180, 178, -27)
+  connectCross(ctx, color, -552, 290, -67)
+  connectCross(ctx, color, -663, 240, -77)
 }
