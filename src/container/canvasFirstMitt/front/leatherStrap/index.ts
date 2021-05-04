@@ -39,6 +39,7 @@ import {
   webConnectTopUpper,
   webConnectTopLower
 } from 'src/container/canvasFirstMitt/front/leatherStrap/webConnect'
+import { knot, singleKnot } from 'src/container/canvasFirstMitt/front/leatherStrap/knot'
 
 export const leatherStrap = (ctx: CanvasRenderingContext2D, color: string): void => {
   // ウェブ先端
@@ -142,4 +143,10 @@ export const leatherStrap = (ctx: CanvasRenderingContext2D, color: string): void
   webConnectTopUpper(ctx, color)
   webConnectTopLower(ctx, color)
   underWebRight(ctx, color, -254, 180, -40)
+
+  // 結び目
+  knot(ctx, color, 0, 0)
+  knot(ctx, color, 50, 200, -5)
+  singleKnot(ctx, color, 10, -45, 8)
+  singleKnot(ctx, color, 0, 0)
 }
