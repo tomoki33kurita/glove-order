@@ -29,6 +29,16 @@ import {
   bankMaterial2
 } from 'src/container/canvasFirstMitt/front/leatherStrap/bankMaterial'
 import { connectCross } from 'src/container/canvasFirstMitt/front/leatherStrap/connectCross'
+import {
+  underLeft,
+  underCenter,
+  underRight,
+  underWebRight
+} from 'src/container/canvasFirstMitt/front/leatherStrap/underWeb'
+import {
+  webConnectTopUpper,
+  webConnectTopLower
+} from 'src/container/canvasFirstMitt/front/leatherStrap/webConnect'
 
 export const leatherStrap = (ctx: CanvasRenderingContext2D, color: string): void => {
   // ウェブ先端
@@ -107,9 +117,29 @@ export const leatherStrap = (ctx: CanvasRenderingContext2D, color: string): void
   bankMaterial2(ctx, color, 0, 0)
   bankMaterial2(ctx, color, 85, 8)
 
+  underLeft(ctx, color, 0, 0)
+  underLeft(ctx, color, 25, -12)
+  underCenter(ctx, color)
+  underRight(ctx, color, 0, 0)
+  underRight(ctx, color, 15, -27)
+  // ブーメラン下捕球面の左側面
+  underWebRight(ctx, color, 0, 0)
+  underWebRight(ctx, color, -47, 45, -10)
+  underWebRight(ctx, color, -130, 105, -25)
+  underWebRight(ctx, color, -235, 180, -40)
+  // ウェブ右側、人差し指芯のヘリ革周り
+  underWebRight(ctx, color, -230, 90, -40)
+  underWebRight(ctx, color, -35, -80)
+  underWebRight(ctx, color, -235, 120, -40)
+
   // クロス
   connectCross(ctx, color, 0, 0)
   connectCross(ctx, color, -180, 178, -27)
   connectCross(ctx, color, -552, 290, -67)
   connectCross(ctx, color, -663, 240, -77)
+
+  // web -> ブーメラン
+  webConnectTopUpper(ctx, color)
+  webConnectTopLower(ctx, color)
+  underWebRight(ctx, color, -254, 180, -40)
 }
