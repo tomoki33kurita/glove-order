@@ -9,12 +9,17 @@ import { leatherStrap } from 'src/container/canvasFirstMitt/front/leatherStrap'
 import { webCross } from 'src/container/canvasFirstMitt/front/leatherStrap/webCross'
 import { listBelt } from 'src/container/canvasFirstMitt/back/listBelt'
 import { backOfThumb } from 'src/container/canvasFirstMitt/back/backOfThumb'
+import { backOfIndexToLittle } from 'src/container/canvasFirstMitt/back/backOfIndexToLittle'
+import { boomerang } from 'src/container/canvasFirstMitt/back/boomerang'
 import { littleHook } from 'src/container/canvasFirstMitt/back/littleHook'
+import { liningLeather } from 'src/container/canvasFirstMitt/back/liningLeather'
 
 export const useCanvasFirstMittBack = (ctx: CanvasRenderingContext2D, state: State): void => {
   // // 革紐＿ウェブ間クロス＿上段
   // webCross(ctx, state.strap.color, 0, 0)
   // webCross(ctx, state.strap.color, 60, -50)
+  // 裏革
+  liningLeather(ctx, state.linings.color)
   // 捕球面
   catchSurface(ctx, state.catchFace.color)
   // // 革紐＿ウェブ間クロス＿下段
@@ -24,8 +29,10 @@ export const useCanvasFirstMittBack = (ctx: CanvasRenderingContext2D, state: Sta
   webTop(ctx, state.web.color)
   // ウェブ捕球面側
   webBottom(ctx, state.web.color)
-  // // 親指背面＿外側
-  // thumbBackOut(ctx, state.thumbOut.color)
+  // ブーメラン部分
+  boomerang(ctx, state.thumbWeb.color) // 専用のstateを設けて適用
+  // 背面＿人差し指-小指
+  backOfIndexToLittle(ctx, state.thumbWeb.color) // 専用のstateを設けて適用
   // 小指掛け紐
   littleHook(ctx, state.littleHook.color)
   // 親指掛け紐
