@@ -29,5 +29,4 @@ export const listCross = (ctx: CanvasRenderingContext2D, color: string): void =>
   ctx.moveTo(283, 532) // 右上
   ctx.quadraticCurveTo(262, 557, 270, 582) // 下
   ctx.stroke()
-  ctx.closePath()
 }

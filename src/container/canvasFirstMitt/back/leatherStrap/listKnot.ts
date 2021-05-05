@@ -4,6 +4,7 @@ export const listKnot = (ctx: CanvasRenderingContext2D, color: string): void => 
   ctx.fillStyle = color
 
   // 紐先端＿上
+  ctx.beginPath()
   ctx.moveTo(233, 496) // 左上
   ctx.quadraticCurveTo(243, 520, 241, 536) // 左下
   ctx.quadraticCurveTo(248, 555, 248, 555) // 右下
