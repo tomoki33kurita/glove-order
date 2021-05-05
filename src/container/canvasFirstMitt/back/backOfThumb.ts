@@ -6,9 +6,10 @@ export const backOfThumb = (ctx: CanvasRenderingContext2D, color: string): void 
   // ヘリ革
   ctx.beginPath()
   ctx.moveTo(483, 397) // 左上
-  ctx.quadraticCurveTo(500, 409, 535, 568) //
-  ctx.quadraticCurveTo(598, 474, 597, 436) //
-  ctx.quadraticCurveTo(605, 426, 605, 426) // 右上
+  ctx.quadraticCurveTo(500, 409, 494, 613) //
+  ctx.quadraticCurveTo(539, 587, 571, 504) //
+  ctx.quadraticCurveTo(592, 467, 600, 436) //
+  ctx.quadraticCurveTo(612, 414, 612, 414) // 右上
   ctx.lineTo(497, 381) //
   ctx.quadraticCurveTo(490, 391, 483, 397) // 右上
   ctx.fill()

@@ -20,23 +20,23 @@ export const useCanvasFirstMittBack = (ctx: CanvasRenderingContext2D, state: Sta
   // webCross(ctx, state.strap.color, 60, -50)
   // 裏革
   // liningLeather(ctx, state.linings.color)
-  // 捕球面
+  // // 捕球面
   // catchSurface(ctx, state.catchFace.color)
-  // // 革紐＿ウェブ間クロス＿下段
+  // // // 革紐＿ウェブ間クロス＿下段
   // webCross(ctx, state.strap.color, -40, -75)
   // webCross(ctx, state.strap.color, 20, -120)
-  // ウェブ先端側
+  // // ウェブ先端側
   // webTop(ctx, state.web.color)
-  // ウェブ捕球面側
+  // // ウェブ捕球面側
   // webBottom(ctx, state.web.color)
-  // ブーメラン部分
+  // // ブーメラン部分
   // boomerang(ctx, state.thumbWeb.color) // 専用のstateを設けて適用
-  // 背面＿人差し指-小指
+  // // 背面＿人差し指-小指
   // backOfIndexToLittle(ctx, state.thumbWeb.color) // 専用のstateを設けて適用
-  // 小指掛け紐
-  littleHook(ctx, state.littleHook.color)
-  // 親指掛け紐
-  thumbHook(ctx, state.thumbHook.color)
+  // // 小指掛け紐
+  // littleHook(ctx, state.littleHook.color)
+  // // 親指掛け紐
+  // thumbHook(ctx, state.thumbHook.color)
   // 背面＿親指_1
   // backOfThumb(ctx, state.thumbWeb.color)
   // 背面＿ウェブ周り_2
@@ -45,8 +45,8 @@ export const useCanvasFirstMittBack = (ctx: CanvasRenderingContext2D, state: Sta
   // listBelt(ctx, 'white')
   // ヘリ革_4
   // edges(ctx, state.edge.color)
-  // ステッチ
-  stitch(ctx, state.stitch.color)
+  // // ステッチ
+  // stitch(ctx, state.stitch.color)
   // 革紐
   leatherStrap(ctx, state.strap.color)
 }
