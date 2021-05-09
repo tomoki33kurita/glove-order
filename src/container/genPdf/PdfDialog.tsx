@@ -1,5 +1,13 @@
 import React from 'react'
-import { Grid, Box, Button, Dialog, DialogContent, DialogActions, TextField } from '@material-ui/core'
+import {
+  Grid,
+  Box,
+  Button,
+  Dialog,
+  DialogContent,
+  DialogActions,
+  TextField
+} from '@material-ui/core'
 import { State } from 'src/types'
 import pdfMake from 'pdfmake/build/pdfmake'
 import { useForm } from 'react-hook-form'
@@ -8,16 +16,19 @@ import { Action, Personal } from 'src/types'
 import { SET_PERSONAL } from 'src/constants/ActionTypes'
 import { japaneseFont } from 'src/constants/vfs_fonts'
 import { genPdfDocDefine } from 'src/container/genPdf/genPdfDocDefine'
+import { useRouter } from 'next/router'
 pdfMake.vfs = japaneseFont
 // import pdfFonts from 'pdfmake/build/vfs_fonts'
 // pdfMake.vfs = pdfFonts.pdfMake.vfs
 
-const handleGenPdf = (state: State, personalData: Personal) => {
+const handleGenPdf = (state: State, personalData: Personal, asPath: string) => {
   pdfMake.fonts = { GenYoMin: { normal: 'ipaexg.ttf' } }
-  const docDefine = genPdfDocDefine(state, personalData)
-  // eslint-disable-next-line
-  // @ts-ignore
-  pdfMake.createPdf(docDefine).download(`オーダー内容/${personalData?.userName || '名無しの権兵衛'}様.pdf`) // margin設定によって構文チェックエラーになっている。
+  const docDefine = genPdfDocDefine(state, personalData, asPath)
+  pdfMake
+    // eslint-disable-next-line
+    // @ts-ignore
+    .createPdf(docDefine)
+    .download(`オーダー内容/${personalData?.userName || '名無しの権兵衛'}様.pdf`) // margin設定によって構文チェックエラーになっている。
 }
 
 type Props = {
@@ -38,7 +49,7 @@ const PdfDialog: React.FC<Props> = ({ state, open, handleClose, dispatch }) => {
     { head: '革の硬さ：', label: state.leatherHardness.label },
     { head: '芯の硬さ', label: state.coreMaterialHardness.label },
     { head: '芯の厚さ：', label: state.coreMaterialThickness.label },
-    { head: '指カバー：', label: state.fingerGuardType.label },
+    { head: '指カバー：', label: state.fingerGuardType.label }
     // { head: '座ブトンスポンジ：', label: state.zabutonSponge.label },
     // { head: 'EX機能：', label: state.exFunction.label },
     // { head: 'ピンキーパターン：', label: state.pinkiePattern.label },
@@ -51,13 +62,21 @@ const PdfDialog: React.FC<Props> = ({ state, open, handleClose, dispatch }) => {
     { head: 'ウェブカラー：', label: state.web.label, color: state.web.color },
     { head: 'ヘリ革カラー：', label: state.edge.label, color: state.edge.color },
     { head: 'ステッチカラー：', label: state.stitch.label, color: state.stitch.color },
-    { head: '手首裏の素材：', label: state.listLiningsMaterial.label, color: state.listLiningsMaterial.color },
+    {
+      head: '手首裏の素材：',
+      label: state.listLiningsMaterial.label,
+      color: state.listLiningsMaterial.color
+    },
     { head: 'ハミダシ：', label: state.hamidashi.label, color: state.hamidashi.color },
     { head: '親指掛け紐カラー：', label: state.thumbHook.label, color: state.thumbHook.color },
     { head: '小指掛け紐カラー：', label: state.littleHook.label, color: state.littleHook.color },
-    { head: '人差し指カバーカラー：', label: state.indexCover.label, color: state.indexCover.color },
+    {
+      head: '人差し指カバーカラー：',
+      label: state.indexCover.label,
+      color: state.indexCover.color
+    },
     { head: '手口ベルトカラー：', label: state.listBelt.label, color: state.listBelt.color },
-    { head: '裏革カラー：', label: state.linings.label, color: state.linings.color },
+    { head: '裏革カラー：', label: state.linings.label, color: state.linings.color }
     // { head: '親指マチカラー：', label: state.thumbMachi.label, color: state.thumbMachi.color },
     // { head: '小指マチカラー：', label: state.littleMachi.label, color: state.littleMachi.color },
     // { head: '台カラー：', label: state.bagFoundation.label, color: state.bagFoundation.color },
@@ -78,7 +97,7 @@ const PdfDialog: React.FC<Props> = ({ state, open, handleClose, dispatch }) => {
       address: data.address,
       phoneNumber: data.phoneNumber,
       mailAddress: data.mailAddress,
-      remarks: data.remarks,
+      remarks: data.remarks
     }
     setPersonalData(payload)
   }
@@ -87,6 +106,8 @@ const PdfDialog: React.FC<Props> = ({ state, open, handleClose, dispatch }) => {
   React.useEffect(() => {
     dispatch({ type: SET_PERSONAL, personal: personal[0] })
   }, [personal[0]])
+
+  const router = useRouter()
 
   return (
     <Dialog open={open} style={{ width: '90%', margin: 'auto' }}>
@@ -115,7 +136,11 @@ const PdfDialog: React.FC<Props> = ({ state, open, handleClose, dispatch }) => {
               {colorCells.map((cell, i) => (
                 <Box ml={1} key={cell.head}>
                   {`(${i + 15}) ${cell.head}`}
-                  <Box component="span" fontWeight="bold" color={cell.color !== '#fff' && cell.color !== '#eee' ? cell.color : 'black'}>
+                  <Box
+                    component="span"
+                    fontWeight="bold"
+                    color={cell.color !== '#fff' && cell.color !== '#eee' ? cell.color : 'black'}
+                  >
                     {cell.label}
                   </Box>
                 </Box>
@@ -126,11 +151,27 @@ const PdfDialog: React.FC<Props> = ({ state, open, handleClose, dispatch }) => {
             <Box pt={2}>
               {state.embroideries.map((embroidery, index) => {
                 const embroideryCells = [
-                  { head: '書式：', label: embroidery.embroideryTypeFace.label, color: embroidery.embroideryTypeFace.color },
-                  { head: '位置：', label: embroidery.embroideryPosition.label, color: embroidery.embroideryPosition.color },
-                  { head: '刺繍カラー：', label: embroidery.embroideryColor.label, color: embroidery.embroideryColor.color },
-                  { head: '影カラー：', label: embroidery.embroideryShadowColor.label, color: embroidery.embroideryShadowColor.color },
-                  { head: '刺繍内容：', label: embroidery.embroideryContent },
+                  {
+                    head: '書式：',
+                    label: embroidery.embroideryTypeFace.label,
+                    color: embroidery.embroideryTypeFace.color
+                  },
+                  {
+                    head: '位置：',
+                    label: embroidery.embroideryPosition.label,
+                    color: embroidery.embroideryPosition.color
+                  },
+                  {
+                    head: '刺繍カラー：',
+                    label: embroidery.embroideryColor.label,
+                    color: embroidery.embroideryColor.color
+                  },
+                  {
+                    head: '影カラー：',
+                    label: embroidery.embroideryShadowColor.label,
+                    color: embroidery.embroideryShadowColor.color
+                  },
+                  { head: '刺繍内容：', label: embroidery.embroideryContent }
                 ]
 
                 return (
@@ -175,37 +216,76 @@ const PdfDialog: React.FC<Props> = ({ state, open, handleClose, dispatch }) => {
               <Grid container>
                 <Grid item xs={12} sm={6}>
                   <Box p={1}>
-                    <TextField label="お客様名" name="userName" inputRef={register} variant="outlined" />
+                    <TextField
+                      label="お客様名"
+                      name="userName"
+                      inputRef={register}
+                      variant="outlined"
+                    />
                   </Box>
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <Box p={1}>
-                    <TextField label="お客様名(カナ)" name="userNameKana" inputRef={register} variant="outlined" />
+                    <TextField
+                      label="お客様名(カナ)"
+                      name="userNameKana"
+                      inputRef={register}
+                      variant="outlined"
+                    />
                   </Box>
                 </Grid>
                 <Grid item xs={12} sm={3}>
                   <Box p={1}>
-                    <TextField label="郵便番号" inputRef={register} name="zipcode" variant="outlined" fullWidth />
+                    <TextField
+                      label="郵便番号"
+                      inputRef={register}
+                      name="zipcode"
+                      variant="outlined"
+                      fullWidth
+                    />
                   </Box>
                 </Grid>
                 <Grid item xs={12} sm={9}>
                   <Box p={1}>
-                    <TextField label="ご住所" inputRef={register} name="address" variant="outlined" fullWidth />
+                    <TextField
+                      label="ご住所"
+                      inputRef={register}
+                      name="address"
+                      variant="outlined"
+                      fullWidth
+                    />
                   </Box>
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <Box p={1}>
-                    <TextField label="お電話番号" inputRef={register} name="phoneNumber" variant="outlined" />
+                    <TextField
+                      label="お電話番号"
+                      inputRef={register}
+                      name="phoneNumber"
+                      variant="outlined"
+                    />
                   </Box>
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <Box p={1}>
-                    <TextField label="メールアドレス" inputRef={register} name="mailAddress" variant="outlined" />
+                    <TextField
+                      label="メールアドレス"
+                      inputRef={register}
+                      name="mailAddress"
+                      variant="outlined"
+                    />
                   </Box>
                 </Grid>
                 <Grid item xs={12}>
                   <Box p={1}>
-                    <TextField label="備考" multiline rows={5} inputRef={register} name="remarks" variant="outlined" />
+                    <TextField
+                      label="備考"
+                      multiline
+                      rows={5}
+                      inputRef={register}
+                      name="remarks"
+                      variant="outlined"
+                    />
                   </Box>
                 </Grid>
               </Grid>
@@ -217,7 +297,11 @@ const PdfDialog: React.FC<Props> = ({ state, open, handleClose, dispatch }) => {
         <Button variant="outlined" onClick={handleClose}>
           閉じる
         </Button>
-        <Button variant="contained" color="primary" onClick={() => handleGenPdf(state, personalData)}>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => handleGenPdf(state, personalData, router.asPath)}
+        >
           PDF出力
         </Button>
       </DialogActions>
