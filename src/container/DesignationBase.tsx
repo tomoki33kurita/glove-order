@@ -23,7 +23,12 @@ const DesignationBase: React.FC<Props> = ({ state, figurePanelNum, dispatch }) =
   const handleClose = () => setOpen(false)
   const handleChange = (event: any, newValue: number) => setValue(newValue)
   const handleReset = () => {
-    if (window.confirm(`本当にリセットしますか？\n基本設定・カラー設定・刺繍設定の全てがリセットされます`)) dispatch({ type: RESET_INIT_STATE })
+    if (
+      window.confirm(
+        `本当にリセットしますか？\n基本設定・カラー設定・刺繍設定の全てがリセットされます`
+      )
+    )
+      dispatch({ type: RESET_INIT_STATE })
   }
   const hendleLinkToTop = () => {
     if (window.confirm('本当にトップページに移動してよろしいですか？')) {
@@ -43,12 +48,17 @@ const DesignationBase: React.FC<Props> = ({ state, figurePanelNum, dispatch }) =
         </Tabs>
       </AppBar>
       <BaseSet state={state} value={value} dispatch={dispatch} />
-      <ColoringSet state={state} value={value} figurePanelNum={figurePanelNum} dispatch={dispatch} />
+      <ColoringSet
+        state={state}
+        value={value}
+        figurePanelNum={figurePanelNum}
+        dispatch={dispatch}
+      />
       <EmbroiderySet state={state} value={value} dispatch={dispatch} />
       <Box display="flex" justifyContent="space-around" my={2}>
-        {/* <Button variant="outlined" onClick={hendleLinkToTop}>
+        <Button variant="outlined" onClick={hendleLinkToTop}>
           トップに戻る
-        </Button> */}
+        </Button>
         <Button variant="outlined" onClick={handleReset}>
           リセット
         </Button>

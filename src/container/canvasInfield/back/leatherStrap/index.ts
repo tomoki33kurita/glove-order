@@ -35,8 +35,8 @@ export const leatherStrap = (ctx: CanvasRenderingContext2D, color: string): void
   webKnots(ctx, color, 0, 0) // 捕球面寄りのウェブ結び目
   webKnots(ctx, color, 70, -910, 75, 0.8) // 親指の結び目
 
-  webKnotUpward(ctx, color) // 親指とウェブの間の上向きの1つ結びの紐
-  webKnotDownward(ctx, color) // 親指先端の下向きの1つ結びの紐
+  webKnotUpward(ctx, color, 0, 0) // 親指とウェブの間の上向きの1つ結びの紐
+  webKnotDownward(ctx, color, 0, 0) // 親指先端の下向きの1つ結びの紐
   connectWebToIndexTop(ctx, color)
   connectWebToIndex(ctx, color, 2, 0) // Hウェブ左下＿下段
   connectWebToIndex(ctx, color, 18, -38) // Hウェブ左下＿上段

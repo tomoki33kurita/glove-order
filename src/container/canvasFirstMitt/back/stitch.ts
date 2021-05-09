@@ -1,50 +1,51 @@
 export const stitch = (ctx: CanvasRenderingContext2D, color: string): void => {
   ctx.lineWidth = 1.5
-  ctx.strokeStyle = 'blue' // color
+  ctx.strokeStyle = color
   ctx.beginPath()
   ctx.setLineDash([3, 3])
 
   // ウェブ下の半径部分＿外側
-  ctx.moveTo(377, 118) // 左上
+  ctx.moveTo(378, 121) // 左上
   ctx.quadraticCurveTo(343, 182, 381, 250)
   ctx.quadraticCurveTo(424, 313, 490, 368)
   ctx.quadraticCurveTo(524, 400, 571, 428)
   ctx.quadraticCurveTo(590, 433, 604, 420) // 右下
   // ウェブ下の半径部分＿内側
-  ctx.moveTo(380, 115) // 左上
+  ctx.moveTo(384, 116) // 左上
   ctx.quadraticCurveTo(348, 179, 384, 247)
   ctx.quadraticCurveTo(427, 310, 493, 365)
   ctx.quadraticCurveTo(527, 397, 574, 425)
   ctx.quadraticCurveTo(593, 430, 607, 417) // 右下
 
   // 手入れ窓右上＿左
-  ctx.moveTo(487, 373) //
-  ctx.quadraticCurveTo(470, 391, 470, 391)
+  ctx.moveTo(489, 376) //
+  ctx.quadraticCurveTo(476, 390, 476, 390)
   // 手入れ窓右上＿右
   ctx.moveTo(493, 379) //
-  ctx.quadraticCurveTo(479, 395, 480, 393)
+  ctx.quadraticCurveTo(482, 391, 482, 391)
 
   // 手入れ窓上ヘリ革_上
-  ctx.moveTo(294, 398) // 左
-  ctx.quadraticCurveTo(356, 357, 468, 388) // 右
+  ctx.moveTo(294, 397) // 左
+  ctx.quadraticCurveTo(364, 357, 468, 386) // 右
 
   // 手入れ口ヘリ革_上
   ctx.moveTo(271, 504) // 左
-  ctx.quadraticCurveTo(313, 498, 371, 501) //
-  ctx.quadraticCurveTo(433, 503, 469, 497) // 右
+  ctx.quadraticCurveTo(313, 505, 371, 502) //
+  ctx.quadraticCurveTo(433, 503, 469, 499) // 右
 
   // 手入れ口ヘリ革_下
   ctx.moveTo(301, 612) // 左
-  ctx.quadraticCurveTo(329, 631, 393, 621)
-  ctx.quadraticCurveTo(467, 615, 467, 615)
-  ctx.quadraticCurveTo(471, 610, 497, 617) // 右
+  ctx.quadraticCurveTo(329, 628, 393, 621)
+  ctx.quadraticCurveTo(475, 605, 497, 617) // 右
 
   // 手口ベルト右辺＿内側
-  ctx.moveTo(509, 462) // 上
-  ctx.quadraticCurveTo(560, 510, 496, 618) // 下
-  // 手口ベルト右辺＿外側
-  ctx.moveTo(512, 457) // 上
-  ctx.quadraticCurveTo(570, 517, 496, 618) // 下
+  ctx.moveTo(514, 461) // 上
+  ctx.quadraticCurveTo(535, 483, 530, 533) //
+  ctx.quadraticCurveTo(521, 593, 486, 614) // 下
+  // // 手口ベルト右辺＿外側
+  ctx.moveTo(515, 455) // 上
+  ctx.quadraticCurveTo(540, 485, 534, 533) //
+  ctx.quadraticCurveTo(524, 592, 493, 614) // 下
 
   // ブーメラン右＿ウェブ下
   ctx.moveTo(522, 44) //

@@ -5,16 +5,16 @@ export const embroideryTypeFaceObjs = [
   { label: 'アルファベット筆記体', value: 'alphabet_cursive' },
   { label: 'ハタケヤマオリジナル書体', value: 'original' },
   { label: 'オールドイングリッシュ書体', value: 'old_english' },
-  { label: '刻印', value: 'engraved' },
+  { label: '刻印', value: 'engraved' }
 ]
 
 export const embroideryPositionObjs = [
   { label: '親指部分', value: 'thumb_finger' },
   { label: '小指部分', value: 'child_finger' },
-  { label: '甲部分(シェラームーブ)', value: 'shellarmove' },
+  // { label: '甲部分(シェラームーブ)', value: 'shellarmove' },
   { label: '裏革部分(窓見部分)', value: 'leather_lining_mdd' },
   { label: '裏革部分(手口部分)', value: 'leather_lining_enter' },
-  { label: 'グラブ袋', value: 'glove_bag' },
+  { label: 'グラブ袋', value: 'glove_bag' }
 ]
 
 export const embroideryColorObjs = [
@@ -41,7 +41,10 @@ export const embroideryColorObjs = [
   { label: '金糸', value: 'kin_ito', color: '#ECE038' },
   { label: '銀糸', value: 'gin_ito', color: '#BBBCBF' },
   { label: 'シルバー', value: 'silver', color: '#C0C0C0' },
-  { label: 'ホワイト', value: 'white', color: '#ffffff' },
+  { label: 'ホワイト', value: 'white', color: '#ffffff' }
 ]
 
-export const embroideryShadowEdgeColorObjs = [{ label: '不要', value: 'none' }, ...embroideryColorObjs]
+export const embroideryShadowEdgeColorObjs = [
+  { label: '不要', value: 'none' },
+  ...embroideryColorObjs
+]

@@ -6,7 +6,7 @@ export const backOfThumb = (ctx: CanvasRenderingContext2D, color: string): void 
   // ヘリ革
   ctx.beginPath()
   ctx.moveTo(483, 397) // 左上
-  ctx.quadraticCurveTo(500, 409, 494, 613) //
+  ctx.quadraticCurveTo(510, 409, 494, 613) //
   ctx.quadraticCurveTo(539, 587, 571, 504) //
   ctx.quadraticCurveTo(592, 467, 600, 436) //
   ctx.quadraticCurveTo(612, 414, 612, 414) // 右上

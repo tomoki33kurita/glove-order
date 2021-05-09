@@ -1,6 +1,7 @@
 import React from 'react'
 import { DevTools, State } from 'src/types'
 import DevTool from 'src/container/devTools'
+import { useRouter } from 'next/router'
 // 捕球面の描画
 import { useCanvasInfieldFront } from 'src/hooks/useCanvasInfieldFront'
 import { useCanvasFirstMittFront } from 'src/hooks/useCanvasFirstMittFront'
@@ -19,14 +20,16 @@ type Props = {
 }
 
 const FigureFront: React.FC<Props> = ({ state, devTools, devToolStyle, handleCoordinate }) => {
+  const router = useRouter()
   React.useEffect(() => {
     const canvas = document.getElementById('canvas') as HTMLCanvasElement
     const ctx = canvas.getContext('2d')
     ctx.strokeStyle = '#383838'
     ctx.lineWidth = 2
-    // useCanvasInfieldFront(ctx, state)
-    useCanvasFirstMittFront(ctx, state)
-  }, [state])
+    router.asPath === '/hard/infield' && useCanvasInfieldFront(ctx, state)
+    router.asPath === '/hard/first-mitt' && useCanvasFirstMittFront(ctx, state)
+    router.asPath === '/hard/catcher-mitt' && useCanvasFirstMittFront(ctx, state)
+  }, [state, router.asPath])
 
   return (
     <>

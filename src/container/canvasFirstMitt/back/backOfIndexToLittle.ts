@@ -5,8 +5,8 @@ export const backOfIndexToLittle = (ctx: CanvasRenderingContext2D, color: string
 
   ctx.beginPath()
   ctx.moveTo(378, 118) // 右上
-  ctx.quadraticCurveTo(318, 150, 294, 181) //
-  ctx.quadraticCurveTo(270, 209, 260, 243) //
+  ctx.quadraticCurveTo(318, 150, 294, 185) //
+  ctx.quadraticCurveTo(275, 209, 260, 243) //
   ctx.quadraticCurveTo(235, 307, 227, 354) //
   ctx.quadraticCurveTo(222, 402, 211, 414) // 小指掛け紐に到達
   ctx.quadraticCurveTo(221, 545, 283, 617) // 左下

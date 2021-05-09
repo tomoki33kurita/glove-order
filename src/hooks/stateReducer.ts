@@ -28,16 +28,16 @@ import {
   SET_INDEX_COVER_COLOR,
   RESET_INIT_STATE,
   SET_PERSONAL,
-  SET_THUMB_OUT_COLOR, 
-  SET_THUMB_WEB_COLOR, 
-  SET_INDEX_WEB_COLOR, 
-  SET_INDEX_MIDDLE_COLOR, 
-  SET_MIDDLE_INDEX_COLOR, 
-  SET_MIDDLE_RING_COLOR, 
-  SET_RING_MIDDLE_COLOR, 
-  SET_RING_LITTLE_COLOR, 
-  SET_LITTLE_RING_COLOR, 
-  SET_LITTLE_OUT_COLOR,
+  SET_THUMB_OUT_COLOR,
+  SET_THUMB_WEB_COLOR,
+  SET_INDEX_WEB_COLOR,
+  SET_INDEX_MIDDLE_COLOR,
+  SET_MIDDLE_INDEX_COLOR,
+  SET_MIDDLE_RING_COLOR,
+  SET_RING_MIDDLE_COLOR,
+  SET_RING_LITTLE_COLOR,
+  SET_LITTLE_RING_COLOR,
+  SET_LITTLE_OUT_COLOR
 } from 'src/constants/ActionTypes'
 
 export const initialEmbroState = {
@@ -47,7 +47,7 @@ export const initialEmbroState = {
   embroideryColor: { label: 'ブラック', value: 'black', color: 'black' },
   embroideryShadowColor: { label: '不要', value: 'none' },
   embroideryEdgeColor: { label: '不要', value: 'none' },
-  embroideryContent: '',
+  embroideryContent: ''
 }
 
 export const initialState: State = {
@@ -56,13 +56,13 @@ export const initialState: State = {
   dominantArm: { label: '右投げ', value: 'rightThrow' },
   mittSize: { label: '基本モデルズバリ', value: 'default' },
   mittDepth: { label: '基本モデルズバリ', value: 'default' },
-  backStyle: { label: 'シェラームーブ', value: 'shellarmove' },
+  backStyle: { label: 'Aバック', value: 'A_back' },
   padModel: { label: 'Aバッド', value: 'A_pad' },
   coreMaterialHardness: { label: '普通', value: 'normal' },
   coreMaterialThickness: { label: '普通', value: 'normal' },
   leatherHardness: { label: '普通', value: 'normal' },
   fingerGuardType: { label: 'スタンダード', value: 'standard' },
-  
+
   // カラー設定
   parts: { label: '全体', value: 'all' },
   all: { label: 'ホワイト', value: 'white', color: '#fff' },
@@ -88,11 +88,19 @@ export const initialState: State = {
   ringLittle: { label: 'ホワイト', value: 'white', color: '#fff' },
   littleRing: { label: 'ホワイト', value: 'white', color: '#fff' },
   littleOut: { label: 'ホワイト', value: 'white', color: '#fff' },
-  
+
   // ステッチ
   embroideries: [initialEmbroState],
   // 個人情報入力部分
-  personal: { userName: '', userNameKana: '', zipcode: '', address: '', phoneNumber: '', mailAddress: '', remarks: '' },
+  personal: {
+    userName: '',
+    userNameKana: '',
+    zipcode: '',
+    address: '',
+    phoneNumber: '',
+    mailAddress: '',
+    remarks: ''
+  }
 }
 
 export const reducer = (state: State, action: Action): State => {
@@ -140,28 +148,28 @@ export const reducer = (state: State, action: Action): State => {
       return { ...state, edge: action.edge }
     case SET_WEB_COLOR:
       return { ...state, web: action.web }
-    
+
     case SET_THUMB_OUT_COLOR:
-        return {...state, thumbOut: action.thumbOut }
+      return { ...state, thumbOut: action.thumbOut }
     case SET_THUMB_WEB_COLOR:
-      return {...state, thumbWeb: action.thumbWeb }
+      return { ...state, thumbWeb: action.thumbWeb }
     case SET_INDEX_WEB_COLOR:
-      return {...state, indexWeb: action.indexWeb }
+      return { ...state, indexWeb: action.indexWeb }
     case SET_INDEX_MIDDLE_COLOR:
-      return {...state, indexMiddle: action.indexMiddle }
+      return { ...state, indexMiddle: action.indexMiddle }
     case SET_MIDDLE_INDEX_COLOR:
-      return {...state, middleIndex: action.middleIndex }
+      return { ...state, middleIndex: action.middleIndex }
     case SET_MIDDLE_RING_COLOR:
-      return {...state, middleRing: action.middleRing }
+      return { ...state, middleRing: action.middleRing }
     case SET_RING_MIDDLE_COLOR:
-      return {...state, ringMiddle: action.ringMiddle }
+      return { ...state, ringMiddle: action.ringMiddle }
     case SET_RING_LITTLE_COLOR:
-      return {...state, ringLittle: action.ringLittle }
+      return { ...state, ringLittle: action.ringLittle }
     case SET_LITTLE_RING_COLOR:
-      return {...state, littleRing: action.littleRing }
+      return { ...state, littleRing: action.littleRing }
     case SET_LITTLE_OUT_COLOR:
-      return {...state, littleOut: action.littleOut }
-    
+      return { ...state, littleOut: action.littleOut }
+
     case SET_LEATHER_HARDNESS:
       return { ...state, leatherHardness: action.leatherHardness }
     case SET_CORE_MATERIAL_HARDNESS:
@@ -177,13 +185,13 @@ export const reducer = (state: State, action: Action): State => {
     // case SET_ZABUTON_SPONGE:
     //   return { ...state, zabutonSponge: action.zabutonSponge }
     // case SET_EX_FUNCTION:
-      // return { ...state, exFunction: action.exFunction }
+    // return { ...state, exFunction: action.exFunction }
     // case SET_PINKIE_PATTERN:
-      // return { ...state, pinkiePattern: action.pinkiePattern }
+    // return { ...state, pinkiePattern: action.pinkiePattern }
     case SET_STRAP_COLOR:
       return { ...state, strap: action.strap }
     // case SET_LABEL:
-      // return { ...state, hatakeyamaLabel: action.hatakeyamaLabel }
+    // return { ...state, hatakeyamaLabel: action.hatakeyamaLabel }
     case SET_LIST_LINING_MATERIAL:
       return { ...state, listLiningsMaterial: action.listLiningsMaterial }
     case SET_STITCH_COLOR:

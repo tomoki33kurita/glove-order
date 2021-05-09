@@ -56,18 +56,18 @@ const FigureFields: React.FC<Props> = ({ state, figurePanelNum, handleFigurePane
         <FigureFront
           state={state}
           // 開発で座標を取得したいときは以下を有効にする
-          devTools={{ cordinateX, cordinateY, isCopy, setCopy }}
-          devToolStyle={devToolStyleFront}
-          handleCoordinate={handleCoordinate}
+          // devTools={{ cordinateX, cordinateY, isCopy, setCopy }}
+          // devToolStyle={devToolStyleFront}
+          // handleCoordinate={handleCoordinate}
         />
       </TabPanel>
       <TabPanel value={figurePanelNum} index={0}>
         <FigureBack
           state={state}
           // 開発で座標を取得したいときは以下を有効にする
-          devTools={{ cordinateX, cordinateY, isCopy, setCopy }}
-          devToolStyle={devToolStyleBack}
-          handleCoordinate={handleCoordinate}
+          // devTools={{ cordinateX, cordinateY, isCopy, setCopy }}
+          // devToolStyle={devToolStyleBack}
+          // handleCoordinate={handleCoordinate}
         />
       </TabPanel>
       <AppBar position="static">
