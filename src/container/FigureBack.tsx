@@ -21,7 +21,6 @@ type Props = {
 
 const FigureBack: React.FC<Props> = ({ state, devTools, devToolStyle, handleCoordinate }) => {
   const router = useRouter()
-  console.log(router)
   React.useEffect(() => {
     const canvas = document.getElementById('canvas') as HTMLCanvasElement
     const ctx = canvas.getContext('2d')

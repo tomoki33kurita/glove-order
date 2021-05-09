@@ -1,10 +1,12 @@
 import React from 'react'
 import Link from 'next/link'
-import { Box, Grid, Button } from '@material-ui/core'
+import { Box, Grid, Button, CircularProgress } from '@material-ui/core'
+import { reducer, initialState } from 'src/hooks/stateReducer'
 
 export const stateContext = React.createContext('')
 
 const Index: React.FC = () => {
+  const [state, dispatch] = React.useReducer(reducer, initialState)
   const [stateType, setType] = React.useState('hard')
   // const [stateOrder, setOrder] = React.useState('')
   const [statePosition, setPosition] = React.useState('')
@@ -88,8 +90,16 @@ const Index: React.FC = () => {
               variant="outlined"
               // disabled={!stateType.length || !stateOrder.length || !statePosition.length}
               disabled={!stateType.length || !statePosition.length}
+              onClick={() => dispatch({ type: 'set_loading' })}
             >
-              次へ進む
+              {state.isLoading ? (
+                <>
+                  loading...
+                  <CircularProgress color="primary" size={20} />
+                </>
+              ) : (
+                `次へ進む`
+              )}
             </Button>
           </Link>
         </Box>

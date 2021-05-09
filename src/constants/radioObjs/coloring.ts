@@ -8,13 +8,17 @@ export const strapColorObjs = [
   { label: 'ブルー', value: 'blue', color: '#1700ef' },
   { label: 'ディープブルー', value: 'd_blue', color: '#374761' },
   { label: 'レッド', value: 'red', color: '#EE0000' },
-  { label: 'ホワイト', value: 'white', color: '#fff' },
+  { label: 'ホワイト', value: 'white', color: '#fff' }
 ]
 
 // export const colorObjs = [...strapColorObjs, { label: 'Vブラック', value: 'v_black', color: '#525151' }]
 export const colorObjs = [...strapColorObjs]
 
-export const targetObjs = [{ label: '不要', value: 'none' }, ...strapColorObjs, { label: 'Vブラック', value: 'v_black', color: '#525151' }]
+export const targetObjs = [
+  { label: '不要', value: 'none' },
+  ...strapColorObjs,
+  { label: 'Vブラック', value: 'v_black', color: '#525151' }
+]
 
 export const liningsObjs = [
   { label: '共牛革(チョコレート)', value: 'cow_ecology_brown', color: '#733b03' },
@@ -25,7 +29,7 @@ export const liningsObjs = [
   { label: '共牛革(レッドオレンジ)', value: 'cow_v_orange', color: '#ff4500' },
   { label: '共牛革(ディープブルー)', value: 'cow_j_blue', color: '#374761' },
   { label: '共牛革(レッド)', value: 'cow_red', color: '#EE0000' },
-  { label: '共牛革(ホワイト)', value: 'cow_white', color: '#fff' },
+  { label: '共牛革(ホワイト)', value: 'cow_white', color: '#fff' }
   // { label: '共牛革(Vブラック)', value: 'cow_v_black', color: '#525151' },
   // { label: '和牛革(ブラック)', value: 'wagyu_black', color: '#1a1a1a' },
   // { label: '鹿革', value: 'deer', color: '#1a1a1a' },
@@ -39,7 +43,7 @@ export const stitchColorObjs = [
   { label: 'レッド', value: 'red', color: '#c70000' },
   { label: 'ホワイト', value: 'white', color: '#eee' },
   { label: 'ブラウン', value: 'brown', color: '#944a00' },
-  { label: 'オレンジ', value: 'orange', color: '#e37d00' },
+  { label: 'オレンジ', value: 'orange', color: '#e37d00' }
 ]
 
 export const hatakeyamaLabelObjs = [
@@ -53,18 +57,18 @@ export const hatakeyamaLabelObjs = [
   { label: 'シリコンS3', value: 'silicon_3' },
   { label: 'シリコンS4', value: 'silicon_4' },
   { label: 'シリコンS5', value: 'silicon_5' },
-  { label: 'シリコンS6', value: 'silicon_6' },
+  { label: 'シリコンS6', value: 'silicon_6' }
 ]
 
 export const hamidashiObjs = [
   { label: '切りハミ(ホワイト)', value: 'kirihami_white', color: '#fff' },
-  { label: '切りハミ(ブラック)', value: 'kirihami_black', color: '#1a1a1a' },
+  { label: '切りハミ(ブラック)', value: 'kirihami_black', color: '#1a1a1a' }
 ]
 
 export const listLiningMaterialObjs = [
   { label: 'ムートン(ホワイト)', value: 'mouton_white', color: '#fff' },
   { label: 'ムートン(ブラック)', value: 'mouton_black', color: '#1a1a1a' },
-  { label: 'ウルトラスエード(パッド)', value: 'ultra_suède', color: '#ddd' },
+  { label: 'ウルトラスエード(パッド)', value: 'ultra_suède', color: '#ddd' }
 ]
 
 const commonPartsObjs = [
@@ -76,17 +80,10 @@ const commonPartsObjs = [
   { label: 'ヘリ革', value: 'edge' },
   { label: 'ステッチ', value: 'stitch' },
   { label: 'ハミダシ', value: 'hamidashi' },
-  { label: '親指掛け紐', value: 'thumb_hook'},
-  { label: '小指掛け紐', value: 'little_hook'},
+  { label: '親指掛け紐', value: 'thumb_hook' },
+  { label: '小指掛け紐', value: 'little_hook' }
 ]
-export const catchFacePartsObjs = [
-  ...commonPartsObjs,
-  { label: '手首裏の素材', value: 'list_lining_material' },
-]
-
-export const backFacePartsObjs = [
-  ...commonPartsObjs,
-  { label: '裏革', value: 'linings'},
+const backFaceInfieldObjs = [
   { label: '親指＿外側', value: 'thumb_out' },
   { label: '親指＿ウェブ側', value: 'thumb_web' },
   { label: '人差指＿ウェブ側', value: 'index_web' },
@@ -96,7 +93,17 @@ export const backFacePartsObjs = [
   { label: '薬指＿中指側', value: 'ring_middle' },
   { label: '薬指＿小指側', value: 'ring_little' },
   { label: '小指＿薬指側', value: 'little_ring' },
-  { label: '小指＿外側', value: 'little_out' },
+  { label: '小指＿外側', value: 'little_out' }
+]
+export const catchFacePartsObjs = [
+  ...commonPartsObjs,
+  { label: '手首裏の素材', value: 'list_lining_material' }
+]
+
+export const backFacePartsObjs = [
+  ...commonPartsObjs,
+  ...backFaceInfieldObjs,
+  { label: '裏革', value: 'linings' }
 ]
 
 export const partsObjs = [...commonPartsObjs, ...catchFacePartsObjs, ...backFacePartsObjs]

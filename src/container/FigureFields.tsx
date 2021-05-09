@@ -52,7 +52,7 @@ const FigureFields: React.FC<Props> = ({ state, figurePanelNum, handleFigurePane
 
   return (
     <Box position="sticky" top={0}>
-      <TabPanel value={figurePanelNum} index={1}>
+      <TabPanel value={figurePanelNum} index={0}>
         <FigureFront
           state={state}
           // 開発で座標を取得したいときは以下を有効にする
@@ -61,7 +61,7 @@ const FigureFields: React.FC<Props> = ({ state, figurePanelNum, handleFigurePane
           // handleCoordinate={handleCoordinate}
         />
       </TabPanel>
-      <TabPanel value={figurePanelNum} index={0}>
+      <TabPanel value={figurePanelNum} index={1}>
         <FigureBack
           state={state}
           // 開発で座標を取得したいときは以下を有効にする

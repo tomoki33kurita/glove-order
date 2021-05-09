@@ -15,6 +15,7 @@ export type Embroidery = {
 }
 
 export type State = {
+  isLoading: boolean
   parts: stateObj
   all: stateObj
   baseModel: stateObj
@@ -39,16 +40,17 @@ export type State = {
   littleHook: stateObj
   listBelt: stateObj
   indexCover: stateObj
-  thumbOut: stateObj
-  thumbWeb: stateObj
-  indexWeb: stateObj
-  indexMiddle: stateObj
-  middleIndex: stateObj
-  middleRing: stateObj
-  ringMiddle: stateObj
-  ringLittle: stateObj
-  littleRing: stateObj
-  littleOut: stateObj
+  // 内野手用グラブここから
+  thumbOut?: stateObj
+  thumbWeb?: stateObj
+  indexWeb?: stateObj
+  indexMiddle?: stateObj
+  middleIndex?: stateObj
+  middleRing?: stateObj
+  ringMiddle?: stateObj
+  ringLittle?: stateObj
+  littleRing?: stateObj
+  littleOut?: stateObj
   embroideries: Embroidery[]
   personal: Personal
 }

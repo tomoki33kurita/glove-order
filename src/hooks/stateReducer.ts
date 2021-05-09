@@ -50,8 +50,7 @@ export const initialEmbroState = {
   embroideryContent: ''
 }
 
-export const initialState: State = {
-  // 基本設定
+const baseInitialState = {
   baseModel: { label: 'M8型', value: 'm8' },
   dominantArm: { label: '右投げ', value: 'rightThrow' },
   mittSize: { label: '基本モデルズバリ', value: 'default' },
@@ -61,9 +60,10 @@ export const initialState: State = {
   coreMaterialHardness: { label: '普通', value: 'normal' },
   coreMaterialThickness: { label: '普通', value: 'normal' },
   leatherHardness: { label: '普通', value: 'normal' },
-  fingerGuardType: { label: 'スタンダード', value: 'standard' },
+  fingerGuardType: { label: 'スタンダード', value: 'standard' }
+}
 
-  // カラー設定
+const colorInitialState = {
   parts: { label: '全体', value: 'all' },
   all: { label: 'ホワイト', value: 'white', color: '#fff' },
   catchFace: { label: 'ホワイト', value: 'white', color: '#fff' },
@@ -77,7 +77,17 @@ export const initialState: State = {
   thumbHook: { label: 'ホワイト', value: 'white', color: '#fff' },
   littleHook: { label: 'ホワイト', value: 'white', color: '#fff' },
   listBelt: { label: 'ホワイト', value: 'white', color: '#fff' },
-  indexCover: { label: 'ホワイト', value: 'white', color: '#fff' },
+  indexCover: { label: 'ホワイト', value: 'white', color: '#fff' }
+}
+
+// 内野手用グローブ
+export const initialState: State = {
+  // トップページのloading
+  isLoading: false,
+  // 基本設定
+  ...baseInitialState,
+  // カラー設定
+  ...colorInitialState,
   thumbOut: { label: 'ホワイト', value: 'white', color: '#fff' },
   thumbWeb: { label: 'ホワイト', value: 'white', color: '#fff' },
   indexWeb: { label: 'ホワイト', value: 'white', color: '#fff' },
@@ -103,8 +113,33 @@ export const initialState: State = {
   }
 }
 
+// 一塁手用ミット
+export const initialStateFirstMitt: State = {
+  // トップページのloading
+  isLoading: false,
+  // 基本設定
+  ...baseInitialState,
+  // カラー設定
+  ...colorInitialState,
+
+  // ステッチ
+  embroideries: [initialEmbroState],
+  // 個人情報入力部分
+  personal: {
+    userName: '',
+    userNameKana: '',
+    zipcode: '',
+    address: '',
+    phoneNumber: '',
+    mailAddress: '',
+    remarks: ''
+  }
+}
+
 export const reducer = (state: State, action: Action): State => {
   switch (action.type) {
+    case 'set_loading':
+      return { ...state, isLoading: true }
     case SET_SELECTED_PARTS:
       return { ...state, parts: action.parts }
     case SET_ALL_LEATHER_COLOR:
