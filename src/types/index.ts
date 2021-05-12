@@ -51,7 +51,13 @@ export type State = {
   ringLittle?: stateObj
   littleRing?: stateObj
   littleOut?: stateObj
+  // 一塁手用ミットここから
+  thumb?: stateObj
+  underWeb?: stateObj
+  boomerang?: stateObj
+  // 刺繍
   embroideries: Embroidery[]
+  // 個人情報
   personal: Personal
 }
 

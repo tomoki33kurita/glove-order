@@ -37,7 +37,11 @@ import {
   SET_RING_MIDDLE_COLOR,
   SET_RING_LITTLE_COLOR,
   SET_LITTLE_RING_COLOR,
-  SET_LITTLE_OUT_COLOR
+  SET_LITTLE_OUT_COLOR,
+  SET_LIST_BELT_COLOR,
+  SET_THUMB_COLOR,
+  SET_UNDER_WEB_COLOR,
+  SET_BOOMERANG_COLOR
 } from 'src/constants/ActionTypes'
 
 export const initialEmbroState = {
@@ -121,8 +125,12 @@ export const initialStateFirstMitt: State = {
   ...baseInitialState,
   // カラー設定
   ...colorInitialState,
+  listBelt: { label: 'ホワイト', value: 'white', color: '#fff' },
+  thumb: { label: 'ホワイト', value: 'white', color: '#fff' },
+  underWeb: { label: 'ホワイト', value: 'white', color: '#fff' },
+  boomerang: { label: 'ホワイト', value: 'white', color: '#fff' },
 
-  // ステッチ
+  // 刺繍
   embroideries: [initialEmbroState],
   // 個人情報入力部分
   personal: {
@@ -154,6 +162,7 @@ export const reducer = (state: State, action: Action): State => {
         indexCover: action.all,
         // indexAndThumb: action.all,
         listBelt: action.all,
+        // 内野手用グラブ
         thumbOut: action.all,
         thumbWeb: action.all,
         indexWeb: action.all,
@@ -163,7 +172,11 @@ export const reducer = (state: State, action: Action): State => {
         ringMiddle: action.all,
         ringLittle: action.all,
         littleRing: action.all,
-        littleOut: action.all
+        littleOut: action.all,
+        // 一塁手用ミット
+        thumb: action.all,
+        underWeb: action.all,
+        boomerang: action.all
       }
     // case SET_BASE_MODEL:
     //   return { ...state, baseModel: action.baseModel }
@@ -184,6 +197,7 @@ export const reducer = (state: State, action: Action): State => {
     case SET_WEB_COLOR:
       return { ...state, web: action.web }
 
+    // 内野手用グラブ
     case SET_THUMB_OUT_COLOR:
       return { ...state, thumbOut: action.thumbOut }
     case SET_THUMB_WEB_COLOR:
@@ -204,6 +218,16 @@ export const reducer = (state: State, action: Action): State => {
       return { ...state, littleRing: action.littleRing }
     case SET_LITTLE_OUT_COLOR:
       return { ...state, littleOut: action.littleOut }
+
+    // 一塁手用ミット
+    case SET_LIST_BELT_COLOR:
+      return { ...state, listBelt: action.listBelt }
+    case SET_THUMB_COLOR:
+      return { ...state, thumb: action.thumb }
+    case SET_UNDER_WEB_COLOR:
+      return { ...state, underWeb: action.underWeb }
+    case SET_BOOMERANG_COLOR:
+      return { ...state, boomerang: action.boomerang }
 
     case SET_LEATHER_HARDNESS:
       return { ...state, leatherHardness: action.leatherHardness }

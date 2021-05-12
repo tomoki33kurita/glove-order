@@ -51,6 +51,11 @@ export const SET_RING_LITTLE_COLOR = 'ringLittle'
 export const SET_LITTLE_RING_COLOR = 'littleRing'
 export const SET_LITTLE_OUT_COLOR = 'littleOut'
 
+// ファーストミット
+export const SET_THUMB_COLOR = 'thumb'
+export const SET_UNDER_WEB_COLOR = 'underWeb'
+export const SET_BOOMERANG_COLOR = 'boomerang'
+
 // EMBROIDERY
 export const SET_EMBROIDERY_TYPE_FACE = 'setEmbroideryTypeFace'
 export const SET_EMBROIDERY_POSITION = 'setEmbroideryPosition'

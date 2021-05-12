@@ -11,7 +11,8 @@ import {
   stitchColorObjs,
   listLiningMaterialObjs,
   catchFacePartsObjs,
-  backFacePartsObjs,
+  infieldBackPartsObjs,
+  firstMittBackPartsObjs,
   partsObjs
 } from 'src/constants/radioObjs/coloring'
 import {
@@ -37,10 +38,13 @@ import {
   SET_RING_MIDDLE_COLOR,
   SET_RING_LITTLE_COLOR,
   SET_LITTLE_RING_COLOR,
-  SET_LITTLE_OUT_COLOR
+  SET_LITTLE_OUT_COLOR,
+  SET_LIST_BELT_COLOR,
+  SET_THUMB_COLOR,
+  SET_UNDER_WEB_COLOR,
+  SET_BOOMERANG_COLOR
 } from 'src/constants/ActionTypes'
 import { useRouter } from 'next/router'
-import { userInfo } from 'os'
 
 interface SortType {
   catch_face: string
@@ -80,7 +84,10 @@ const ColoringSet: React.FC<Props> = ({ state, value, figurePanelNum, dispatch }
     ringMiddle,
     ringLittle,
     littleRing,
-    littleOut
+    littleOut,
+    thumb,
+    underWeb,
+    boomerang
   } = state
   const partKey = parts.value as keyof SortType
   const handle = {
@@ -199,8 +206,29 @@ const ColoringSet: React.FC<Props> = ({ state, value, figurePanelNum, dispatch }
       dispatch({
         type: sortReducerType[partKey],
         littleOut: colorObjs.filter((prev) => prev.value === selected)[0]
+      }),
+    // 一塁手用ミットここから
+    // こいつはfmitt以外でも使う可能性あり
+    listBelt: (selected: string) =>
+      dispatch({
+        type: sortReducerType[partKey],
+        listBelt: colorObjs.filter((prev) => prev.value === selected)[0]
+      }),
+    thumb: (selected: string) =>
+      dispatch({
+        type: sortReducerType[partKey],
+        thumb: colorObjs.filter((prev) => prev.value === selected)[0]
+      }),
+    underWeb: (selected: string) =>
+      dispatch({
+        type: sortReducerType[partKey],
+        underWeb: colorObjs.filter((prev) => prev.value === selected)[0]
+      }),
+    boomerang: (selected: string) =>
+      dispatch({
+        type: sortReducerType[partKey],
+        boomerang: colorObjs.filter((prev) => prev.value === selected)[0]
       })
-    // 内野手用グラブの場合ここまで
   }
   const sortReducerType = {
     catch_face: SET_LEATHER_COLOR,
@@ -215,6 +243,7 @@ const ColoringSet: React.FC<Props> = ({ state, value, figurePanelNum, dispatch }
     list_lining_material: SET_LIST_LINING_MATERIAL,
     hamidashi: SET_HAMIDASHI,
 
+    // 内野手用グラブここから
     thumb_out: SET_THUMB_OUT_COLOR,
     thumb_web: SET_THUMB_WEB_COLOR,
     index_web: SET_INDEX_WEB_COLOR,
@@ -224,7 +253,13 @@ const ColoringSet: React.FC<Props> = ({ state, value, figurePanelNum, dispatch }
     ring_middle: SET_RING_MIDDLE_COLOR,
     ring_little: SET_RING_LITTLE_COLOR,
     little_ring: SET_LITTLE_RING_COLOR,
-    little_out: SET_LITTLE_OUT_COLOR
+    little_out: SET_LITTLE_OUT_COLOR,
+
+    // 一塁手用ミットここから
+    list_belt: SET_LIST_BELT_COLOR,
+    thumb: SET_THUMB_COLOR,
+    under_web: SET_UNDER_WEB_COLOR,
+    boomerang: SET_BOOMERANG_COLOR
   }
   const sortHandle = {
     all: handle.all,
@@ -240,6 +275,7 @@ const ColoringSet: React.FC<Props> = ({ state, value, figurePanelNum, dispatch }
     list_lining_material: handle.listLiningsMaterial,
     hamidashi: handle.hamidashi,
 
+    // 内野手用グラブここから
     thumb_out: handle.thumbOut,
     thumb_web: handle.thumbWeb,
     index_web: handle.indexWeb,
@@ -249,7 +285,13 @@ const ColoringSet: React.FC<Props> = ({ state, value, figurePanelNum, dispatch }
     ring_middle: handle.ringMiddle,
     ring_little: handle.ringLittle,
     little_ring: handle.littleRing,
-    little_out: handle.littleOut
+    little_out: handle.littleOut,
+
+    // 一塁手用ここから
+    list_belt: handle.listBelt,
+    thumb: handle.thumb,
+    under_web: handle.underWeb,
+    boomerang: handle.boomerang
   }
 
   const sortLabel =
@@ -292,7 +334,11 @@ const ColoringSet: React.FC<Props> = ({ state, value, figurePanelNum, dispatch }
           linings: linings.label,
           strap: strap.label,
           list_lining_material: listLiningsMaterial.label,
-          hamidashi: hamidashi.label
+          hamidashi: hamidashi.label,
+          list_belt: listBelt.label,
+          thumb: thumb.label,
+          under_web: underWeb.label,
+          boomerang: boomerang.label
         }
 
   const sortColor =
@@ -336,12 +382,17 @@ const ColoringSet: React.FC<Props> = ({ state, value, figurePanelNum, dispatch }
           stitch: stitch.color,
           linings: linings.color,
           strap: strap.color,
-          list_lining_material: listLiningsMaterial.color
+          list_lining_material: listLiningsMaterial.color,
+          // list_belt: listBelt.color,
+          thumb: thumb.color,
+          under_web: underWeb.color,
+          boomerang: boomerang.color
         }
 
   const sortValue =
     router.asPath === '/hard/infield'
       ? {
+          // 内野手用ここから
           all: all.value,
           catch_face: catchFace.value,
           web: web.value,
@@ -355,7 +406,6 @@ const ColoringSet: React.FC<Props> = ({ state, value, figurePanelNum, dispatch }
           strap: strap.value,
           list_lining_material: listLiningsMaterial.value,
           hamidashi: hamidashi.value,
-
           thumb_out: thumbOut.value,
           thumb_web: thumbWeb.value,
           index_web: indexWeb.value,
@@ -368,6 +418,7 @@ const ColoringSet: React.FC<Props> = ({ state, value, figurePanelNum, dispatch }
           little_out: littleOut.value
         }
       : router.asPath === '/hard/first-mitt' && {
+          // 一塁手用ここから
           all: all.value,
           catch_face: catchFace.value,
           web: web.value,
@@ -380,15 +431,22 @@ const ColoringSet: React.FC<Props> = ({ state, value, figurePanelNum, dispatch }
           linings: linings.value,
           strap: strap.value,
           list_lining_material: listLiningsMaterial.value,
-          hamidashi: hamidashi.value
+          hamidashi: hamidashi.value,
+          // list_belt: listBelt.color,
+          thumb: thumb.color,
+          under_web: underWeb.color,
+          boomerang: boomerang.color
         }
+
+  const backFaceParts =
+    router.asPath === '/hard/infield' ? infieldBackPartsObjs : firstMittBackPartsObjs
   return (
     <TabPanel value={value} index={1}>
       <SelectCard
         summary={'パーツ'}
         selectedLabel={parts.label}
         defaultValue={parts.value}
-        objects={figurePanelNum === 0 ? catchFacePartsObjs : backFacePartsObjs}
+        objects={figurePanelNum === 0 ? catchFacePartsObjs : backFaceParts}
         handleChange={handle.selectParts}
         // selectedColor={leatherColor.color}
       />

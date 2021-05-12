@@ -28,19 +28,19 @@ export const useCanvasFirstMittBack = (ctx: CanvasRenderingContext2D, state: Sta
   // ウェブ捕球面側
   webBottom(ctx, state.web.color)
   // ブーメラン部分
-  boomerang(ctx, state.all.color) // 専用のstateを設けて適用
+  boomerang(ctx, state.boomerang.color) // 専用のstateを設けて適用
   // 背面＿人差し指-小指
-  backOfIndexToLittle(ctx, state.all.color) // 専用のstateを設けて適用
+  backOfIndexToLittle(ctx, state.boomerang.color) // 専用のstateを設けて適用
   // 小指掛け紐
   littleHook(ctx, state.littleHook.color)
   // 親指掛け紐
   thumbHook(ctx, state.thumbHook.color)
   // 背面＿親指_1
-  backOfThumb(ctx, state.all.color)
+  backOfThumb(ctx, state.thumb.color)
   // 背面＿ウェブ周り_2
-  backAroundWeb(ctx, state.all.color)
+  backAroundWeb(ctx, state.underWeb.color)
   // 手首ベルト_3
-  listBelt(ctx, state.all.color)
+  listBelt(ctx, state.listBelt.color)
   // 親指＿単結びの革紐
   webKnotUpward(ctx, state.strap.color, -55, 80, -15)
 

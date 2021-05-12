@@ -83,7 +83,7 @@ const commonPartsObjs = [
   { label: '親指掛け紐', value: 'thumb_hook' },
   { label: '小指掛け紐', value: 'little_hook' }
 ]
-const backFaceInfieldObjs = [
+const backInfieldObjs = [
   { label: '親指＿外側', value: 'thumb_out' },
   { label: '親指＿ウェブ側', value: 'thumb_web' },
   { label: '人差指＿ウェブ側', value: 'index_web' },
@@ -95,15 +95,34 @@ const backFaceInfieldObjs = [
   { label: '小指＿薬指側', value: 'little_ring' },
   { label: '小指＿外側', value: 'little_out' }
 ]
+
+const backFirstMittObjs = [
+  { label: 'ベルト', value: 'list_belt' },
+  { label: '親指', value: 'thumb' },
+  { label: 'ウェブ下', value: 'under_web' },
+  { label: 'ブーメラン', value: 'boomerang' }
+]
+
 export const catchFacePartsObjs = [
   ...commonPartsObjs,
   { label: '手首裏の素材', value: 'list_lining_material' }
 ]
 
-export const backFacePartsObjs = [
+export const infieldBackPartsObjs = [
   ...commonPartsObjs,
-  ...backFaceInfieldObjs,
-  { label: '裏革', value: 'linings' }
+  { label: '裏革', value: 'linings' },
+  ...backInfieldObjs
 ]
 
-export const partsObjs = [...commonPartsObjs, ...catchFacePartsObjs, ...backFacePartsObjs]
+export const firstMittBackPartsObjs = [
+  ...commonPartsObjs,
+  { label: '裏革', value: 'linings' },
+  ...backFirstMittObjs
+]
+
+export const partsObjs = [
+  ...commonPartsObjs,
+  ...catchFacePartsObjs,
+  ...infieldBackPartsObjs,
+  ...firstMittBackPartsObjs
+]
