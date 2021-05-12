@@ -69,8 +69,9 @@ export const genPdfDocDefine = (state: State, personalData: Personal, asPath: st
           widths: ['33%', '33%', '33%'],
           body: [
             [
-              genCellContent('基本モデル', state.baseModel.label),
+              // genCellContent('基本モデル', state.baseModel.label),
               genCellContent('利き腕', state.dominantArm.label),
+              genCellContent('ミットの大きさ', state.mittSize.label),
               genCellContent('ミットの大きさ', state.mittSize.label)
             ],
             [

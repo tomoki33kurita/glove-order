@@ -40,7 +40,7 @@ type Props = {
 
 const PdfDialog: React.FC<Props> = ({ state, open, handleClose, dispatch }) => {
   const baseCells = [
-    { head: '基本モデル：', label: state.baseModel.label },
+    // { head: '基本モデル：', label: state.baseModel.label },
     { head: '利き腕：', label: state.dominantArm.label },
     { head: 'ミットの大きさ：', label: state.mittSize.label },
     { head: 'ポケットの大きさ：', label: state.mittDepth.label },

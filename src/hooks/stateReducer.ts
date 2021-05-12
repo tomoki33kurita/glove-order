@@ -51,7 +51,7 @@ export const initialEmbroState = {
 }
 
 const baseInitialState = {
-  baseModel: { label: 'M8型', value: 'm8' },
+  // baseModel: { label: 'M8型', value: 'm8' },
   dominantArm: { label: '右投げ', value: 'rightThrow' },
   mittSize: { label: '基本モデルズバリ', value: 'default' },
   mittDepth: { label: '基本モデルズバリ', value: 'default' },
@@ -165,8 +165,8 @@ export const reducer = (state: State, action: Action): State => {
         littleRing: action.all,
         littleOut: action.all
       }
-    case SET_BASE_MODEL:
-      return { ...state, baseModel: action.baseModel }
+    // case SET_BASE_MODEL:
+    //   return { ...state, baseModel: action.baseModel }
     case SET_DOMINANT_ARM:
       return { ...state, dominantArm: action.dominantArm }
     case SET_SIZE:

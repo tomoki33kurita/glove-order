@@ -18,7 +18,7 @@ export type State = {
   isLoading: boolean
   parts: stateObj
   all: stateObj
-  baseModel: stateObj
+  // baseModel: stateObj
   dominantArm: stateObj
   mittSize: stateObj
   mittDepth: stateObj

@@ -254,130 +254,134 @@ const ColoringSet: React.FC<Props> = ({ state, value, figurePanelNum, dispatch }
 
   const sortLabel =
     // 内野手用ここから
-    router.asPath === '/hard/infield' && {
-      catch_face: catchFace.label,
-      all: all.label,
-      web: web.label,
-      edge: edge.label,
-      thumb_hook: thumbHook.label,
-      little_hook: littleHook.label,
-      index_cover: indexCover.label,
-      stitch: stitch.label,
-      linings: linings.label,
-      strap: strap.label,
-      list_lining_material: listLiningsMaterial.label,
-      hamidashi: hamidashi.label,
-      thumb_out: thumbOut.label,
-      thumb_web: thumbWeb.label,
-      index_web: indexWeb.label,
-      index_middle: indexMiddle.label,
-      middle_index: middleIndex.label,
-      middle_ring: middleRing.label,
-      ring_middle: ringMiddle.label,
-      ring_little: ringLittle.label,
-      little_ring: littleRing.label,
-      little_out: littleOut.label
-    }
-  // 一塁手用ここから
-  router.asPath === '/hard/first-mitt' && {
-    catch_face: catchFace.label,
-    all: all.label,
-    web: web.label,
-    edge: edge.label,
-    thumb_hook: thumbHook.label,
-    little_hook: littleHook.label,
-    index_cover: indexCover.label,
-    stitch: stitch.label,
-    linings: linings.label,
-    strap: strap.label,
-    list_lining_material: listLiningsMaterial.label,
-    hamidashi: hamidashi.label
-  }
+    router.asPath === '/hard/infield'
+      ? {
+          catch_face: catchFace.label,
+          all: all.label,
+          web: web.label,
+          edge: edge.label,
+          thumb_hook: thumbHook.label,
+          little_hook: littleHook.label,
+          index_cover: indexCover.label,
+          stitch: stitch.label,
+          linings: linings.label,
+          strap: strap.label,
+          list_lining_material: listLiningsMaterial.label,
+          hamidashi: hamidashi.label,
+          thumb_out: thumbOut.label,
+          thumb_web: thumbWeb.label,
+          index_web: indexWeb.label,
+          index_middle: indexMiddle.label,
+          middle_index: middleIndex.label,
+          middle_ring: middleRing.label,
+          ring_middle: ringMiddle.label,
+          ring_little: ringLittle.label,
+          little_ring: littleRing.label,
+          little_out: littleOut.label
+        }
+      : // 一塁手用ここから
+        router.asPath === '/hard/first-mitt' && {
+          catch_face: catchFace.label,
+          all: all.label,
+          web: web.label,
+          edge: edge.label,
+          thumb_hook: thumbHook.label,
+          little_hook: littleHook.label,
+          index_cover: indexCover.label,
+          stitch: stitch.label,
+          linings: linings.label,
+          strap: strap.label,
+          list_lining_material: listLiningsMaterial.label,
+          hamidashi: hamidashi.label
+        }
 
   const sortColor =
     // 内野手用ここから
-    router.asPath === '/hard/infield' && {
-      catch_face: catchFace.color,
-      all: all.color,
-      web: web.color,
-      edge: edge.color,
-      thumb_hook: thumbHook.color,
-      little_hook: littleHook.color,
-      index_cover: indexCover.color,
-      list_belt: listBelt.color,
-      stitch: stitch.color,
-      linings: linings.color,
-      strap: strap.color,
-      list_lining_material: listLiningsMaterial.color,
+    router.asPath === '/hard/infield'
+      ? {
+          catch_face: catchFace.color,
+          all: all.color,
+          web: web.color,
+          edge: edge.color,
+          thumb_hook: thumbHook.color,
+          little_hook: littleHook.color,
+          index_cover: indexCover.color,
+          list_belt: listBelt.color,
+          stitch: stitch.color,
+          linings: linings.color,
+          strap: strap.color,
+          list_lining_material: listLiningsMaterial.color,
 
-      thumb_out: thumbOut.color,
-      thumb_web: thumbWeb.color,
-      index_web: indexWeb.color,
-      index_middle: indexMiddle.color,
-      middle_index: middleIndex.color,
-      middle_ring: middleRing.color,
-      ring_middle: ringMiddle.color,
-      ring_little: ringLittle.color,
-      little_ring: littleRing.color,
-      little_out: littleOut.color
-    }
-  // 一塁手用ここから
-  router.asPath === '/hard/first-mitt' && {
-    catch_face: catchFace.color,
-    all: all.color,
-    web: web.color,
-    edge: edge.color,
-    thumb_hook: thumbHook.color,
-    little_hook: littleHook.color,
-    index_cover: indexCover.color,
-    list_belt: listBelt.color,
-    stitch: stitch.color,
-    linings: linings.color,
-    strap: strap.color,
-    list_lining_material: listLiningsMaterial.color
-  }
+          thumb_out: thumbOut.color,
+          thumb_web: thumbWeb.color,
+          index_web: indexWeb.color,
+          index_middle: indexMiddle.color,
+          middle_index: middleIndex.color,
+          middle_ring: middleRing.color,
+          ring_middle: ringMiddle.color,
+          ring_little: ringLittle.color,
+          little_ring: littleRing.color,
+          little_out: littleOut.color
+        }
+      : // 一塁手用ここから
+        router.asPath === '/hard/first-mitt' && {
+          catch_face: catchFace.color,
+          all: all.color,
+          web: web.color,
+          edge: edge.color,
+          thumb_hook: thumbHook.color,
+          little_hook: littleHook.color,
+          index_cover: indexCover.color,
+          list_belt: listBelt.color,
+          stitch: stitch.color,
+          linings: linings.color,
+          strap: strap.color,
+          list_lining_material: listLiningsMaterial.color
+        }
 
-  const sortValue = router.asPath === '/hard/infield' && {
-    all: all.value,
-    catch_face: catchFace.value,
-    web: web.value,
-    edge: edge.value,
-    thumb_hook: thumbHook.value,
-    little_hook: littleHook.value,
-    index_cover: indexCover.value,
-    list_belt: listBelt.value,
-    stitch: stitch.value,
-    linings: linings.value,
-    strap: strap.value,
-    list_lining_material: listLiningsMaterial.value,
-    hamidashi: hamidashi.value,
+  const sortValue =
+    router.asPath === '/hard/infield'
+      ? {
+          all: all.value,
+          catch_face: catchFace.value,
+          web: web.value,
+          edge: edge.value,
+          thumb_hook: thumbHook.value,
+          little_hook: littleHook.value,
+          index_cover: indexCover.value,
+          list_belt: listBelt.value,
+          stitch: stitch.value,
+          linings: linings.value,
+          strap: strap.value,
+          list_lining_material: listLiningsMaterial.value,
+          hamidashi: hamidashi.value,
 
-    thumb_out: thumbOut.value,
-    thumb_web: thumbWeb.value,
-    index_web: indexWeb.value,
-    index_middle: indexMiddle.value,
-    middle_index: middleIndex.value,
-    middle_ring: middleRing.value,
-    ring_middle: ringMiddle.value,
-    ring_little: ringLittle.value,
-    little_ring: littleRing.value,
-    little_out: littleOut.value
-  }
-  router.asPath === '/hard/first-mitt' && {
-    all: all.value,
-    catch_face: catchFace.value,
-    web: web.value,
-    edge: edge.value,
-    thumb_hook: thumbHook.value,
-    little_hook: littleHook.value,
-    index_cover: indexCover.value,
-    list_belt: listBelt.value,
-    stitch: stitch.value,
-    linings: linings.value,
-    strap: strap.value,
-    list_lining_material: listLiningsMaterial.value,
-    hamidashi: hamidashi.value
-  }
+          thumb_out: thumbOut.value,
+          thumb_web: thumbWeb.value,
+          index_web: indexWeb.value,
+          index_middle: indexMiddle.value,
+          middle_index: middleIndex.value,
+          middle_ring: middleRing.value,
+          ring_middle: ringMiddle.value,
+          ring_little: ringLittle.value,
+          little_ring: littleRing.value,
+          little_out: littleOut.value
+        }
+      : router.asPath === '/hard/first-mitt' && {
+          all: all.value,
+          catch_face: catchFace.value,
+          web: web.value,
+          edge: edge.value,
+          thumb_hook: thumbHook.value,
+          little_hook: littleHook.value,
+          index_cover: indexCover.value,
+          list_belt: listBelt.value,
+          stitch: stitch.value,
+          linings: linings.value,
+          strap: strap.value,
+          list_lining_material: listLiningsMaterial.value,
+          hamidashi: hamidashi.value
+        }
   return (
     <TabPanel value={value} index={1}>
       <SelectCard
