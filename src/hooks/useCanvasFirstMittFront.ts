@@ -22,9 +22,9 @@ export const useCanvasFirstMittFront = (ctx: CanvasRenderingContext2D, state: St
   // ウェブ捕球面側
   webBottom(ctx, state.web.color)
   // 背面＿ウェブ周り
-  backAroundWeb(ctx, state.all.color)
+  backAroundWeb(ctx, state.underWeb.color)
   // 親指背面＿外側
-  thumbBackOut(ctx, state.all.color)
+  thumbBackOut(ctx, state.thumb.color)
   // 親指掛け紐
   thumbHook(ctx, state.thumbHook.color)
   // ヘリ革
