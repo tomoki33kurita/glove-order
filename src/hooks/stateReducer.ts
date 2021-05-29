@@ -85,7 +85,7 @@ const colorInitialState = {
 }
 
 // 内野手用グローブ
-export const initialState: State = {
+export const initialStateInfield: State = {
   // トップページのloading
   isLoading: false,
   // 基本設定
@@ -268,7 +268,7 @@ export const reducer = (state: State, action: Action): State => {
     case SET_INDEX_COVER_COLOR:
       return { ...state, indexCover: action.indexCover }
     case RESET_INIT_STATE:
-      return { ...initialState }
+      return { ...initialStateFirstMitt }
     case SET_PERSONAL:
       return { ...state, personal: action.personal }
     default:

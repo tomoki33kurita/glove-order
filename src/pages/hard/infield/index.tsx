@@ -2,12 +2,12 @@ import React from 'react'
 import { Box, Grid } from '@material-ui/core'
 import FigureFields from 'src/container/FigureFields'
 import DesignationBase from 'src/container/DesignationBase'
-import { reducer, initialState } from 'src/hooks/stateReducer'
+import { reducer, initialStateInfield } from 'src/hooks/stateReducer'
 
 export const stateContext = React.createContext('')
 
 const Index: React.FC = () => {
-  const [state, dispatch] = React.useReducer(reducer, initialState)
+  const [state, dispatch] = React.useReducer(reducer, initialStateInfield)
   const [figurePanelNum, setFigurePanelNum] = React.useState(0)
   const handleFigurePanelNum = (event: any, newValue: number) => setFigurePanelNum(newValue)
 

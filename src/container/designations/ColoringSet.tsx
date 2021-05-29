@@ -336,9 +336,9 @@ const ColoringSet: React.FC<Props> = ({ state, value, figurePanelNum, dispatch }
           list_lining_material: listLiningsMaterial.label,
           hamidashi: hamidashi.label,
           list_belt: listBelt.label,
-          thumb: thumb.label,
-          under_web: underWeb.label,
-          boomerang: boomerang.label
+          thumb: thumb?.label,
+          under_web: underWeb?.label,
+          boomerang: boomerang?.label
         }
 
   const sortColor =
@@ -384,9 +384,9 @@ const ColoringSet: React.FC<Props> = ({ state, value, figurePanelNum, dispatch }
           strap: strap.color,
           list_lining_material: listLiningsMaterial.color,
           // list_belt: listBelt.color,
-          thumb: thumb.color,
-          under_web: underWeb.color,
-          boomerang: boomerang.color
+          thumb: thumb?.color,
+          under_web: underWeb?.color,
+          boomerang: boomerang?.color
         }
 
   const sortValue =
@@ -433,9 +433,9 @@ const ColoringSet: React.FC<Props> = ({ state, value, figurePanelNum, dispatch }
           list_lining_material: listLiningsMaterial.value,
           hamidashi: hamidashi.value,
           // list_belt: listBelt.color,
-          thumb: thumb.color,
-          under_web: underWeb.color,
-          boomerang: boomerang.color
+          thumb: thumb?.color,
+          under_web: underWeb?.color,
+          boomerang: boomerang?.color
         }
 
   const backFaceParts =
