@@ -6,7 +6,7 @@ import { reducer, initialStateInfield } from 'src/hooks/stateReducer'
 export const stateContext = React.createContext('')
 
 const Index: React.FC = () => {
-  const [state, dispatch] = React.useReducer(reducer, initialStateInfield)
+  const [state, dispatch] = React.useReducer(reducer, initialStateInfield) // ここ見直す
   const [stateType, setType] = React.useState('hard')
   // const [stateOrder, setOrder] = React.useState('')
   const [statePosition, setPosition] = React.useState('')

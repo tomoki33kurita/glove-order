@@ -93,7 +93,7 @@ export type DevTools = {
   setCopy: (value: React.SetStateAction<boolean>) => void
 }
 
-export type Action = Partial<State> & { type: string }
+export type Action = Partial<State> & { type: string; router?: string }
 
 export type Personal = {
   userName: string

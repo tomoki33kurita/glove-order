@@ -28,11 +28,11 @@ const DesignationBase: React.FC<Props> = ({ state, figurePanelNum, dispatch }) =
         `本当にリセットしますか？\n基本設定・カラー設定・刺繍設定の全てがリセットされます`
       )
     )
-      dispatch({ type: RESET_INIT_STATE })
+      dispatch({ type: RESET_INIT_STATE, router: router.asPath })
   }
   const hendleLinkToTop = () => {
     if (window.confirm('本当にトップページに移動してよろしいですか？')) {
-      dispatch({ type: RESET_INIT_STATE })
+      dispatch({ type: RESET_INIT_STATE, router: router.asPath })
       router.push('/')
     }
   }
