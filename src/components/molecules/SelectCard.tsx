@@ -16,7 +16,7 @@ type Props = {
   selectedColor?: string
   disabled?: boolean
   setTarget?: boolean
-  handleChange?: (selected?: string, i: number) => void
+  handleChange?: (selected?: string, i?: number) => void
 }
 
 const SelectCard: React.FC<Props> = ({
