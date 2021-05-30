@@ -1,9 +1,11 @@
 import React from 'react'
-import { Box, AppBar, Tabs, Tab } from '@material-ui/core'
+import { Box, AppBar, Tabs, Tab, Button } from '@material-ui/core'
 import TabPanel from 'src/components/molecules/TabPanel'
 import { State } from 'src/types'
 import FigureFront from 'src/container/FigureFront'
 import FigureBack from 'src/container/FigureBack'
+import { genImgFromCanvas } from 'src/container/genPdf/genPdfDocDefine'
+import { useRouter } from 'next/router'
 
 const devToolStyleFront = {
   backgroundImage: `url(${'/fmitt-front.jpeg'})`,
@@ -39,6 +41,9 @@ const FigureFields: React.FC<Props> = ({ state, figurePanelNum, handleFigurePane
   const [cordinateX, setCordinateX] = React.useState(0)
   const [cordinateY, setCordinateY] = React.useState(0)
   const [isCopy, setCopy] = React.useState(false)
+  const [isGenImg, setGenImg] = React.useState(false)
+  const router = useRouter()
+
   const handleCoordinate = (e: React.MouseEvent<HTMLCanvasElement, MouseEvent>) => {
     // eslint-disable-next-line
     // @ts-ignore
@@ -80,6 +85,28 @@ const FigureFields: React.FC<Props> = ({ state, figurePanelNum, handleFigurePane
           <Tab label="背面" {...a11yProps(0)} />
         </Tabs>
       </AppBar>
+      {/* 画像ダウンロードボタンは、canvas部分に設置したい */}
+      {figurePanelNum ? (
+        <Button variant="contained" color="primary" onClick={() => setGenImg(true)}>
+          <a
+            href={isGenImg ? genImgFromCanvas(state, 'back', router?.asPath) : ''}
+            download="オーダー背面.png"
+            style={{ textDecoration: 'none' }}
+          >
+            背面画像ダウンロード
+          </a>
+        </Button>
+      ) : (
+        <Button variant="contained" color="primary" onClick={() => setGenImg(true)}>
+          <a
+            href={isGenImg ? genImgFromCanvas(state, 'front', router?.asPath) : ''}
+            download="オーダー捕球面.png"
+            style={{ textDecoration: 'none' }}
+          >
+            捕球面画像ダウンロード
+          </a>
+        </Button>
+      )}
     </Box>
   )
 }

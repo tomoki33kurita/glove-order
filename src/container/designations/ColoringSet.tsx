@@ -21,6 +21,11 @@ import { useRouter } from 'next/router'
 interface SortType {
   catchFace: string
   web: string
+  stitch: string
+  linings: string
+  strap: string
+  listLiningsMaterial: string
+  hamidashi: string
 }
 
 type Props = {
@@ -68,37 +73,36 @@ const ColoringSet: React.FC<Props> = ({ state, value, figurePanelNum, dispatch }
         type: SET_SELECTED_PARTS,
         parts: partsObjs.filter((prev) => prev.value === selected)[0]
       }),
-    stitch: (selected: string) =>
-      dispatch({
-        type: sortReducerType[partKey],
-        [partKey]: stitchColorObjs.filter((prev) => prev.value === selected)[0]
-      }),
-    linings: (selected: string) =>
-      dispatch({
-        type: sortReducerType[partKey],
-        [partKey]: liningsObjs.filter((prev) => prev.value === selected)[0]
-      }),
-    strap: (selected: string) =>
-      dispatch({
-        type: sortReducerType[partKey],
-        [partKey]: strapColorObjs.filter((prev) => prev.value === selected)[0]
-      }),
-    listLiningsMaterial: (selected: string) =>
-      dispatch({
-        type: sortReducerType[partKey],
-        [partKey]: listLiningsMaterialObjs.filter((prev) => prev.value === selected)[0]
-      }),
-    hamidashi: (selected: string) =>
-      dispatch({
-        type: sortReducerType[partKey],
-        [partKey]: hamidashiObjs.filter((prev) => prev.value === selected)[0]
-      }),
-    // 上記以外の全てのパーツのdispatch
     [partKey]: (selected: string) =>
-      dispatch({
-        type: sortReducerType[partKey],
-        [partKey]: colorObjs.filter((prev) => prev.value === selected)[0]
-      })
+      partKey === 'stitch'
+        ? dispatch({
+            type: sortReducerType[partKey],
+            [partKey]: stitchColorObjs.filter((prev) => prev.value === selected)[0]
+          })
+        : partKey === 'linings'
+        ? dispatch({
+            type: sortReducerType[partKey],
+            [partKey]: liningsObjs.filter((prev) => prev.value === selected)[0]
+          })
+        : partKey === 'strap'
+        ? dispatch({
+            type: sortReducerType[partKey],
+            [partKey]: strapColorObjs.filter((prev) => prev.value === selected)[0]
+          })
+        : partKey === 'listLiningsMaterial'
+        ? dispatch({
+            type: sortReducerType[partKey],
+            [partKey]: listLiningsMaterialObjs.filter((prev) => prev.value === selected)[0]
+          })
+        : partKey === 'hamidashi'
+        ? dispatch({
+            type: sortReducerType[partKey],
+            [partKey]: hamidashiObjs.filter((prev) => prev.value === selected)[0]
+          })
+        : dispatch({
+            type: sortReducerType[partKey],
+            [partKey]: colorObjs.filter((prev) => prev.value === selected)[0]
+          })
   }
 
   const baseSortObj = {
