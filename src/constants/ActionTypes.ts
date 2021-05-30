@@ -69,3 +69,36 @@ export const REMOVE_EMBROIDERY = 'RemoveEmbroideries'
 // ALL
 export const RESET_INIT_STATE = 'resetInitState'
 export const SET_PERSONAL = 'setPersonal'
+
+export const sortReducerType = {
+  all: SET_ALL_LEATHER_COLOR,
+  catchFace: SET_LEATHER_COLOR,
+  web: SET_WEB_COLOR,
+  edge: SET_EDGE_COLOR,
+  thumbHook: SET_THUMB_HOOK,
+  littleHook: SET_LITTLE_HOOK,
+  strap: SET_STRAP_COLOR,
+  indexCover: SET_INDEX_COVER_COLOR,
+  stitch: SET_STITCH_COLOR,
+  linings: SET_LININGS,
+  listLiningsMaterial: SET_LIST_LINING_MATERIAL,
+  hamidashi: SET_HAMIDASHI,
+
+  // 内野手用グラブここから
+  thumbOut: SET_THUMB_OUT_COLOR,
+  thumbWeb: SET_THUMB_WEB_COLOR,
+  indexWeb: SET_INDEX_WEB_COLOR,
+  indexMiddle: SET_INDEX_MIDDLE_COLOR,
+  middleIndex: SET_MIDDLE_INDEX_COLOR,
+  middleRing: SET_MIDDLE_RING_COLOR,
+  ringMiddle: SET_RING_MIDDLE_COLOR,
+  ringLittle: SET_RING_LITTLE_COLOR,
+  littleRing: SET_LITTLE_RING_COLOR,
+  littleOut: SET_LITTLE_OUT_COLOR,
+
+  // 一塁手用ミットここから
+  listBelt: SET_LIST_BELT_COLOR,
+  thumb: SET_THUMB_COLOR,
+  underWeb: SET_UNDER_WEB_COLOR,
+  boomerang: SET_BOOMERANG_COLOR
+}

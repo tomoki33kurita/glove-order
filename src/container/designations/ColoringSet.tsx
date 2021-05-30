@@ -15,35 +15,7 @@ import {
   firstMittBackPartsObjs,
   partsObjs
 } from 'src/constants/radioObjs/coloring'
-import {
-  SET_SELECTED_PARTS,
-  SET_ALL_LEATHER_COLOR,
-  SET_LEATHER_COLOR,
-  SET_EDGE_COLOR,
-  SET_LININGS,
-  SET_STRAP_COLOR,
-  SET_STITCH_COLOR,
-  SET_HAMIDASHI,
-  SET_WEB_COLOR,
-  SET_LIST_LINING_MATERIAL,
-  SET_THUMB_HOOK,
-  SET_LITTLE_HOOK,
-  SET_INDEX_COVER_COLOR,
-  SET_THUMB_OUT_COLOR,
-  SET_THUMB_WEB_COLOR,
-  SET_INDEX_WEB_COLOR,
-  SET_INDEX_MIDDLE_COLOR,
-  SET_MIDDLE_INDEX_COLOR,
-  SET_MIDDLE_RING_COLOR,
-  SET_RING_MIDDLE_COLOR,
-  SET_RING_LITTLE_COLOR,
-  SET_LITTLE_RING_COLOR,
-  SET_LITTLE_OUT_COLOR,
-  SET_LIST_BELT_COLOR,
-  SET_THUMB_COLOR,
-  SET_UNDER_WEB_COLOR,
-  SET_BOOMERANG_COLOR
-} from 'src/constants/ActionTypes'
+import { SET_SELECTED_PARTS, sortReducerType } from 'src/constants/ActionTypes'
 import { useRouter } from 'next/router'
 
 interface SortType {
@@ -93,7 +65,7 @@ const ColoringSet: React.FC<Props> = ({ state, value, figurePanelNum, dispatch }
   const handle = {
     all: (selected: string) =>
       dispatch({
-        type: SET_ALL_LEATHER_COLOR,
+        type: sortReducerType[partKey],
         all: colorObjs.filter((prev) => prev.value === selected)[0]
       }),
     selectParts: (selected: string) =>
@@ -101,7 +73,7 @@ const ColoringSet: React.FC<Props> = ({ state, value, figurePanelNum, dispatch }
         type: SET_SELECTED_PARTS,
         parts: partsObjs.filter((prev) => prev.value === selected)[0]
       }),
-    leather: (selected: string) =>
+    catchFace: (selected: string) =>
       dispatch({
         type: sortReducerType[partKey],
         catchFace: colorObjs.filter((prev) => prev.value === selected)[0]
@@ -133,27 +105,27 @@ const ColoringSet: React.FC<Props> = ({ state, value, figurePanelNum, dispatch }
       }),
     stitch: (selected: string) =>
       dispatch({
-        type: SET_STITCH_COLOR,
+        type: sortReducerType[partKey],
         stitch: stitchColorObjs.filter((prev) => prev.value === selected)[0]
       }),
     linings: (selected: string) =>
       dispatch({
-        type: SET_LININGS,
+        type: sortReducerType[partKey],
         linings: liningsObjs.filter((prev) => prev.value === selected)[0]
       }),
     strap: (selected: string) =>
       dispatch({
-        type: SET_STRAP_COLOR,
+        type: sortReducerType[partKey],
         strap: strapColorObjs.filter((prev) => prev.value === selected)[0]
       }),
     listLiningsMaterial: (selected: string) =>
       dispatch({
-        type: SET_LIST_LINING_MATERIAL,
+        type: sortReducerType[partKey],
         listLiningsMaterial: listLiningsMaterialObjs.filter((prev) => prev.value === selected)[0]
       }),
     hamidashi: (selected: string) =>
       dispatch({
-        type: SET_HAMIDASHI,
+        type: sortReducerType[partKey],
         hamidashi: hamidashiObjs.filter((prev) => prev.value === selected)[0]
       }),
     // 内野手用グラブの場合ここから
@@ -230,69 +202,6 @@ const ColoringSet: React.FC<Props> = ({ state, value, figurePanelNum, dispatch }
         boomerang: colorObjs.filter((prev) => prev.value === selected)[0]
       })
   }
-  const sortReducerType = {
-    catchFace: SET_LEATHER_COLOR,
-    web: SET_WEB_COLOR,
-    edge: SET_EDGE_COLOR,
-    thumbHook: SET_THUMB_HOOK,
-    littleHook: SET_LITTLE_HOOK,
-    strap: SET_STRAP_COLOR,
-    indexCover: SET_INDEX_COVER_COLOR,
-    stitch: SET_STITCH_COLOR,
-    lining: SET_LININGS,
-    listLiningsMaterial: SET_LIST_LINING_MATERIAL,
-    hamidashi: SET_HAMIDASHI,
-
-    // 内野手用グラブここから
-    thumbOut: SET_THUMB_OUT_COLOR,
-    thumbWeb: SET_THUMB_WEB_COLOR,
-    indexWeb: SET_INDEX_WEB_COLOR,
-    indexMiddle: SET_INDEX_MIDDLE_COLOR,
-    middleIndex: SET_MIDDLE_INDEX_COLOR,
-    middleRing: SET_MIDDLE_RING_COLOR,
-    ringMiddle: SET_RING_MIDDLE_COLOR,
-    ringLittle: SET_RING_LITTLE_COLOR,
-    littleRing: SET_LITTLE_RING_COLOR,
-    littleOut: SET_LITTLE_OUT_COLOR,
-
-    // 一塁手用ミットここから
-    listBelt: SET_LIST_BELT_COLOR,
-    thumb: SET_THUMB_COLOR,
-    underWeb: SET_UNDER_WEB_COLOR,
-    boomerang: SET_BOOMERANG_COLOR
-  }
-  const sortHandle = {
-    all: handle.all,
-    catchFace: handle.leather,
-    web: handle.web,
-    edge: handle.edge,
-    thumbHook: handle.thumbHook,
-    littleHook: handle.littleHook,
-    indexCover: handle.indexCover,
-    stitch: handle.stitch,
-    linings: handle.linings,
-    strap: handle.strap,
-    listLiningsMaterial: handle.listLiningsMaterial,
-    hamidashi: handle.hamidashi,
-
-    // 内野手用グラブここから
-    thumbOut: handle.thumbOut,
-    thumbWeb: handle.thumbWeb,
-    indexWeb: handle.indexWeb,
-    indexMiddle: handle.indexMiddle,
-    middleIndex: handle.middleIndex,
-    middleRing: handle.middleRing,
-    ringMiddle: handle.ringMiddle,
-    ringLittle: handle.ringLittle,
-    littleRing: handle.littleRing,
-    littleOut: handle.littleOut,
-
-    // 一塁手用ここから
-    listBelt: handle.listBelt,
-    thumb: handle.thumb,
-    underWeb: handle.underWeb,
-    boomerang: handle.boomerang
-  }
 
   const sortObj =
     router.asPath === '/hard/infield'
@@ -353,7 +262,6 @@ const ColoringSet: React.FC<Props> = ({ state, value, figurePanelNum, dispatch }
         defaultValue={parts.value}
         objects={figurePanelNum === 0 ? catchFacePartsObjs : backFaceParts}
         handleChange={handle.selectParts}
-        // selectedColor={leatherColor.color}
       />
       {parts.value === 'stitch' ? (
         <SelectCard
@@ -362,8 +270,7 @@ const ColoringSet: React.FC<Props> = ({ state, value, figurePanelNum, dispatch }
           selectedColor={sortObj[partKey].color}
           defaultValue={sortObj[partKey].value}
           objects={stitchColorObjs}
-          handleChange={sortHandle[partKey]}
-          // handleChange={handle[sortHandle[partKey]]}
+          handleChange={handle[partKey]}
         />
       ) : parts.value === 'linings' ? (
         <SelectCard
@@ -372,7 +279,7 @@ const ColoringSet: React.FC<Props> = ({ state, value, figurePanelNum, dispatch }
           selectedColor={sortObj[partKey].color}
           defaultValue={sortObj[partKey].value}
           objects={liningsObjs}
-          handleChange={sortHandle[partKey]}
+          handleChange={handle[partKey]}
         />
       ) : parts.value === 'strap' ? (
         <SelectCard
@@ -381,7 +288,7 @@ const ColoringSet: React.FC<Props> = ({ state, value, figurePanelNum, dispatch }
           selectedColor={sortObj[partKey].color}
           defaultValue={sortObj[partKey].value}
           objects={strapColorObjs}
-          handleChange={sortHandle[partKey]}
+          handleChange={handle[partKey]}
         />
       ) : parts.value === 'hatakeyama_label' ? (
         <SelectCard
@@ -390,7 +297,7 @@ const ColoringSet: React.FC<Props> = ({ state, value, figurePanelNum, dispatch }
           selectedColor={sortObj[partKey].color}
           defaultValue={sortObj[partKey].value}
           objects={labelObjs}
-          handleChange={sortHandle[partKey]}
+          handleChange={handle[partKey]}
         />
       ) : parts.value === 'listLiningsMaterial' ? (
         <SelectCard
@@ -399,7 +306,7 @@ const ColoringSet: React.FC<Props> = ({ state, value, figurePanelNum, dispatch }
           selectedColor={sortObj[partKey].color}
           defaultValue={sortObj[partKey].value}
           objects={listLiningsMaterialObjs}
-          handleChange={sortHandle[partKey]}
+          handleChange={handle[partKey]}
         />
       ) : parts.value === 'hamidashi' ? (
         <SelectCard
@@ -408,7 +315,7 @@ const ColoringSet: React.FC<Props> = ({ state, value, figurePanelNum, dispatch }
           selectedColor={sortObj[partKey].color}
           defaultValue={sortObj[partKey].value}
           objects={hamidashiObjs}
-          handleChange={sortHandle[partKey]}
+          handleChange={handle[partKey]}
         />
       ) : (
         <SelectCard
@@ -417,7 +324,7 @@ const ColoringSet: React.FC<Props> = ({ state, value, figurePanelNum, dispatch }
           selectedColor={sortObj[partKey].color}
           defaultValue={sortObj[partKey].value}
           objects={colorObjs}
-          handleChange={sortHandle[partKey]}
+          handleChange={handle[partKey]}
         />
       )}
 
