@@ -68,41 +68,6 @@ const ColoringSet: React.FC<Props> = ({ state, value, figurePanelNum, dispatch }
         type: SET_SELECTED_PARTS,
         parts: partsObjs.filter((prev) => prev.value === selected)[0]
       }),
-    all: (selected: string) =>
-      dispatch({
-        type: sortReducerType[partKey],
-        [partKey]: colorObjs.filter((prev) => prev.value === selected)[0]
-      }),
-    catchFace: (selected: string) =>
-      dispatch({
-        type: sortReducerType[partKey],
-        [partKey]: colorObjs.filter((prev) => prev.value === selected)[0]
-      }),
-    web: (selected: string) =>
-      dispatch({
-        type: sortReducerType[partKey],
-        [partKey]: colorObjs.filter((prev) => prev.value === selected)[0]
-      }),
-    edge: (selected: string) =>
-      dispatch({
-        type: sortReducerType[partKey],
-        [partKey]: colorObjs.filter((prev) => prev.value === selected)[0]
-      }),
-    thumbHook: (selected: string) =>
-      dispatch({
-        type: sortReducerType[partKey],
-        [partKey]: colorObjs.filter((prev) => prev.value === selected)[0]
-      }),
-    littleHook: (selected: string) =>
-      dispatch({
-        type: sortReducerType[partKey],
-        [partKey]: colorObjs.filter((prev) => prev.value === selected)[0]
-      }),
-    indexCover: (selected: string) =>
-      dispatch({
-        type: sortReducerType[partKey],
-        [partKey]: colorObjs.filter((prev) => prev.value === selected)[0]
-      }),
     stitch: (selected: string) =>
       dispatch({
         type: sortReducerType[partKey],
@@ -128,98 +93,35 @@ const ColoringSet: React.FC<Props> = ({ state, value, figurePanelNum, dispatch }
         type: sortReducerType[partKey],
         [partKey]: hamidashiObjs.filter((prev) => prev.value === selected)[0]
       }),
-    // 内野手用グラブの場合ここから
-    thumbOut: (selected: string) =>
-      dispatch({
-        type: sortReducerType[partKey],
-        [partKey]: colorObjs.filter((prev) => prev.value === selected)[0]
-      }),
-    thumbWeb: (selected: string) =>
-      dispatch({
-        type: sortReducerType[partKey],
-        [partKey]: colorObjs.filter((prev) => prev.value === selected)[0]
-      }),
-    indexWeb: (selected: string) =>
-      dispatch({
-        type: sortReducerType[partKey],
-        [partKey]: colorObjs.filter((prev) => prev.value === selected)[0]
-      }),
-    indexMiddle: (selected: string) =>
-      dispatch({
-        type: sortReducerType[partKey],
-        [partKey]: colorObjs.filter((prev) => prev.value === selected)[0]
-      }),
-    middleIndex: (selected: string) =>
-      dispatch({
-        type: sortReducerType[partKey],
-        [partKey]: colorObjs.filter((prev) => prev.value === selected)[0]
-      }),
-    middleRing: (selected: string) =>
-      dispatch({
-        type: sortReducerType[partKey],
-        [partKey]: colorObjs.filter((prev) => prev.value === selected)[0]
-      }),
-    ringMiddle: (selected: string) =>
-      dispatch({
-        type: sortReducerType[partKey],
-        [partKey]: colorObjs.filter((prev) => prev.value === selected)[0]
-      }),
-    ringLittle: (selected: string) =>
-      dispatch({
-        type: sortReducerType[partKey],
-        [partKey]: colorObjs.filter((prev) => prev.value === selected)[0]
-      }),
-    littleRing: (selected: string) =>
-      dispatch({
-        type: sortReducerType[partKey],
-        [partKey]: colorObjs.filter((prev) => prev.value === selected)[0]
-      }),
-    littleOut: (selected: string) =>
-      dispatch({
-        type: sortReducerType[partKey],
-        [partKey]: colorObjs.filter((prev) => prev.value === selected)[0]
-      }),
-    // 一塁手用ミットここから
-    // こいつはfmitt以外でも使う可能性あり
-    listBelt: (selected: string) =>
-      dispatch({
-        type: sortReducerType[partKey],
-        [partKey]: colorObjs.filter((prev) => prev.value === selected)[0]
-      }),
-    thumb: (selected: string) =>
-      dispatch({
-        type: sortReducerType[partKey],
-        [partKey]: colorObjs.filter((prev) => prev.value === selected)[0]
-      }),
-    underWeb: (selected: string) =>
-      dispatch({
-        type: sortReducerType[partKey],
-        [partKey]: colorObjs.filter((prev) => prev.value === selected)[0]
-      }),
-    boomerang: (selected: string) =>
+    // 上記以外の全てのパーツのdispatch
+    [partKey]: (selected: string) =>
       dispatch({
         type: sortReducerType[partKey],
         [partKey]: colorObjs.filter((prev) => prev.value === selected)[0]
       })
   }
 
+  const baseSortObj = {
+    all,
+    catchFace,
+    web,
+    edge,
+    thumbHook,
+    littleHook,
+    indexCover,
+    listBelt,
+    stitch,
+    linings,
+    strap,
+    listLiningsMaterial,
+    hamidashi
+  }
+
   const sortObj =
     router.asPath === '/hard/infield'
       ? {
+          ...baseSortObj,
           // 内野手用ここから
-          all,
-          catchFace,
-          web,
-          edge,
-          thumbHook,
-          littleHook,
-          indexCover,
-          listBelt,
-          stitch,
-          linings,
-          strap,
-          listLiningsMaterial,
-          hamidashi,
           thumbOut,
           thumbWeb,
           indexWeb,
@@ -233,20 +135,7 @@ const ColoringSet: React.FC<Props> = ({ state, value, figurePanelNum, dispatch }
         }
       : router.asPath === '/hard/first-mitt' && {
           // 一塁手用ここから
-          all,
-          catchFace,
-          web,
-          edge,
-          thumbHook,
-          littleHook,
-          indexCover,
-          listBelt,
-          stitch,
-          linings,
-          strap,
-          listLiningsMaterial,
-          hamidashi,
-          // listBelt: listBelt.color,
+          ...baseSortObj,
           thumb,
           underWeb,
           boomerang

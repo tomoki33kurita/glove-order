@@ -241,12 +241,6 @@ export const reducer = (state: State, action: Action): State => {
       return { ...state, hamidashi: action.hamidashi }
     case SET_FINGER_GUARD_TYPE:
       return { ...state, fingerGuardType: action.fingerGuardType }
-    // case SET_ZABUTON_SPONGE:
-    //   return { ...state, zabutonSponge: action.zabutonSponge }
-    // case SET_EX_FUNCTION:
-    // return { ...state, exFunction: action.exFunction }
-    // case SET_PINKIE_PATTERN:
-    // return { ...state, pinkiePattern: action.pinkiePattern }
     case SET_STRAP_COLOR:
       return { ...state, strap: action.strap }
     // case SET_LABEL:
