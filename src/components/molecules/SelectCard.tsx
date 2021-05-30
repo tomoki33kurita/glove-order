@@ -19,7 +19,16 @@ type Props = {
   handleChange?: (selected: string, i: number) => void
 }
 
-const SelectCard: React.FC<Props> = ({ summary, selectedLabel, selectedColor, objects, disabled, setTarget, index, handleChange }) => (
+const SelectCard: React.FC<Props> = ({
+  summary,
+  selectedLabel,
+  selectedColor,
+  objects,
+  disabled,
+  setTarget,
+  index,
+  handleChange
+}) => (
   <Accordion style={{ marginBottom: '16px' }} defaultExpanded>
     <AccordionSummary
       expandIcon={
@@ -32,7 +41,14 @@ const SelectCard: React.FC<Props> = ({ summary, selectedLabel, selectedColor, ob
         <Box fontSize={14} fontWeight="bold">
           {summary}：
         </Box>
-        <Box component="span" display="inherit" color={'#383838'} fontSize={15} alignItems="center" ml={2}>
+        <Box
+          component="span"
+          display="inherit"
+          color={'#383838'}
+          fontSize={15}
+          alignItems="center"
+          ml={2}
+        >
           {selectedColor ? (
             <>
               <ColorBox bgcolor={selectedColor} />
@@ -66,7 +82,11 @@ const SelectCard: React.FC<Props> = ({ summary, selectedLabel, selectedColor, ob
           </Button>
         ))}
         {summary === '小指マチカラー' && (
-          <Box color={setTarget ? 'red' : '#383838'}>{setTarget ? 'ターゲット加工が選択されています' : 'ターゲット加工が選択されている場合、無効になります'}</Box>
+          <Box color={setTarget ? 'red' : '#383838'}>
+            {setTarget
+              ? 'ターゲット加工が選択されています'
+              : 'ターゲット加工が選択されている場合、無効になります'}
+          </Box>
         )}
       </Box>
     </AccordionDetails>

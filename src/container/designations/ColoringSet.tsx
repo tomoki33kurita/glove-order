@@ -6,10 +6,10 @@ import {
   colorObjs,
   liningsObjs,
   strapColorObjs,
-  hatakeyamaLabelObjs,
+  labelObjs,
   hamidashiObjs,
   stitchColorObjs,
-  listLiningMaterialObjs,
+  listLiningsMaterialObjs,
   catchFacePartsObjs,
   infieldBackPartsObjs,
   firstMittBackPartsObjs,
@@ -47,7 +47,7 @@ import {
 import { useRouter } from 'next/router'
 
 interface SortType {
-  catch_face: string
+  catchFace: string
   web: string
 }
 
@@ -149,7 +149,7 @@ const ColoringSet: React.FC<Props> = ({ state, value, figurePanelNum, dispatch }
     listLiningsMaterial: (selected: string) =>
       dispatch({
         type: SET_LIST_LINING_MATERIAL,
-        listLiningsMaterial: listLiningMaterialObjs.filter((prev) => prev.value === selected)[0]
+        listLiningsMaterial: listLiningsMaterialObjs.filter((prev) => prev.value === selected)[0]
       }),
     hamidashi: (selected: string) =>
       dispatch({
@@ -231,211 +231,116 @@ const ColoringSet: React.FC<Props> = ({ state, value, figurePanelNum, dispatch }
       })
   }
   const sortReducerType = {
-    catch_face: SET_LEATHER_COLOR,
+    catchFace: SET_LEATHER_COLOR,
     web: SET_WEB_COLOR,
     edge: SET_EDGE_COLOR,
-    thumb_hook: SET_THUMB_HOOK,
-    little_hook: SET_LITTLE_HOOK,
+    thumbHook: SET_THUMB_HOOK,
+    littleHook: SET_LITTLE_HOOK,
     strap: SET_STRAP_COLOR,
-    index_cover: SET_INDEX_COVER_COLOR,
+    indexCover: SET_INDEX_COVER_COLOR,
     stitch: SET_STITCH_COLOR,
     lining: SET_LININGS,
-    list_lining_material: SET_LIST_LINING_MATERIAL,
+    listLiningsMaterial: SET_LIST_LINING_MATERIAL,
     hamidashi: SET_HAMIDASHI,
 
     // 内野手用グラブここから
-    thumb_out: SET_THUMB_OUT_COLOR,
-    thumb_web: SET_THUMB_WEB_COLOR,
-    index_web: SET_INDEX_WEB_COLOR,
-    index_middle: SET_INDEX_MIDDLE_COLOR,
-    middle_index: SET_MIDDLE_INDEX_COLOR,
-    middle_ring: SET_MIDDLE_RING_COLOR,
-    ring_middle: SET_RING_MIDDLE_COLOR,
-    ring_little: SET_RING_LITTLE_COLOR,
-    little_ring: SET_LITTLE_RING_COLOR,
-    little_out: SET_LITTLE_OUT_COLOR,
+    thumbOut: SET_THUMB_OUT_COLOR,
+    thumbWeb: SET_THUMB_WEB_COLOR,
+    indexWeb: SET_INDEX_WEB_COLOR,
+    indexMiddle: SET_INDEX_MIDDLE_COLOR,
+    middleIndex: SET_MIDDLE_INDEX_COLOR,
+    middleRing: SET_MIDDLE_RING_COLOR,
+    ringMiddle: SET_RING_MIDDLE_COLOR,
+    ringLittle: SET_RING_LITTLE_COLOR,
+    littleRing: SET_LITTLE_RING_COLOR,
+    littleOut: SET_LITTLE_OUT_COLOR,
 
     // 一塁手用ミットここから
-    list_belt: SET_LIST_BELT_COLOR,
+    listBelt: SET_LIST_BELT_COLOR,
     thumb: SET_THUMB_COLOR,
-    under_web: SET_UNDER_WEB_COLOR,
+    underWeb: SET_UNDER_WEB_COLOR,
     boomerang: SET_BOOMERANG_COLOR
   }
   const sortHandle = {
     all: handle.all,
-    catch_face: handle.leather,
+    catchFace: handle.leather,
     web: handle.web,
     edge: handle.edge,
-    thumb_hook: handle.thumbHook,
-    little_hook: handle.littleHook,
-    index_cover: handle.indexCover,
+    thumbHook: handle.thumbHook,
+    littleHook: handle.littleHook,
+    indexCover: handle.indexCover,
     stitch: handle.stitch,
     linings: handle.linings,
     strap: handle.strap,
-    list_lining_material: handle.listLiningsMaterial,
+    listLiningsMaterial: handle.listLiningsMaterial,
     hamidashi: handle.hamidashi,
 
     // 内野手用グラブここから
-    thumb_out: handle.thumbOut,
-    thumb_web: handle.thumbWeb,
-    index_web: handle.indexWeb,
-    index_middle: handle.indexMiddle,
-    middle_index: handle.middleIndex,
-    middle_ring: handle.middleRing,
-    ring_middle: handle.ringMiddle,
-    ring_little: handle.ringLittle,
-    little_ring: handle.littleRing,
-    little_out: handle.littleOut,
+    thumbOut: handle.thumbOut,
+    thumbWeb: handle.thumbWeb,
+    indexWeb: handle.indexWeb,
+    indexMiddle: handle.indexMiddle,
+    middleIndex: handle.middleIndex,
+    middleRing: handle.middleRing,
+    ringMiddle: handle.ringMiddle,
+    ringLittle: handle.ringLittle,
+    littleRing: handle.littleRing,
+    littleOut: handle.littleOut,
 
     // 一塁手用ここから
-    list_belt: handle.listBelt,
+    listBelt: handle.listBelt,
     thumb: handle.thumb,
-    under_web: handle.underWeb,
+    underWeb: handle.underWeb,
     boomerang: handle.boomerang
   }
 
-  const sortLabel =
-    // 内野手用ここから
-    router.asPath === '/hard/infield'
-      ? {
-          catch_face: catchFace.label,
-          all: all.label,
-          web: web.label,
-          edge: edge.label,
-          thumb_hook: thumbHook.label,
-          little_hook: littleHook.label,
-          index_cover: indexCover.label,
-          stitch: stitch.label,
-          linings: linings.label,
-          strap: strap.label,
-          list_lining_material: listLiningsMaterial.label,
-          hamidashi: hamidashi.label,
-          thumb_out: thumbOut.label,
-          thumb_web: thumbWeb.label,
-          index_web: indexWeb.label,
-          index_middle: indexMiddle.label,
-          middle_index: middleIndex.label,
-          middle_ring: middleRing.label,
-          ring_middle: ringMiddle.label,
-          ring_little: ringLittle.label,
-          little_ring: littleRing.label,
-          little_out: littleOut.label
-        }
-      : // 一塁手用ここから
-        router.asPath === '/hard/first-mitt' && {
-          catch_face: catchFace.label,
-          all: all.label,
-          web: web.label,
-          edge: edge.label,
-          thumb_hook: thumbHook.label,
-          little_hook: littleHook.label,
-          index_cover: indexCover.label,
-          stitch: stitch.label,
-          linings: linings.label,
-          strap: strap.label,
-          list_lining_material: listLiningsMaterial.label,
-          hamidashi: hamidashi.label,
-          list_belt: listBelt.label,
-          thumb: thumb?.label,
-          under_web: underWeb?.label,
-          boomerang: boomerang?.label
-        }
-
-  const sortColor =
-    // 内野手用ここから
-    router.asPath === '/hard/infield'
-      ? {
-          catch_face: catchFace.color,
-          all: all.color,
-          web: web.color,
-          edge: edge.color,
-          thumb_hook: thumbHook.color,
-          little_hook: littleHook.color,
-          index_cover: indexCover.color,
-          list_belt: listBelt.color,
-          stitch: stitch.color,
-          linings: linings.color,
-          strap: strap.color,
-          list_lining_material: listLiningsMaterial.color,
-
-          thumb_out: thumbOut.color,
-          thumb_web: thumbWeb.color,
-          index_web: indexWeb.color,
-          index_middle: indexMiddle.color,
-          middle_index: middleIndex.color,
-          middle_ring: middleRing.color,
-          ring_middle: ringMiddle.color,
-          ring_little: ringLittle.color,
-          little_ring: littleRing.color,
-          little_out: littleOut.color
-        }
-      : // 一塁手用ここから
-        router.asPath === '/hard/first-mitt' && {
-          catch_face: catchFace.color,
-          all: all.color,
-          web: web.color,
-          edge: edge.color,
-          thumb_hook: thumbHook.color,
-          little_hook: littleHook.color,
-          index_cover: indexCover.color,
-          list_belt: listBelt.color,
-          stitch: stitch.color,
-          linings: linings.color,
-          strap: strap.color,
-          list_lining_material: listLiningsMaterial.color,
-          // list_belt: listBelt.color,
-          thumb: thumb?.color,
-          under_web: underWeb?.color,
-          boomerang: boomerang?.color
-        }
-
-  const sortValue =
+  const sortObj =
     router.asPath === '/hard/infield'
       ? {
           // 内野手用ここから
-          all: all.value,
-          catch_face: catchFace.value,
-          web: web.value,
-          edge: edge.value,
-          thumb_hook: thumbHook.value,
-          little_hook: littleHook.value,
-          index_cover: indexCover.value,
-          list_belt: listBelt.value,
-          stitch: stitch.value,
-          linings: linings.value,
-          strap: strap.value,
-          list_lining_material: listLiningsMaterial.value,
-          hamidashi: hamidashi.value,
-          thumb_out: thumbOut.value,
-          thumb_web: thumbWeb.value,
-          index_web: indexWeb.value,
-          index_middle: indexMiddle.value,
-          middle_index: middleIndex.value,
-          middle_ring: middleRing.value,
-          ring_middle: ringMiddle.value,
-          ring_little: ringLittle.value,
-          little_ring: littleRing.value,
-          little_out: littleOut.value
+          all,
+          catchFace,
+          web,
+          edge,
+          thumbHook,
+          littleHook,
+          indexCover,
+          listBelt,
+          stitch,
+          linings,
+          strap,
+          listLiningsMaterial,
+          hamidashi,
+          thumbOut,
+          thumbWeb,
+          indexWeb,
+          indexMiddle,
+          middleIndex,
+          middleRing,
+          ringMiddle,
+          ringLittle,
+          littleRing,
+          littleOut
         }
       : router.asPath === '/hard/first-mitt' && {
           // 一塁手用ここから
-          all: all.value,
-          catch_face: catchFace.value,
-          web: web.value,
-          edge: edge.value,
-          thumb_hook: thumbHook.value,
-          little_hook: littleHook.value,
-          index_cover: indexCover.value,
-          list_belt: listBelt.value,
-          stitch: stitch.value,
-          linings: linings.value,
-          strap: strap.value,
-          list_lining_material: listLiningsMaterial.value,
-          hamidashi: hamidashi.value,
-          // list_belt: listBelt.color,
-          thumb: thumb?.color,
-          under_web: underWeb?.color,
-          boomerang: boomerang?.color
+          all,
+          catchFace,
+          web,
+          edge,
+          thumbHook,
+          littleHook,
+          indexCover,
+          listBelt,
+          stitch,
+          linings,
+          strap,
+          listLiningsMaterial,
+          hamidashi,
+          // listBelt: listBelt.color,
+          thumb,
+          underWeb,
+          boomerang
         }
 
   const backFaceParts =
@@ -453,63 +358,64 @@ const ColoringSet: React.FC<Props> = ({ state, value, figurePanelNum, dispatch }
       {parts.value === 'stitch' ? (
         <SelectCard
           summary={'ステッチカラー'}
-          selectedLabel={sortLabel[partKey]}
-          selectedColor={sortColor[partKey]}
-          defaultValue={sortValue[partKey]}
+          selectedLabel={sortObj[partKey].label}
+          selectedColor={sortObj[partKey].color}
+          defaultValue={sortObj[partKey].value}
           objects={stitchColorObjs}
           handleChange={sortHandle[partKey]}
+          // handleChange={handle[sortHandle[partKey]]}
         />
       ) : parts.value === 'linings' ? (
         <SelectCard
           summary={'裏革カラー'}
-          selectedLabel={sortLabel[partKey]}
-          selectedColor={sortColor[partKey]}
-          defaultValue={sortValue[partKey]}
+          selectedLabel={sortObj[partKey].label}
+          selectedColor={sortObj[partKey].color}
+          defaultValue={sortObj[partKey].value}
           objects={liningsObjs}
           handleChange={sortHandle[partKey]}
         />
       ) : parts.value === 'strap' ? (
         <SelectCard
           summary={'革紐'}
-          selectedLabel={sortLabel[partKey]}
-          selectedColor={sortColor[partKey]}
-          defaultValue={sortValue[partKey]}
+          selectedLabel={sortObj[partKey].label}
+          selectedColor={sortObj[partKey].color}
+          defaultValue={sortObj[partKey].value}
           objects={strapColorObjs}
           handleChange={sortHandle[partKey]}
         />
       ) : parts.value === 'hatakeyama_label' ? (
         <SelectCard
           summary={'ラベル'}
-          selectedLabel={sortLabel[partKey]}
-          selectedColor={sortColor[partKey]}
-          defaultValue={sortValue[partKey]}
-          objects={hatakeyamaLabelObjs}
+          selectedLabel={sortObj[partKey].label}
+          selectedColor={sortObj[partKey].color}
+          defaultValue={sortObj[partKey].value}
+          objects={labelObjs}
           handleChange={sortHandle[partKey]}
         />
-      ) : parts.value === 'list_lining_material' ? (
+      ) : parts.value === 'listLiningsMaterial' ? (
         <SelectCard
           summary={'手首裏の素材'}
-          selectedLabel={sortLabel[partKey]}
-          selectedColor={sortColor[partKey]}
-          defaultValue={sortValue[partKey]}
-          objects={listLiningMaterialObjs}
+          selectedLabel={sortObj[partKey].label}
+          selectedColor={sortObj[partKey].color}
+          defaultValue={sortObj[partKey].value}
+          objects={listLiningsMaterialObjs}
           handleChange={sortHandle[partKey]}
         />
       ) : parts.value === 'hamidashi' ? (
         <SelectCard
           summary={'ハミダシ'}
-          selectedLabel={sortLabel[partKey]}
-          selectedColor={sortColor[partKey]}
-          defaultValue={sortValue[partKey]}
+          selectedLabel={sortObj[partKey].label}
+          selectedColor={sortObj[partKey].color}
+          defaultValue={sortObj[partKey].value}
           objects={hamidashiObjs}
           handleChange={sortHandle[partKey]}
         />
       ) : (
         <SelectCard
           summary={`${parts.label}カラー`}
-          selectedLabel={sortLabel[partKey]}
-          selectedColor={sortColor[partKey]}
-          defaultValue={sortValue[partKey]}
+          selectedLabel={sortObj[partKey].label}
+          selectedColor={sortObj[partKey].color}
+          defaultValue={sortObj[partKey].value}
           objects={colorObjs}
           handleChange={sortHandle[partKey]}
         />
