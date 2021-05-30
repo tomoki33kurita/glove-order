@@ -19,7 +19,8 @@ const Index: React.FC = () => {
         </Box>
         を選択中
       </Box>
-      <Grid container>
+      現在準備中
+      {/* <Grid container>
         <Grid item xs={12} md={7}>
           <FigureFields
             state={state}
@@ -30,7 +31,7 @@ const Index: React.FC = () => {
         <Grid item xs={12} md={5}>
           <DesignationBase state={state} dispatch={dispatch} figurePanelNum={figurePanelNum} />
         </Grid>
-      </Grid>
+      </Grid> */}
     </Box>
   )
 }

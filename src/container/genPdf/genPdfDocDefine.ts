@@ -6,7 +6,7 @@ import { Personal, State } from 'src/types'
 import { useCanvasFirstMittFront } from 'src/hooks/useCanvasFirstMittFront'
 import { useCanvasFirstMittBack } from 'src/hooks/useCanvasFirstMittBack'
 
-const genImgFromCanvas = (state: State, face: 'front' | 'back', asPath: string) => {
+export const genImgFromCanvas = (state: State, face: 'front' | 'back', asPath: string) => {
   const canvas = document.getElementById('canvas') as HTMLCanvasElement
   const ctx = canvas.getContext('2d')
   ctx.clearRect(0, 0, 900, 652)
