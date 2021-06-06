@@ -12,7 +12,7 @@ const Index: React.FC = () => {
   const handleFigurePanelNum = (event: any, newValue: number) => setFigurePanelNum(newValue)
 
   return (
-    <Box p={2}>
+    <Box>
       <Box p={2}>
         <Box component="span" fontWeight="bold">
           硬式 / 内野手用グラブ
