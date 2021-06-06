@@ -12,7 +12,7 @@ const Index: React.FC = () => {
   const handleFigurePanelNum = (event: any, newValue: number) => setFigurePanelNum(newValue)
 
   return (
-    <Box p={2}>
+    <Box>
       <Box p={2}>
         <Box component="span" fontWeight="bold">
           硬式 / ファーストミット
@@ -21,14 +21,10 @@ const Index: React.FC = () => {
       </Box>
       <Grid container>
         <Grid item xs={12} md={7}>
-          <FigureFields
-            state={state}
-            figurePanelNum={figurePanelNum}
-            handleFigurePanelNum={handleFigurePanelNum}
-          />
+          <FigureFields {...{ state, figurePanelNum, handleFigurePanelNum }} />
         </Grid>
         <Grid item xs={12} md={5}>
-          <DesignationBase state={state} dispatch={dispatch} figurePanelNum={figurePanelNum} />
+          <DesignationBase {...{ state, dispatch, figurePanelNum }} />
         </Grid>
       </Grid>
     </Box>

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Box } from '@material-ui/core'
 import { DevTools, State } from 'src/types'
 import DevTool from 'src/container/devTools'
 import { useRouter } from 'next/router'
@@ -30,14 +31,13 @@ const FigureFront: React.FC<Props> = ({ state, devTools, devToolStyle, handleCoo
     router.asPath === '/hard/first-mitt' && useCanvasFirstMittFront(ctx, state)
     router.asPath === '/hard/catcher-mitt' && useCanvasFirstMittFront(ctx, state)
   }, [state, router.asPath])
-
   return (
     <>
       {devTools && handleCoordinate ? (
-        <>
+        <Box>
           <canvas
-            width={900}
-            height={652}
+            width={880}
+            height={640}
             id="canvas"
             style={devToolStyle}
             onClick={(e) => handleCoordinate(e)}
@@ -50,9 +50,9 @@ const FigureFront: React.FC<Props> = ({ state, devTools, devToolStyle, handleCoo
             style={{ maxWidth: '100%' }}
           ></canvas> */}
           <DevTool devTools={devTools} />
-        </>
+        </Box>
       ) : (
-        <canvas width={900} height={652} id="canvas" style={{ maxWidth: '100%' }}></canvas>
+        <canvas width={880} height={640} id="canvas" style={{ maxWidth: '100%' }}></canvas>
       )}
     </>
   )

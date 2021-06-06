@@ -35,8 +35,8 @@ const FigureBack: React.FC<Props> = ({ state, devTools, devToolStyle, handleCoor
       {devTools && handleCoordinate ? (
         <>
           <canvas
-            width={900}
-            height={652}
+            width={880}
+            height={640}
             id="canvas"
             style={devToolStyle}
             onClick={(e) => handleCoordinate(e)}
@@ -44,7 +44,7 @@ const FigureBack: React.FC<Props> = ({ state, devTools, devToolStyle, handleCoor
           <DevTool devTools={devTools} />
         </>
       ) : (
-        <canvas width={900} height={652} id="canvas" style={{ maxWidth: '100%' }}></canvas>
+        <canvas width={880} height={640} id="canvas" style={{ maxWidth: '100%' }}></canvas>
       )}
     </>
   )
