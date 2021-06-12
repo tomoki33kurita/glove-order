@@ -1,5 +1,6 @@
 import React from 'react'
 import { Box } from '@material-ui/core'
+import { auth } from 'src/firebase'
 
 const Analysis: React.VFC<{}> = ({}) => {
   return (
