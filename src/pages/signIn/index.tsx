@@ -3,15 +3,15 @@ import Avatar from '@material-ui/core/Avatar'
 import Button from '@material-ui/core/Button'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import TextField from '@material-ui/core/TextField'
-import Link from '@material-ui/core/Link'
-import Grid from '@material-ui/core/Grid'
 import Box from '@material-ui/core/Box'
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
 import Copyright from 'src/layout/copyright'
-import { useForm } from 'react-hook-form'
+import { FormProvider, useForm, Controller } from 'react-hook-form'
+import { auth } from 'src/firebase'
+import { useRouter } from 'next/router'
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.secondary.main
   },
   form: {
-    width: '100%', // Fix IE 11 issue.
+    width: '100%',
     marginTop: theme.spacing(1)
   },
   submit: {
@@ -33,9 +33,39 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
+type AuthDataTypes = {
+  email: string
+  password: string
+}
+
 const SignIn = () => {
   const classes = useStyles()
-  const { register, handleSubmit } = useForm()
+  const { register, handleSubmit, control } = useForm<AuthDataTypes>()
+  const router = useRouter()
+
+  // ログイン画面と新規登録画面を切り替える true：ログイン画面表示 / false：新規登録画面表示
+  const [isSignUped, setIsSignUped] = React.useState(true)
+
+  const handleSignIn = async (data: AuthDataTypes) => {
+    const { email, password } = data
+    try {
+      await auth.signInWithEmailAndPassword(email, password)
+      router.push('/analysis')
+    } catch (err) {
+      alert(err.message)
+    }
+  }
+
+  const handleSignUp = async (data: AuthDataTypes) => {
+    const { email, password } = data
+    console.log('emailの中身', data)
+    try {
+      await auth.createUserWithEmailAndPassword(email, password)
+      router.push('/analysis')
+    } catch (err) {
+      alert(err.message)
+    }
+  }
 
   return (
     <Container component="main" maxWidth="xs">
@@ -45,35 +75,51 @@ const SignIn = () => {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          管理者用ログイン画面
+          {isSignUped ? '管理者用ログイン画面' : '管理者アカウント新規登録画面'}
         </Typography>
-        <form className={classes.form} noValidate>
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            id="email"
-            label="メールアドレス"
-            name="email"
-            autoComplete="email"
-            autoFocus
+        <form
+          className={classes.form}
+          noValidate
+          onSubmit={isSignUped ? handleSubmit(handleSignIn) : handleSubmit(handleSignUp)}
+        >
+          <Controller
+            name={'email'}
+            control={control}
+            rules={{ required: true }}
+            render={({ field }) => {
+              return (
+                <TextField
+                  {...field}
+                  id={field.name}
+                  variant="outlined"
+                  label="メールアドレス"
+                  {...register('email')}
+                  margin="normal"
+                  required
+                />
+              )
+            }}
           />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            label="パスワード"
-            type="password"
-            id="password"
-            autoComplete="current-password"
+          <Controller
+            name={'password'}
+            control={control}
+            rules={{ required: true }}
+            render={({ field }) => {
+              return (
+                <TextField
+                  {...field}
+                  id={field.name}
+                  variant="outlined"
+                  type="password"
+                  label="パスワード"
+                  {...register('password')}
+                  margin="normal"
+                  required
+                  autoComplete={'current-password'}
+                />
+              )
+            }}
           />
-          {/* <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="Remember me"
-          /> */}
           <Button
             type="submit"
             fullWidth
@@ -81,15 +127,8 @@ const SignIn = () => {
             color="primary"
             className={classes.submit}
           >
-            ログイン
+            {isSignUped ? 'ログイン' : '新規登録'}
           </Button>
-          <Grid container>
-            <Grid item xs>
-              <Link href="#" variant="body2">
-                パスワードを忘れた場合はこちら
-              </Link>
-            </Grid>
-          </Grid>
         </form>
       </div>
       <Box mt={8}>
