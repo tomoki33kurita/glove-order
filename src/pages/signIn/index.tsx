@@ -40,13 +40,13 @@ type AuthDataTypes = {
 
 const SignIn = () => {
   const classes = useStyles()
-  const { register, handleSubmit, control } = useForm<AuthDataTypes>()
+  const { register, handleSubmit, control } = useForm()
   const router = useRouter()
 
   // ログイン画面と新規登録画面を切り替える true：ログイン画面表示 / false：新規登録画面表示
   const [isSignUped, setIsSignUped] = React.useState(true)
 
-  const handleSignIn = async (data: AuthDataTypes) => {
+  const handleSignIn = async (data: any) => {
     const { email, password } = data
     try {
       await auth.signInWithEmailAndPassword(email, password)
