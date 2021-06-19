@@ -1,21 +1,27 @@
 import React from 'react'
-import { Box } from '@material-ui/core'
+import { Box, CircularProgress } from '@material-ui/core'
+import Auth from 'src/auth'
 import { auth } from 'src/firebase'
-import { useRouter } from 'next/router'
 
 const Analysis: React.VFC<{}> = ({}) => {
-  console.log('中身', !auth.currentUser)
-  const router = useRouter()
-
-  // ページへのアクセス者が、ログイン済みかどうかチェック
+  const [user, setUser] = React.useState<any>(false)
   React.useEffect(() => {
-    !auth.currentUser && router.push('/signIn')
+    auth.onAuthStateChanged((user) => setUser(user))
   }, [])
 
   return (
-    <Box mt={2} ml={2}>
-      <Box>ここは分析をするためのページであるのだ</Box>
-    </Box>
+    <Auth>
+      {user ? (
+        <Box mt={2} ml={2}>
+          <Box>ここは分析をするためのページであるのだ</Box>
+          <Box>ユーザー：{user?.email}</Box>
+        </Box>
+      ) : (
+        <Box style={{ position: 'absolute', top: '50%', left: '50%' }}>
+          <CircularProgress />
+        </Box>
+      )}
+    </Auth>
   )
 }
 

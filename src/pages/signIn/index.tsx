@@ -7,10 +7,10 @@ import Box from '@material-ui/core/Box'
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
+import Copyright from '../../layout/copyright'
 import Container from '@material-ui/core/Container'
-import Copyright from 'src/layout/copyright'
 import { FormProvider, useForm, Controller } from 'react-hook-form'
-import { auth } from 'src/firebase'
+import { auth } from '../../firebase'
 import { useRouter } from 'next/router'
 
 const useStyles = makeStyles((theme) => ({
