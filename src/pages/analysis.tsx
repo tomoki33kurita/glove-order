@@ -4,7 +4,7 @@ import { auth } from 'src/firebase'
 import { useRouter } from 'next/router'
 
 const Analysis: React.VFC<{}> = ({}) => {
-  console.log('中身', !auth.currentUser)
+  console.log('中身', auth.currentUser)
   const router = useRouter()
 
   // ページへのアクセス者が、ログイン済みかどうかチェック
