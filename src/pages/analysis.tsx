@@ -3,7 +3,6 @@ import { Box, CircularProgress, Link } from '@material-ui/core'
 import Auth from 'src/auth'
 import { auth, db } from 'src/firebase'
 import { useRouter } from 'next/router'
-import { route } from 'next/dist/next-server/server/router'
 
 const Analysis: React.VFC<{}> = ({}) => {
   const [user, setUser] = React.useState<any>(false)
@@ -20,6 +19,7 @@ const Analysis: React.VFC<{}> = ({}) => {
     fetchDatas()
   }, [])
 
+  // ログアウト用メソッド
   const handleSignOut = async () => {
     await auth
       .signOut()

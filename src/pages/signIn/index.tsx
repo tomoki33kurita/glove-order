@@ -1,19 +1,17 @@
 import React from 'react'
-import Avatar from '@material-ui/core/Avatar'
-import Button from '@material-ui/core/Button'
 import CssBaseline from '@material-ui/core/CssBaseline'
-import TextField from '@material-ui/core/TextField'
-import Box from '@material-ui/core/Box'
+import { Box, TextField, Button, Avatar, CircularProgress } from '@material-ui/core'
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 import Copyright from '../../layout/copyright'
 import Container from '@material-ui/core/Container'
-import { FormProvider, useForm, Controller } from 'react-hook-form'
+import { useForm, Controller } from 'react-hook-form'
 import { auth } from '../../firebase'
 import { useRouter } from 'next/router'
 import firebase from 'firebase/app'
 
+// styles
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -41,13 +39,14 @@ type AuthDataTypes = {
 
 const SignIn = () => {
   const classes = useStyles()
-  const { register, handleSubmit, control } = useForm()
+  const { handleSubmit, control } = useForm()
   const router = useRouter()
 
   // ログイン画面と新規登録画面を切り替える true：ログイン画面表示 / false：新規登録画面表示
   const [isSignUped, setIsSignUped] = React.useState(true)
-
+  const [isLogining, setIsLogining] = React.useState(false)
   const handleSignIn = async (data: any) => {
+    setIsLogining(true)
     const { email, password } = data
     try {
       await auth
@@ -82,13 +81,11 @@ const SignIn = () => {
         </Typography>
         <form
           className={classes.form}
-          noValidate
           onSubmit={isSignUped ? handleSubmit(handleSignIn) : handleSubmit(handleSignUp)}
         >
           <Controller
             name={'email'}
             control={control}
-            rules={{ required: true }}
             render={({ field }) => {
               return (
                 <TextField
@@ -96,9 +93,9 @@ const SignIn = () => {
                   id={field.name}
                   variant="outlined"
                   label="メールアドレス"
-                  {...register('email')}
                   margin="normal"
                   required
+                  autoFocus
                 />
               )
             }}
@@ -106,7 +103,6 @@ const SignIn = () => {
           <Controller
             name={'password'}
             control={control}
-            rules={{ required: true }}
             render={({ field }) => {
               return (
                 <TextField
@@ -115,7 +111,6 @@ const SignIn = () => {
                   variant="outlined"
                   type="password"
                   label="パスワード"
-                  {...register('password')}
                   margin="normal"
                   required
                   autoComplete={'current-password'}
@@ -132,6 +127,12 @@ const SignIn = () => {
           >
             {isSignUped ? 'ログイン' : '新規登録'}
           </Button>
+          {isLogining && (
+            <Box style={{ textAlign: 'right' }}>
+              ログイン中...
+              <CircularProgress size={14} />
+            </Box>
+          )}
         </form>
       </div>
       <Box mt={8}>
