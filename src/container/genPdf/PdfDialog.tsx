@@ -10,13 +10,14 @@ import {
 } from '@material-ui/core'
 import { State } from 'src/types'
 import pdfMake from 'pdfmake/build/pdfmake'
-import { useForm } from 'react-hook-form'
+import { Controller, useForm } from 'react-hook-form'
 import { useDebounce } from 'use-debounce'
 import { Action, Personal } from 'src/types'
 import { SET_PERSONAL } from 'src/constants/ActionTypes'
 import { japaneseFont } from 'src/constants/vfs_fonts'
 import { genPdfDocDefine } from 'src/container/genPdf/genPdfDocDefine'
 import { useRouter } from 'next/router'
+import ControlledTextField from 'src/components/molecules/ControlledTextField'
 pdfMake.vfs = japaneseFont
 // import pdfFonts from 'pdfmake/build/vfs_fonts'
 // pdfMake.vfs = pdfFonts.pdfMake.vfs
@@ -87,7 +88,7 @@ const PdfDialog: React.FC<Props> = ({ state, open, handleClose, dispatch }) => {
     // { head: 'ターゲット加工：', label: state.target.label, color: state.target.color },
     // { head: 'ラベル：', label: state.hatakeyamaLabel.label, color: state.hatakeyamaLabel.color },
   ]
-  const { register, handleSubmit } = useForm()
+  const { register, control, handleSubmit } = useForm()
   const [personalData, setPersonalData] = React.useState<Personal>()
   const handleChange = (data: any) => {
     const payload = {
@@ -216,76 +217,37 @@ const PdfDialog: React.FC<Props> = ({ state, open, handleClose, dispatch }) => {
               <Grid container>
                 <Grid item xs={12} sm={6}>
                   <Box p={1}>
-                    <TextField
-                      label="お客様名"
-                      name="userName"
-                      inputRef={register}
-                      variant="outlined"
-                    />
+                    <ControlledTextField name={'userName'} label={'お客様名'} />
                   </Box>
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <Box p={1}>
-                    <TextField
-                      label="お客様名(カナ)"
-                      name="userNameKana"
-                      inputRef={register}
-                      variant="outlined"
-                    />
+                    <ControlledTextField name={'userNameKana'} label={'お客様名(カナ)'} />
                   </Box>
                 </Grid>
                 <Grid item xs={12} sm={3}>
                   <Box p={1}>
-                    <TextField
-                      label="郵便番号"
-                      inputRef={register}
-                      name="zipcode"
-                      variant="outlined"
-                      fullWidth
-                    />
+                    <ControlledTextField name={'zipcode'} label={'郵便番号'} />
                   </Box>
                 </Grid>
                 <Grid item xs={12} sm={9}>
                   <Box p={1}>
-                    <TextField
-                      label="ご住所"
-                      inputRef={register}
-                      name="address"
-                      variant="outlined"
-                      fullWidth
-                    />
+                    <ControlledTextField name={'address'} label={'ご住所'} />
                   </Box>
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <Box p={1}>
-                    <TextField
-                      label="お電話番号"
-                      inputRef={register}
-                      name="phoneNumber"
-                      variant="outlined"
-                    />
+                    <ControlledTextField name={'phoneNumber'} label={'お電話番号'} />
                   </Box>
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <Box p={1}>
-                    <TextField
-                      label="メールアドレス"
-                      inputRef={register}
-                      name="mailAddress"
-                      variant="outlined"
-                    />
+                    <ControlledTextField name={'mailAddress'} label={'メールアドレス'} />
                   </Box>
                 </Grid>
                 <Grid item xs={12}>
                   <Box p={1}>
-                    <TextField
-                      label="備考"
-                      multiline
-                      rows={5}
-                      inputRef={register}
-                      name="remarks"
-                      variant="outlined"
-                    />
+                    <ControlledTextField name={'remarks'} label={'備考'} />
                   </Box>
                 </Grid>
               </Grid>
