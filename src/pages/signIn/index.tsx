@@ -12,6 +12,7 @@ import Container from '@material-ui/core/Container'
 import { FormProvider, useForm, Controller } from 'react-hook-form'
 import { auth } from '../../firebase'
 import { useRouter } from 'next/router'
+import firebase from 'firebase/app'
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -49,7 +50,9 @@ const SignIn = () => {
   const handleSignIn = async (data: any) => {
     const { email, password } = data
     try {
-      await auth.signInWithEmailAndPassword(email, password)
+      await auth
+        .setPersistence(firebase.auth.Auth.Persistence.SESSION)
+        .then(() => auth.signInWithEmailAndPassword(email, password))
       router.push('/analysis')
     } catch (err) {
       alert(err.message)
