@@ -1,9 +1,21 @@
 import React from 'react'
-import { Box, AppBar, Toolbar, Typography, Container, Grid, Link, Paper } from '@material-ui/core'
+import {
+  Box,
+  AppBar,
+  Toolbar,
+  Typography,
+  Container,
+  Grid,
+  Link,
+  Paper,
+  Button
+} from '@material-ui/core'
 import clsx from 'clsx'
 import { makeStyles } from '@material-ui/core/styles'
 import { BarCharts } from './BarChart'
 import Select from 'react-select'
+import { useRouter } from 'next/router'
+import { leagueOpts, positionOpts } from 'src/constants/analysisSelectOpts'
 // import { Drawingboard } from './Drawingboard'
 // import { Orders } from './Orders'
 
@@ -47,6 +59,7 @@ type Props = {
 export const Dashboard: React.VFC<Props> = ({ userEmail, handleSignOut }) => {
   const classes = useStyles()
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight)
+  const router = useRouter()
 
   return (
     <div className={classes.root}>
@@ -58,7 +71,14 @@ export const Dashboard: React.VFC<Props> = ({ userEmail, handleSignOut }) => {
           {userEmail && (
             <Box mt={2} ml={2}>
               <Box>ユーザー：{userEmail}</Box>
-              <Box style={{ display: 'flex', justifyContent: 'flex-end' }}>
+              <Box display={'flex'} justifyContent={'space-around'}>
+                <Link
+                  onClick={() => router.push('/')}
+                  color={'secondary'}
+                  style={{ cursor: 'pointer' }}
+                >
+                  トップページ
+                </Link>
                 <Link
                   onClick={() => handleSignOut()}
                   style={{ cursor: 'pointer' }}
@@ -73,25 +93,64 @@ export const Dashboard: React.VFC<Props> = ({ userEmail, handleSignOut }) => {
       </AppBar>
       <main className={classes.content}>
         <Container maxWidth="lg" className={classes.container}>
-          <Grid>
-            <Select options={[]} />
-          </Grid>
-          <Grid container spacing={3}>
-            {/* Chart */}
+          <Grid container>
             <Grid item xs={12} md={6}>
-              <Paper className={fixedHeightPaper}>{<BarCharts title={'単色/本体カラー'} />}</Paper>
+              <Box mb={1} p={1}>
+                <Box my={0} component={'h3'}>
+                  リーグ
+                </Box>
+                <Select options={leagueOpts} />
+              </Box>
             </Grid>
-            {/* Chart */}
             <Grid item xs={12} md={6}>
-              <Paper className={fixedHeightPaper}>{<BarCharts title={'革紐'} />}</Paper>
+              <Box mb={1} p={1}>
+                <Box my={0} component={'h3'}>
+                  ポジション
+                </Box>
+                <Select options={positionOpts} />
+              </Box>
             </Grid>
-            {/* Recent Orders */}
-            {/* <Grid item xs={12}>
-              <Paper className={classes.paper}>
-                <Orders />
-              </Paper>
+            {/* <Grid item xs={12} md={4}>
+              <Box mb={1} p={1}>
+                <Box my={0} component={'h3'}>
+                  　カラー数
+                </Box>
+                <Select options={[]} />
+              </Box>
             </Grid> */}
+            <Box mx={'auto'} width={'20%'} display={'flex'} justifyContent={'space-around'}>
+              <Button variant="contained" color="primary">
+                検索
+              </Button>
+              <Button variant="outlined">リセット</Button>
+            </Box>
           </Grid>
+          <Box mt={3}>
+            <Grid container spacing={3}>
+              {/* Chart */}
+              <Grid item xs={12} md={6}>
+                <Paper className={fixedHeightPaper}>
+                  {<BarCharts title={'単色/本体カラー'} />}
+                </Paper>
+              </Grid>
+              {/* Chart */}
+              <Grid item xs={12} md={6}>
+                <Paper className={fixedHeightPaper}>{<BarCharts title={'革紐'} />}</Paper>
+              </Grid>
+            </Grid>
+          </Box>
+          <Box mt={3}>
+            <Grid container spacing={3}>
+              {/* Chart */}
+              <Grid item xs={12} md={6}>
+                <Paper className={fixedHeightPaper}>{<BarCharts title={'ステッチカラー'} />}</Paper>
+              </Grid>
+              {/* Chart */}
+              <Grid item xs={12} md={6}>
+                <Paper className={fixedHeightPaper}>{<BarCharts title={'ウェブ'} />}</Paper>
+              </Grid>
+            </Grid>
+          </Box>
         </Container>
       </main>
     </div>
