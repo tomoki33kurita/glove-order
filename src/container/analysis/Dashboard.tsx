@@ -3,6 +3,7 @@ import { Box, AppBar, Toolbar, Typography, Container, Grid, Link, Paper } from '
 import clsx from 'clsx'
 import { makeStyles } from '@material-ui/core/styles'
 import { BarCharts } from './BarChart'
+import Select from 'react-select'
 // import { Drawingboard } from './Drawingboard'
 // import { Orders } from './Orders'
 
@@ -72,6 +73,9 @@ export const Dashboard: React.VFC<Props> = ({ userEmail, handleSignOut }) => {
       </AppBar>
       <main className={classes.content}>
         <Container maxWidth="lg" className={classes.container}>
+          <Grid>
+            <Select options={[]} />
+          </Grid>
           <Grid container spacing={3}>
             {/* Chart */}
             <Grid item xs={12} md={6}>
