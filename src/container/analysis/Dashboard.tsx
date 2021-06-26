@@ -1,14 +1,7 @@
 import React from 'react'
+import { Box, AppBar, Toolbar, Typography, Container, Grid, Link, Paper } from '@material-ui/core'
 import clsx from 'clsx'
 import { makeStyles } from '@material-ui/core/styles'
-import CssBaseline from '@material-ui/core/CssBaseline'
-import Box from '@material-ui/core/Box'
-import AppBar from '@material-ui/core/AppBar'
-import Toolbar from '@material-ui/core/Toolbar'
-import Typography from '@material-ui/core/Typography'
-import Container from '@material-ui/core/Container'
-import Grid from '@material-ui/core/Grid'
-import Paper from '@material-ui/core/Paper'
 import { BarCharts } from './BarChart'
 // import { Drawingboard } from './Drawingboard'
 // import { Orders } from './Orders'
@@ -27,7 +20,8 @@ const useStyles = makeStyles((theme) => ({
   content: {
     flexGrow: 1,
     height: '100vh',
-    overflow: 'auto'
+    overflow: 'auto',
+    marginTop: '48px'
   },
   container: {
     paddingTop: theme.spacing(4),
@@ -44,22 +38,39 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-export const Dashboard = () => {
+type Props = {
+  userEmail?: string
+  handleSignOut: () => void
+}
+
+export const Dashboard: React.VFC<Props> = ({ userEmail, handleSignOut }) => {
   const classes = useStyles()
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight)
 
   return (
     <div className={classes.root}>
-      <CssBaseline />
-      <AppBar position="absolute">
+      <AppBar>
         <Toolbar className={classes.toolbar}>
           <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
             Dashboard
           </Typography>
+          {userEmail && (
+            <Box mt={2} ml={2}>
+              <Box>ユーザー：{userEmail}</Box>
+              <Box style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                <Link
+                  onClick={() => handleSignOut()}
+                  style={{ cursor: 'pointer' }}
+                  color={'secondary'}
+                >
+                  ログアウト
+                </Link>
+              </Box>
+            </Box>
+          )}
         </Toolbar>
       </AppBar>
       <main className={classes.content}>
-        <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
           <Grid container spacing={3}>
             {/* Chart */}
