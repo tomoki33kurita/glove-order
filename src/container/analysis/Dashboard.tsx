@@ -16,6 +16,8 @@ import { BarCharts } from './BarChart'
 import Select from 'react-select'
 import { useRouter } from 'next/router'
 import { leagueOpts, positionOpts } from 'src/constants/analysisSelectOpts'
+import { State } from 'src/types'
+import { FireStoreStateData } from 'src/pages/analysis'
 // import { Drawingboard } from './Drawingboard'
 // import { Orders } from './Orders'
 
@@ -53,13 +55,52 @@ const useStyles = makeStyles((theme) => ({
 
 type Props = {
   userEmail?: string
+  datas?: FireStoreStateData[]
   handleSignOut: () => void
 }
 
-export const Dashboard: React.VFC<Props> = ({ userEmail, handleSignOut }) => {
+export const Dashboard: React.VFC<Props> = ({ userEmail, datas, handleSignOut }) => {
   const classes = useStyles()
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight)
   const router = useRouter()
+
+  // TODO いずれリファクタする
+  const leatherColorsData = datas
+    .map((data) => ({ color: data.all.label }))
+    .reduce((a, c) => {
+      const num = datas.filter((data) => data.all.label === c.color).length
+      return a.concat({ color: c.color, num })
+    }, [])
+  const strapColorsData = datas
+    .map((data) => ({ color: data.strap.label }))
+    .reduce((a, c) => {
+      const num = datas.filter((data) => data.strap.label === c.color).length
+      return a.concat({ color: c.color, num })
+    }, [])
+  const stitchColorsData = datas
+    .map((data) => ({ color: data.stitch.label }))
+    .reduce((a, c) => {
+      const num = datas.filter((data) => data.stitch.label === c.color).length
+      return a.concat({ color: c.color, num })
+    }, [])
+  const webColorsData = datas
+    .map((data) => ({ color: data.web.label }))
+    .reduce((a, c) => {
+      const num = datas.filter((data) => data.web.label === c.color).length
+      return a.concat({ color: c.color, num })
+    }, [])
+  const edgeColorsData = datas
+    .map((data) => ({ color: data.edge.label }))
+    .reduce((a, c) => {
+      const num = datas.filter((data) => data.edge.label === c.color).length
+      return a.concat({ color: c.color, num })
+    }, [])
+  const catchFaceColorsData = datas
+    .map((data) => ({ color: data.catchFace.label }))
+    .reduce((a, c) => {
+      const num = datas.filter((data) => data.catchFace.label === c.color).length
+      return a.concat({ color: c.color, num })
+    }, [])
 
   return (
     <div className={classes.root}>
@@ -130,12 +171,14 @@ export const Dashboard: React.VFC<Props> = ({ userEmail, handleSignOut }) => {
               {/* Chart */}
               <Grid item xs={12} md={6}>
                 <Paper className={fixedHeightPaper}>
-                  {<BarCharts title={'単色/本体カラー'} />}
+                  {<BarCharts title={'単色/本体カラー'} data={leatherColorsData} />}
                 </Paper>
               </Grid>
               {/* Chart */}
               <Grid item xs={12} md={6}>
-                <Paper className={fixedHeightPaper}>{<BarCharts title={'革紐'} />}</Paper>
+                <Paper className={fixedHeightPaper}>
+                  {<BarCharts title={'革紐'} data={strapColorsData} />}
+                </Paper>
               </Grid>
             </Grid>
           </Box>
@@ -143,11 +186,31 @@ export const Dashboard: React.VFC<Props> = ({ userEmail, handleSignOut }) => {
             <Grid container spacing={3}>
               {/* Chart */}
               <Grid item xs={12} md={6}>
-                <Paper className={fixedHeightPaper}>{<BarCharts title={'ステッチカラー'} />}</Paper>
+                <Paper className={fixedHeightPaper}>
+                  {<BarCharts title={'ステッチカラー'} data={stitchColorsData} />}
+                </Paper>
               </Grid>
               {/* Chart */}
               <Grid item xs={12} md={6}>
-                <Paper className={fixedHeightPaper}>{<BarCharts title={'ウェブ'} />}</Paper>
+                <Paper className={fixedHeightPaper}>
+                  {<BarCharts title={'ウェブ'} data={webColorsData} />}
+                </Paper>
+              </Grid>
+            </Grid>
+          </Box>
+          <Box mt={3}>
+            <Grid container spacing={3}>
+              {/* Chart */}
+              <Grid item xs={12} md={6}>
+                <Paper className={fixedHeightPaper}>
+                  {<BarCharts title={'ヘリ革'} data={stitchColorsData} />}
+                </Paper>
+              </Grid>
+              {/* Chart */}
+              <Grid item xs={12} md={6}>
+                <Paper className={fixedHeightPaper}>
+                  {<BarCharts title={'捕球面'} data={webColorsData} />}
+                </Paper>
               </Grid>
             </Grid>
           </Box>
