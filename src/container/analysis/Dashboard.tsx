@@ -1,57 +1,24 @@
 import React from 'react'
-import {
-  Box,
-  AppBar,
-  Toolbar,
-  Typography,
-  Container,
-  Grid,
-  Link,
-  Paper,
-  Button
-} from '@material-ui/core'
+import { Box, Container, Grid, Paper, Button } from '@material-ui/core'
 import clsx from 'clsx'
-import { makeStyles } from '@material-ui/core/styles'
 import { BarCharts } from './BarChart'
 import Select from 'react-select'
-import { useRouter } from 'next/router'
 import { leagueOpts, positionOpts } from 'src/constants/analysisSelectOpts'
-import { State } from 'src/types'
 import { FireStoreStateData } from 'src/pages/analysis'
+import AnalysisHeader from 'src/layout/header'
+import { useDashboardStyles } from 'src/styles/Dashboard'
 // import { Drawingboard } from './Drawingboard'
 // import { Orders } from './Orders'
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex'
-  },
-  toolbar: {
-    paddingRight: 24 // keep right padding when drawer closed
-  },
-  title: {
-    flexGrow: 1
-  },
-  appBarSpacer: theme.mixins.toolbar,
-  content: {
-    flexGrow: 1,
-    height: '100vh',
-    overflow: 'auto',
-    marginTop: '48px'
-  },
-  container: {
-    paddingTop: theme.spacing(4),
-    paddingBottom: theme.spacing(4)
-  },
-  paper: {
-    padding: theme.spacing(2),
-    display: 'flex',
-    overflow: 'auto',
-    flexDirection: 'column'
-  },
-  fixedHeight: {
-    height: 240
-  }
-}))
+// 棒グラフのデータ生成
+const genColorDataByPart = (data: FireStoreStateData[], part: string) =>
+  data // @ts-ignore
+    .map((value) => ({ color: value[part].label }))
+    .reduce((a, c) => {
+      // @ts-ignore
+      const num = data.filter((value) => value[part].label === c.color).length
+      return a.concat({ color: c.color, num })
+    }, [])
 
 type Props = {
   userEmail?: string
@@ -60,78 +27,20 @@ type Props = {
 }
 
 export const Dashboard: React.VFC<Props> = ({ userEmail, datas, handleSignOut }) => {
-  const classes = useStyles()
+  const classes = useDashboardStyles()
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight)
-  const router = useRouter()
 
-  // TODO いずれリファクタする
-  const leatherColorsData = datas
-    .map((data) => ({ color: data.all.label }))
-    .reduce((a, c) => {
-      const num = datas.filter((data) => data.all.label === c.color).length
-      return a.concat({ color: c.color, num })
-    }, [])
-  const strapColorsData = datas
-    .map((data) => ({ color: data.strap.label }))
-    .reduce((a, c) => {
-      const num = datas.filter((data) => data.strap.label === c.color).length
-      return a.concat({ color: c.color, num })
-    }, [])
-  const stitchColorsData = datas
-    .map((data) => ({ color: data.stitch.label }))
-    .reduce((a, c) => {
-      const num = datas.filter((data) => data.stitch.label === c.color).length
-      return a.concat({ color: c.color, num })
-    }, [])
-  const webColorsData = datas
-    .map((data) => ({ color: data.web.label }))
-    .reduce((a, c) => {
-      const num = datas.filter((data) => data.web.label === c.color).length
-      return a.concat({ color: c.color, num })
-    }, [])
-  const edgeColorsData = datas
-    .map((data) => ({ color: data.edge.label }))
-    .reduce((a, c) => {
-      const num = datas.filter((data) => data.edge.label === c.color).length
-      return a.concat({ color: c.color, num })
-    }, [])
-  const catchFaceColorsData = datas
-    .map((data) => ({ color: data.catchFace.label }))
-    .reduce((a, c) => {
-      const num = datas.filter((data) => data.catchFace.label === c.color).length
-      return a.concat({ color: c.color, num })
-    }, [])
+  const leatherColorsData = genColorDataByPart(datas, 'all')
+  const strapColorsData = genColorDataByPart(datas, 'strap')
+  // const stitchColorsData = genColorDataByPart(datas, 'stitch')
+  // const webColorsData = genColorDataByPart(datas, 'web')
+  // const edgeColorsData = genColorDataByPart(datas, 'edge')
+  // const catchFaceColorsData = genColorDataByPart(datas, 'catchFace')
 
   return (
     <div className={classes.root}>
-      <AppBar>
-        <Toolbar className={classes.toolbar}>
-          <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-            Dashboard
-          </Typography>
-          {userEmail && (
-            <Box mt={2} ml={2}>
-              <Box>ユーザー：{userEmail}</Box>
-              <Box display={'flex'} justifyContent={'space-around'}>
-                <Link
-                  onClick={() => router.push('/')}
-                  color={'secondary'}
-                  style={{ cursor: 'pointer' }}
-                >
-                  トップページ
-                </Link>
-                <Link
-                  onClick={() => handleSignOut()}
-                  style={{ cursor: 'pointer' }}
-                  color={'secondary'}
-                >
-                  ログアウト
-                </Link>
-              </Box>
-            </Box>
-          )}
-        </Toolbar>
-      </AppBar>
+      <AnalysisHeader {...{ userEmail, handleSignOut }} />
+
       <main className={classes.content}>
         <Container maxWidth="lg" className={classes.container}>
           <Grid container>
@@ -171,45 +80,13 @@ export const Dashboard: React.VFC<Props> = ({ userEmail, datas, handleSignOut })
               {/* Chart */}
               <Grid item xs={12} md={6}>
                 <Paper className={fixedHeightPaper}>
-                  {<BarCharts title={'単色/本体カラー'} data={leatherColorsData} />}
+                  <BarCharts title={'単色/本体カラー'} data={leatherColorsData} />
                 </Paper>
               </Grid>
               {/* Chart */}
               <Grid item xs={12} md={6}>
                 <Paper className={fixedHeightPaper}>
-                  {<BarCharts title={'革紐'} data={strapColorsData} />}
-                </Paper>
-              </Grid>
-            </Grid>
-          </Box>
-          <Box mt={3}>
-            <Grid container spacing={3}>
-              {/* Chart */}
-              <Grid item xs={12} md={6}>
-                <Paper className={fixedHeightPaper}>
-                  {<BarCharts title={'ステッチカラー'} data={stitchColorsData} />}
-                </Paper>
-              </Grid>
-              {/* Chart */}
-              <Grid item xs={12} md={6}>
-                <Paper className={fixedHeightPaper}>
-                  {<BarCharts title={'ウェブ'} data={webColorsData} />}
-                </Paper>
-              </Grid>
-            </Grid>
-          </Box>
-          <Box mt={3}>
-            <Grid container spacing={3}>
-              {/* Chart */}
-              <Grid item xs={12} md={6}>
-                <Paper className={fixedHeightPaper}>
-                  {<BarCharts title={'ヘリ革'} data={stitchColorsData} />}
-                </Paper>
-              </Grid>
-              {/* Chart */}
-              <Grid item xs={12} md={6}>
-                <Paper className={fixedHeightPaper}>
-                  {<BarCharts title={'捕球面'} data={webColorsData} />}
+                  <BarCharts title={'革紐'} data={strapColorsData} />
                 </Paper>
               </Grid>
             </Grid>
