@@ -31,7 +31,7 @@ export const a11yProps = (index: number): any => {
 }
 
 type Props = {
-  state: State
+  state?: State
   figurePanelNum: number
   handleFigurePanelNum: (event: any, newValue: number) => void
 }
@@ -58,22 +58,26 @@ const FigureFields: React.FC<Props> = ({ state, figurePanelNum, handleFigurePane
   return (
     <Box position="sticky" top={0} mb={1}>
       <TabPanel value={figurePanelNum} index={0}>
-        <FigureFront
-          state={state}
-          // 開発で座標を取得したいときは以下を有効にする
-          // devTools={{ cordinateX, cordinateY, isCopy, setCopy }}
-          // devToolStyle={devToolStyleFront}
-          // handleCoordinate={handleCoordinate}
-        />
+        {state && ( // 分析画面でのエラー防止のため判定必要
+          <FigureFront
+            state={state}
+            // 開発で座標を取得したいときは以下を有効にする
+            // devTools={{ cordinateX, cordinateY, isCopy, setCopy }}
+            // devToolStyle={devToolStyleFront}
+            // handleCoordinate={handleCoordinate}
+          />
+        )}
       </TabPanel>
       <TabPanel value={figurePanelNum} index={1}>
-        <FigureBack
-          state={state}
-          // 開発で座標を取得したいときは以下を有効にする
-          // devTools={{ cordinateX, cordinateY, isCopy, setCopy }}
-          // devToolStyle={devToolStyleBack}
-          // handleCoordinate={handleCoordinate}
-        />
+        {state && ( // 分析画面でのエラー防止のため判定必要
+          <FigureBack
+            state={state}
+            // 開発で座標を取得したいときは以下を有効にする
+            // devTools={{ cordinateX, cordinateY, isCopy, setCopy }}
+            // devToolStyle={devToolStyleBack}
+            // handleCoordinate={handleCoordinate}
+          />
+        )}
       </TabPanel>
       <AppBar position="static">
         <Tabs

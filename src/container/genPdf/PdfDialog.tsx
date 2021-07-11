@@ -1,16 +1,8 @@
 import React from 'react'
-import {
-  Grid,
-  Box,
-  Button,
-  Dialog,
-  DialogContent,
-  DialogActions,
-  TextField
-} from '@material-ui/core'
+import { Grid, Box, Button, Dialog, DialogContent, DialogActions } from '@material-ui/core'
 import { State } from 'src/types'
 import pdfMake from 'pdfmake/build/pdfmake'
-import { Controller, useForm } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 import { useDebounce } from 'use-debounce'
 import { Action, Personal } from 'src/types'
 import { SET_PERSONAL } from 'src/constants/ActionTypes'
@@ -50,6 +42,7 @@ const genSetFirstMittData = (state: State) => ({
   },
   padModel: state.padModel,
   stitch: state.stitch,
+  strap: state.strap,
   thumb: state.thumb,
   thumbHook: state.thumbHook,
   underWeb: state.underWeb,
@@ -128,7 +121,7 @@ const PdfDialog: React.FC<Props> = ({ state, open, handleClose, dispatch }) => {
     // { head: 'ターゲット加工：', label: state.target.label, color: state.target.color },
     // { head: 'ラベル：', label: state.hatakeyamaLabel.label, color: state.hatakeyamaLabel.color },
   ]
-  const { register, control, handleSubmit } = useForm()
+  const { handleSubmit } = useForm()
   const [personalData, setPersonalData] = React.useState<Personal>()
   const handleChange = (data: any) => {
     const payload = {

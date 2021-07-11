@@ -44,13 +44,6 @@ const FigureFront: React.FC<Props> = ({ state, devTools, devToolStyle, handleCoo
             style={devToolStyle}
             onClick={(e) => handleCoordinate(e)}
           ></canvas>
-          {/* <canvas
-            width={900}
-            height={652}
-            id="canvas"
-            onClick={(e) => handleCoordinate(e)}
-            style={{ maxWidth: '100%' }}
-          ></canvas> */}
           <DevTool devTools={devTools} />
         </Box>
       ) : (
