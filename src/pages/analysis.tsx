@@ -23,6 +23,8 @@ const Analysis: React.VFC<{}> = ({}) => {
     const res = await db.collection('glove-orders').orderBy('createdAt', 'desc').get()
     setData(res.docs.map((data) => data.data()) as FireStoreStateData[])
   }
+
+  // 画面アクセス時
   React.useEffect(() => {
     auth.onAuthStateChanged((user) => setUser(user))
     fetchData()
