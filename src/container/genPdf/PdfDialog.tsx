@@ -1,16 +1,8 @@
 import React from 'react'
-import {
-  Grid,
-  Box,
-  Button,
-  Dialog,
-  DialogContent,
-  DialogActions,
-  TextField
-} from '@material-ui/core'
+import { Grid, Box, Button, Dialog, DialogContent, DialogActions } from '@material-ui/core'
 import { State } from 'src/types'
 import pdfMake from 'pdfmake/build/pdfmake'
-import { Controller, useForm } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 import { useDebounce } from 'use-debounce'
 import { Action, Personal } from 'src/types'
 import { SET_PERSONAL } from 'src/constants/ActionTypes'
@@ -18,11 +10,46 @@ import { japaneseFont } from 'src/constants/vfs_fonts'
 import { genPdfDocDefine } from 'src/container/genPdf/genPdfDocDefine'
 import { useRouter } from 'next/router'
 import ControlledTextField from 'src/components/molecules/ControlledTextField'
+import { db } from 'src/firebase'
+import firebase from 'firebase/app'
+
 pdfMake.vfs = japaneseFont
 // import pdfFonts from 'pdfmake/build/vfs_fonts'
 // pdfMake.vfs = pdfFonts.pdfMake.vfs
 
-const handleGenPdf = (state: State, personalData: Personal, asPath: string) => {
+const genSetFirstMittData = (state: State) => ({
+  all: state.all,
+  backStyle: state.backStyle,
+  boomerang: state.boomerang,
+  catchFace: state.catchFace,
+  coreMaterialHardness: state.coreMaterialHardness,
+  coreMaterialThickness: state.coreMaterialThickness,
+  createdAt: firebase.firestore.Timestamp.fromDate(new Date()),
+  dominantArm: state.dominantArm,
+  edge: state.edge,
+  hamidashi: state.hamidashi,
+  indexCover: state.indexCover,
+  leatherHardness: state.leatherHardness,
+  linings: state.linings,
+  listBelt: state.listBelt,
+  listLiningsMaterial: state.listLiningsMaterial,
+  littleHook: state.littleHook,
+  mittDepth: state.mittDepth,
+  mittSize: state.mittSize,
+  ordererPersonal: {
+    age: 25,
+    belongs: '大学野球'
+  },
+  padModel: state.padModel,
+  stitch: state.stitch,
+  strap: state.strap,
+  thumb: state.thumb,
+  thumbHook: state.thumbHook,
+  underWeb: state.underWeb,
+  web: state.web
+})
+
+const handleGenPdf = async (state: State, personalData: Personal, asPath: string) => {
   pdfMake.fonts = { GenYoMin: { normal: 'ipaexg.ttf' } }
   const docDefine = genPdfDocDefine(state, personalData, asPath)
   pdfMake
@@ -30,6 +57,12 @@ const handleGenPdf = (state: State, personalData: Personal, asPath: string) => {
     // @ts-ignore
     .createPdf(docDefine)
     .download(`オーダー内容/${personalData?.userName || '名無しの権兵衛'}様.pdf`) // margin設定によって構文チェックエラーになっている。
+  const firestoreFMittData = genSetFirstMittData(state)
+  try {
+    await db.collection('glove-orders').add(firestoreFMittData)
+  } catch (err) {
+    console.log(`Error ${err} `)
+  }
 }
 
 type Props = {
@@ -88,7 +121,7 @@ const PdfDialog: React.FC<Props> = ({ state, open, handleClose, dispatch }) => {
     // { head: 'ターゲット加工：', label: state.target.label, color: state.target.color },
     // { head: 'ラベル：', label: state.hatakeyamaLabel.label, color: state.hatakeyamaLabel.color },
   ]
-  const { register, control, handleSubmit } = useForm()
+  const { handleSubmit } = useForm()
   const [personalData, setPersonalData] = React.useState<Personal>()
   const handleChange = (data: any) => {
     const payload = {

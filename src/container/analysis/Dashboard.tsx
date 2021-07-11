@@ -1,45 +1,38 @@
 import React from 'react'
-import { Box, Container, Grid } from '@material-ui/core'
-import { BarChartsCard } from './molecules/BarChartsCard'
+import { Box, Container, Button } from '@material-ui/core'
 import { FireStoreStateData } from 'src/pages/analysis'
 import AnalysisHeader from 'src/layout/header'
 import { useDashboardStyles } from 'src/styles/Dashboard'
 import SearchesArea from './organisms/SearchesArea'
 import FigureFields from '../FigureFields'
-import { reducer, initialStateFirstMitt } from 'src/hooks/stateReducer'
-// import { Drawingboard } from './Drawingboard'
-// import { Orders } from './Orders'
-
-// 棒グラフのデータ生成
-const genColorDataByPart = (data: FireStoreStateData[], part: string) =>
-  data // @ts-ignore
-    .map((value) => ({ color: value[part].label }))
-    .reduce((a, c) => {
-      // @ts-ignore
-      const num = data.filter((value) => value[part].label === c.color).length
-      return a.concat({ color: c.color, num })
-    }, [])
+import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight'
+import KeyboardArrowLeftIcon from '@material-ui/icons/KeyboardArrowLeft'
+import BarChartArea from './organisms/BarChartArea'
 
 type Props = {
   userEmail?: string
-  datas?: FireStoreStateData[]
+  data?: FireStoreStateData[]
   handleSignOut: () => void
 }
 
-export const Dashboard: React.VFC<Props> = ({ userEmail, datas, handleSignOut }) => {
-  const [state, dispatch] = React.useReducer(reducer, initialStateFirstMitt) // ここ見直す
+export const Dashboard: React.VFC<Props> = ({ userEmail, data, handleSignOut }) => {
   const classes = useDashboardStyles()
-  const leatherColorsData = genColorDataByPart(datas, 'all')
-  const strapColorsData = genColorDataByPart(datas, 'strap')
-  // const stitchColorsData = genColorDataByPart(datas, 'stitch')
-  // const webColorsData = genColorDataByPart(datas, 'web')
-  // const edgeColorsData = genColorDataByPart(datas, 'edge')
-  // const catchFaceColorsData = genColorDataByPart(datas, 'catchFace')
+  const [displayIndex, setDisplayIndex] = React.useState(0)
   const [figurePanelNum, setFigurePanelNum] = React.useState(1)
-  const handleFigurePanelNum = (event: any, newValue: number) => setFigurePanelNum(newValue)
+  const handleFigurePanelNum = (_: any, newValue: number) => setFigurePanelNum(newValue)
 
+  const handleDisplayIndex = (prevOrNext: 'prev' | 'next') => {
+    if (prevOrNext === 'prev') {
+      // 「前へ」ボタン
+      setDisplayIndex((prev) => prev !== 0 && prev - 1)
+    }
+    if (prevOrNext === 'next') {
+      // 「次へ」ボタン
+      setDisplayIndex((prev) => prev !== data.length - 1 && prev + 1)
+    }
+  }
   return (
-    <div className={classes.root}>
+    <Box className={classes.root}>
       <AnalysisHeader {...{ userEmail, handleSignOut }} />
       <main className={classes.content}>
         <Container maxWidth="lg" className={classes.container}>
@@ -48,7 +41,7 @@ export const Dashboard: React.VFC<Props> = ({ userEmail, datas, handleSignOut })
             <Box>
               {/* ポジション === 一塁手 */}
               <FigureFields
-                state={state}
+                state={data[displayIndex]}
                 figurePanelNum={figurePanelNum}
                 handleFigurePanelNum={handleFigurePanelNum}
               />
@@ -59,20 +52,32 @@ export const Dashboard: React.VFC<Props> = ({ userEmail, datas, handleSignOut })
                 handleFigurePanelNum={handleFigurePanelNum}
               /> */}
             </Box>
-
-            <Grid container spacing={3}>
-              {/* Chart */}
-              <Grid item xs={12} md={6}>
-                <BarChartsCard title={'単色/本体カラー'} data={leatherColorsData} />
-              </Grid>
-              {/* Chart */}
-              <Grid item xs={12} md={6}>
-                <BarChartsCard title={'革紐'} data={strapColorsData} />
-              </Grid>
-            </Grid>
+            <Box display={'flex'} justifyContent={'space-around'}>
+              <Button
+                startIcon={<KeyboardArrowLeftIcon />}
+                color={'primary'}
+                onClick={() => handleDisplayIndex('prev')}
+                disabled={displayIndex === 0}
+                style={{ display: 'flex', alignItems: 'inherit' }}
+              >
+                前へ
+              </Button>
+              <Button
+                endIcon={<KeyboardArrowRightIcon />}
+                color={'primary'}
+                onClick={() => handleDisplayIndex('next')}
+                disabled={displayIndex === data.length - 1}
+                style={{ display: 'flex', alignItems: 'inherit' }}
+              >
+                次へ
+              </Button>
+            </Box>
+            <Box p={3} mt={3}>
+              <BarChartArea data={data} />
+            </Box>
           </Box>
         </Container>
       </main>
-    </div>
+    </Box>
   )
 }

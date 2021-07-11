@@ -46,7 +46,7 @@ const Analysis: React.VFC<{}> = ({}) => {
     <Auth>
       {user ? (
         <Box mt={2} ml={2}>
-          <Dashboard userEmail={user?.email} datas={data} handleSignOut={handleSignOut} />
+          <Dashboard userEmail={user?.email} data={data} handleSignOut={handleSignOut} />
         </Box>
       ) : (
         <Box style={{ position: 'absolute', top: '50%', left: '50%' }}>

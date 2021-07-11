@@ -28,12 +28,10 @@ const FigureFront: React.FC<Props> = ({ state, devTools, devToolStyle, handleCoo
     ctx.strokeStyle = '#383838'
     ctx.lineWidth = 2
 
-    // router.asPath === '/hard/infield' && useCanvasInfieldFront(ctx, state)
     router.asPath === '/analysis' && useCanvasFirstMittFront(ctx, state)
-
-    // router.asPath === '/hard/infield' && useCanvasInfieldFront(ctx, state)
-    // router.asPath === '/hard/first-mitt' && useCanvasFirstMittFront(ctx, state)
-    // router.asPath === '/hard/catcher-mitt' && useCanvasFirstMittFront(ctx, state)
+    router.asPath === '/hard/infield' && useCanvasInfieldFront(ctx, state)
+    router.asPath === '/hard/first-mitt' && useCanvasFirstMittFront(ctx, state)
+    router.asPath === '/hard/catcher-mitt' && useCanvasFirstMittFront(ctx, state)
   }, [state, router.asPath])
   return (
     <>
@@ -46,13 +44,6 @@ const FigureFront: React.FC<Props> = ({ state, devTools, devToolStyle, handleCoo
             style={devToolStyle}
             onClick={(e) => handleCoordinate(e)}
           ></canvas>
-          {/* <canvas
-            width={900}
-            height={652}
-            id="canvas"
-            onClick={(e) => handleCoordinate(e)}
-            style={{ maxWidth: '100%' }}
-          ></canvas> */}
           <DevTool devTools={devTools} />
         </Box>
       ) : (
