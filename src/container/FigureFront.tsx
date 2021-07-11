@@ -27,9 +27,13 @@ const FigureFront: React.FC<Props> = ({ state, devTools, devToolStyle, handleCoo
     const ctx = canvas.getContext('2d')
     ctx.strokeStyle = '#383838'
     ctx.lineWidth = 2
-    router.asPath === '/hard/infield' && useCanvasInfieldFront(ctx, state)
-    router.asPath === '/hard/first-mitt' && useCanvasFirstMittFront(ctx, state)
-    router.asPath === '/hard/catcher-mitt' && useCanvasFirstMittFront(ctx, state)
+
+    // router.asPath === '/hard/infield' && useCanvasInfieldFront(ctx, state)
+    router.asPath === '/analysis' && useCanvasFirstMittFront(ctx, state)
+
+    // router.asPath === '/hard/infield' && useCanvasInfieldFront(ctx, state)
+    // router.asPath === '/hard/first-mitt' && useCanvasFirstMittFront(ctx, state)
+    // router.asPath === '/hard/catcher-mitt' && useCanvasFirstMittFront(ctx, state)
   }, [state, router.asPath])
   return (
     <>

@@ -26,6 +26,8 @@ const FigureBack: React.FC<Props> = ({ state, devTools, devToolStyle, handleCoor
     const ctx = canvas.getContext('2d')
     ctx.strokeStyle = '#383838'
     ctx.lineWidth = 2
+    router.asPath === '/analysis' && useCanvasFirstMittBack(ctx, state)
+
     router.asPath === '/hard/infield' && useCanvasInfieldBack(ctx, state)
     router.asPath === '/hard/first-mitt' && useCanvasFirstMittBack(ctx, state)
     router.asPath === '/hard/catcher-mitt' && useCanvasFirstMittBack(ctx, state)

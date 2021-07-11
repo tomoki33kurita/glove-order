@@ -5,6 +5,8 @@ import { FireStoreStateData } from 'src/pages/analysis'
 import AnalysisHeader from 'src/layout/header'
 import { useDashboardStyles } from 'src/styles/Dashboard'
 import SearchesArea from './organisms/SearchesArea'
+import FigureFields from '../FigureFields'
+import { reducer, initialStateFirstMitt } from 'src/hooks/stateReducer'
 // import { Drawingboard } from './Drawingboard'
 // import { Orders } from './Orders'
 
@@ -25,6 +27,7 @@ type Props = {
 }
 
 export const Dashboard: React.VFC<Props> = ({ userEmail, datas, handleSignOut }) => {
+  const [state, dispatch] = React.useReducer(reducer, initialStateFirstMitt) // ここ見直す
   const classes = useDashboardStyles()
   const leatherColorsData = genColorDataByPart(datas, 'all')
   const strapColorsData = genColorDataByPart(datas, 'strap')
@@ -32,6 +35,8 @@ export const Dashboard: React.VFC<Props> = ({ userEmail, datas, handleSignOut })
   // const webColorsData = genColorDataByPart(datas, 'web')
   // const edgeColorsData = genColorDataByPart(datas, 'edge')
   // const catchFaceColorsData = genColorDataByPart(datas, 'catchFace')
+  const [figurePanelNum, setFigurePanelNum] = React.useState(1)
+  const handleFigurePanelNum = (event: any, newValue: number) => setFigurePanelNum(newValue)
 
   return (
     <div className={classes.root}>
@@ -40,6 +45,21 @@ export const Dashboard: React.VFC<Props> = ({ userEmail, datas, handleSignOut })
         <Container maxWidth="lg" className={classes.container}>
           <SearchesArea />
           <Box mt={3}>
+            <Box>
+              {/* ポジション === 一塁手 */}
+              <FigureFields
+                state={state}
+                figurePanelNum={figurePanelNum}
+                handleFigurePanelNum={handleFigurePanelNum}
+              />
+              {/* ポジション === 内野手 */}
+              {/* <FigureFields
+                state={state}
+                figurePanelNum={1}
+                handleFigurePanelNum={handleFigurePanelNum}
+              /> */}
+            </Box>
+
             <Grid container spacing={3}>
               {/* Chart */}
               <Grid item xs={12} md={6}>

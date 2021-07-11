@@ -7,21 +7,21 @@ import FigureBack from 'src/container/FigureBack'
 import { genImgFromCanvas } from 'src/container/genPdf/genPdfDocDefine'
 import { useRouter } from 'next/router'
 
-const devToolStyleFront = {
-  backgroundImage: `url(${'/fmitt-front.jpeg'})`,
-  backgroundRepeat: 'no-repeat',
-  backgroundPosition: 'center',
-  backgroundSize: '70%',
-  maxWidth: '100%'
-}
+// const devToolStyleFront = {
+//   backgroundImage: `url(${'/fmitt-front.jpeg'})`,
+//   backgroundRepeat: 'no-repeat',
+//   backgroundPosition: 'center',
+//   backgroundSize: '70%',
+//   maxWidth: '100%'
+// }
 
-const devToolStyleBack = {
-  backgroundImage: `url(${'/fmitt-back.jpeg'})`,
-  backgroundRepeat: 'no-repeat',
-  backgroundPosition: 'center',
-  backgroundSize: '70%',
-  maxWidth: '100%'
-}
+// const devToolStyleBack = {
+//   backgroundImage: `url(${'/fmitt-back.jpeg'})`,
+//   backgroundRepeat: 'no-repeat',
+//   backgroundPosition: 'center',
+//   backgroundSize: '70%',
+//   maxWidth: '100%'
+// }
 
 export const a11yProps = (index: number): any => {
   return {
@@ -56,7 +56,7 @@ const FigureFields: React.FC<Props> = ({ state, figurePanelNum, handleFigurePane
   }
 
   return (
-    <Box position="sticky" top={0}>
+    <Box position="sticky" top={0} mb={1}>
       <TabPanel value={figurePanelNum} index={0}>
         <FigureFront
           state={state}
@@ -86,7 +86,7 @@ const FigureFields: React.FC<Props> = ({ state, figurePanelNum, handleFigurePane
         </Tabs>
       </AppBar>
       {/* 画像ダウンロードボタンは、canvas部分に設置したい */}
-      {figurePanelNum ? (
+      {/* {figurePanelNum ? (
         <Button variant="contained" color="primary" onClick={() => setGenImg(true)}>
           <a
             href={isGenImg ? genImgFromCanvas(state, 'back', router?.asPath) : ''}
@@ -106,7 +106,7 @@ const FigureFields: React.FC<Props> = ({ state, figurePanelNum, handleFigurePane
             捕球面画像ダウンロード
           </a>
         </Button>
-      )}
+      )} */}
     </Box>
   )
 }
