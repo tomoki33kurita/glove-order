@@ -15,6 +15,7 @@ import {
   middleBackIndexSide
 } from 'src/container/canvasInfield/front/back/middle'
 import { indexBackWebSide, indexBackMiddleSide } from 'src/container/canvasInfield/front/back/index'
+import { engravedOfCatchFace } from 'src/container/canvasInfield/front/engravedOfCatchFace'
 
 export const useCanvasInfieldFront = (ctx: CanvasRenderingContext2D, state: State): void => {
   // 裏革
@@ -53,4 +54,6 @@ export const useCanvasInfieldFront = (ctx: CanvasRenderingContext2D, state: Stat
   leatherStrap(ctx, state.strap.color)
   // 小指掛け紐
   // littleHook(ctx, state.littleHook.color)
+  // 捕球面の刻印(YSバージョン)
+  engravedOfCatchFace(ctx, '#ccc')
 }
