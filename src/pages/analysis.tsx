@@ -20,7 +20,7 @@ const Analysis: React.VFC<{}> = ({}) => {
 
   // firestoreに保存されているデータを取得
   const fetchData = async () => {
-    const res = await db.collection('glove-orders').orderBy('createdAt', 'desc').get()
+    const res = await db.collection('glove-orders').orderBy('createdAt', 'desc').get() // getメソッドは課金対象になるので注意(デフォルトでは表示させないことが望ましい？)
     setData(res.docs.map((data) => data.data()) as FireStoreStateData[])
   }
 
