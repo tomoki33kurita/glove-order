@@ -48,8 +48,7 @@ export const thicknessObjs = [
 ]
 
 export const fingerGuardTypeObjs = [
-  { label: 'スタンダード', value: 'standard' },
-  { label: 'ロング', value: 'long' },
+  { label: '指当て有り', value: 'standard' },
   { label: '指カバーなし', value: 'none' }
 ]
 

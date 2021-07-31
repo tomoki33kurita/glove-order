@@ -1,4 +1,8 @@
-export const stitch = (ctx: CanvasRenderingContext2D, color: string): void => {
+export const stitch = (
+  ctx: CanvasRenderingContext2D,
+  color: string,
+  isDrawFingerCover: boolean
+): void => {
   ctx.lineWidth = 1.5
   ctx.strokeStyle = color
   ctx.beginPath()
@@ -16,7 +20,6 @@ export const stitch = (ctx: CanvasRenderingContext2D, color: string): void => {
   ctx.quadraticCurveTo(400, 346, 342, 366) // 中指中央ハミダシ
   ctx.quadraticCurveTo(296, 388, 271, 427) // 薬指＿小指の間ハミダシ
 
-
   // 折り返し部分ここから
   ctx.moveTo(480, 251) // 折り返し左上_外
   ctx.quadraticCurveTo(450, 305, 441, 363) // 折り返し左下_外
@@ -33,7 +36,22 @@ export const stitch = (ctx: CanvasRenderingContext2D, color: string): void => {
   ctx.moveTo(576, 402) // 折り返し右上_内
   ctx.quadraticCurveTo(540, 420, 500, 420) // 折り返し右下_内
   // 折り返し部分ここまで
-  
+
+  if (isDrawFingerCover) {
+    // 外側
+    ctx.moveTo(383, 354) // 左下
+    ctx.quadraticCurveTo(385, 290, 404, 235) // 左上
+    ctx.quadraticCurveTo(412, 212, 435, 211) // 中央上
+    ctx.quadraticCurveTo(445, 212, 451, 229) // 右上
+    ctx.quadraticCurveTo(432, 356, 432, 356) // 右下
+    // 内側
+    ctx.moveTo(387, 352) // 左下
+    ctx.quadraticCurveTo(387, 290, 408, 235) // 左上
+    ctx.quadraticCurveTo(414, 214, 435, 215) // 中央上
+    ctx.quadraticCurveTo(443, 214, 447, 231) // 右上
+    ctx.quadraticCurveTo(430, 354, 428, 354) // 右下
+  }
+
   ctx.stroke()
   ctx.setLineDash([])
   ctx.closePath()
