@@ -16,6 +16,7 @@ import { selectedLabel } from 'src/container/canvasInfield/back/hatakeyamaLabel'
 import { stitch } from 'src/container/canvasInfield/back/stitch'
 import { leatherStrap } from 'src/container/canvasInfield/back/leatherStrap'
 import { linings } from 'src/container/canvasInfield/back/lining'
+import { fingerCover } from 'src/container/canvasInfield/back/fingerCover'
 
 export const useCanvasInfieldBack = (ctx: CanvasRenderingContext2D, state: State): void => {
   // 裏革
@@ -44,12 +45,14 @@ export const useCanvasInfieldBack = (ctx: CanvasRenderingContext2D, state: State
   thumbHook(ctx, state.thumbHook.color)
   // ハミダシ
   hamidashi(ctx, state.hamidashi.color)
+  // 指カバー
+  state.fingerGuardType.value == 'standard' && fingerCover(ctx, state.indexCover.color)
   // ヘリ革
   edges(ctx, state.edge.color)
   // ウェブ本体
   web(ctx, state.web.color)
   // ステッチ
-  stitch(ctx, state.stitch.color)
+  stitch(ctx, state.stitch.color, state.fingerGuardType.value == 'standard')
   // 革紐
   leatherStrap(ctx, state.strap.color)
   // 小指掛け紐

@@ -84,7 +84,8 @@ const commonPartsObjs = [
   { label: 'ステッチ', value: 'stitch' },
   { label: 'ハミダシ', value: 'hamidashi' },
   { label: '親指掛け紐', value: 'thumbHook' },
-  { label: '小指掛け紐', value: 'littleHook' }
+  { label: '小指掛け紐', value: 'littleHook' },
+  { label: '指カバー', value: 'indexCover' }
 ]
 const backInfieldObjs = [
   { label: '親指＿外側', value: 'thumbOut' },

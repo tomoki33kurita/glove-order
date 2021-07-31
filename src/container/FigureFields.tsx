@@ -16,7 +16,7 @@ import { useRouter } from 'next/router'
 // }
 
 // const devToolStyleBack = {
-//   backgroundImage: `url(${'/fmitt-back.jpeg'})`,
+//   // backgroundImage: `url(${'/fmitt-back.jpeg'})`,
 //   backgroundRepeat: 'no-repeat',
 //   backgroundPosition: 'center',
 //   backgroundSize: '70%',
@@ -75,7 +75,7 @@ const FigureFields: React.FC<Props> = ({ state, figurePanelNum, handleFigurePane
             // 開発で座標を取得したいときは以下を有効にする
             // devTools={{ cordinateX, cordinateY, isCopy, setCopy }}
             // devToolStyle={devToolStyleBack}
-            // handleCoordinate={handleCoordinate}
+            handleCoordinate={handleCoordinate}
           />
         )}
       </TabPanel>
