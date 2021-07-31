@@ -1,6 +1,6 @@
 export const hamidashi = (ctx: CanvasRenderingContext2D, color: string): void => {
-  ctx.lineWidth = 2.0
-  ctx.strokeStyle = '#383838' 
+  ctx.lineWidth = 1.8
+  ctx.strokeStyle = '#383838'
   ctx.fillStyle = color
   ctx.beginPath()
   ctx.moveTo(218, 150) // 小指先端左
@@ -78,7 +78,7 @@ export const hamidashi = (ctx: CanvasRenderingContext2D, color: string): void =>
 
   // ctx.beginPath()
   // ctx.moveTo(505, 217) // 折り返し左＿上
-  // ctx.quadraticCurveTo(478, 237, 478, 239) 
+  // ctx.quadraticCurveTo(478, 237, 478, 239)
   // ctx.quadraticCurveTo(472, 252, 472, 252) // 折り返し左＿下
   // ctx.stroke()
   // ctx.closePath()
@@ -101,6 +101,4 @@ export const hamidashi = (ctx: CanvasRenderingContext2D, color: string): void =>
   // ctx.quadraticCurveTo(615, 494, 592, 522) // 折り返し右＿下
   // ctx.stroke()
   // ctx.closePath()
-
-
 }

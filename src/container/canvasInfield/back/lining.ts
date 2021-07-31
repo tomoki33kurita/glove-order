@@ -1,5 +1,5 @@
 export const linings = (ctx: CanvasRenderingContext2D, color: string): void => {
-  ctx.lineWidth = 5.0
+  ctx.lineWidth = 1.3
   ctx.strokeStyle = '#fff'
   ctx.fillStyle = color
   ctx.beginPath()

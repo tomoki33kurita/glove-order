@@ -1,23 +1,22 @@
 export const middleRight = (ctx: CanvasRenderingContext2D, color: string): void => {
-  ctx.lineWidth = 1.5
+  ctx.lineWidth = 1.3
   ctx.strokeStyle = '#383838'
   ctx.fillStyle = color
   ctx.beginPath()
   ctx.moveTo(375, 37) // 中指先端
   ctx.quadraticCurveTo(315, 204, 340, 370) // 左下
   ctx.quadraticCurveTo(370, 360, 376, 360) // 右下
-  ctx.quadraticCurveTo(378, 260, 406, 173) 
-  ctx.quadraticCurveTo(422, 87, 421, 47) 
-  ctx.quadraticCurveTo(410, 26, 375, 37) 
+  ctx.quadraticCurveTo(378, 260, 406, 173)
+  ctx.quadraticCurveTo(422, 87, 421, 47)
+  ctx.quadraticCurveTo(410, 26, 375, 37)
   ctx.stroke()
   ctx.fill()
   ctx.closePath()
 }
 
-
 export const middleLeft = (ctx: CanvasRenderingContext2D, color: string): void => {
-  ctx.lineWidth = 1.5
-  ctx.strokeStyle =  '#383838'
+  ctx.lineWidth = 1.3
+  ctx.strokeStyle = '#383838'
   ctx.fillStyle = color
   ctx.beginPath()
   ctx.moveTo(373, 37) // 右上
