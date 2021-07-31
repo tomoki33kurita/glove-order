@@ -28,7 +28,7 @@ const FigureFront: React.FC<Props> = ({ state, devTools, devToolStyle, handleCoo
     ctx.strokeStyle = '#383838'
     ctx.lineWidth = 2
 
-    router.asPath === '/analysis' && useCanvasFirstMittFront(ctx, state)
+    router.asPath === '/analysis' && useCanvasFirstMittFront(ctx, state) // /analysisページは、ポジションごとに呼び出しを切り替える必要ある
     router.asPath === '/hard/infield' && useCanvasInfieldFront(ctx, state)
     router.asPath === '/hard/first-mitt' && useCanvasFirstMittFront(ctx, state)
     router.asPath === '/hard/catcher-mitt' && useCanvasFirstMittFront(ctx, state)
