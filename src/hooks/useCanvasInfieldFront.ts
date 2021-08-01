@@ -49,7 +49,7 @@ export const useCanvasInfieldFront = (ctx: CanvasRenderingContext2D, state: Stat
   // ヘリ革
   edges(ctx, state.edge.color)
   // ステッチ
-  stitch(ctx, state.stitch.color)
+  stitch(ctx, state.stitch.color, 'h_web')
   // // 革紐
   leatherStrap(ctx, state.strap.color)
   // 小指掛け紐
