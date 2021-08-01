@@ -48,8 +48,9 @@ export const thicknessObjs = [
 ]
 
 export const fingerGuardTypeObjs = [
-  { label: '指当て有り', value: 'standard' },
-  { label: '指カバーなし', value: 'none' }
+  { label: '指カバー有り', value: 'cover' },
+  { label: '指当て有り', value: 'pad' },
+  { label: '無し', value: 'none' }
 ]
 
 export const zabutonSpongeObjs = [
