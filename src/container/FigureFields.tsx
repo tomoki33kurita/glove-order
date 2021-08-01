@@ -64,7 +64,7 @@ const FigureFields: React.FC<Props> = ({ state, figurePanelNum, handleFigurePane
             // 開発で座標を取得したいときは以下を有効にする
             // devTools={{ cordinateX, cordinateY, isCopy, setCopy }}
             // devToolStyle={devToolStyleFront}
-            // handleCoordinate={handleCoordinate}
+            handleCoordinate={handleCoordinate}
           />
         )}
       </TabPanel>

@@ -17,14 +17,17 @@ import { stitch } from 'src/container/canvasInfield/back/stitch'
 import { leatherStrap } from 'src/container/canvasInfield/back/leatherStrap'
 import { linings } from 'src/container/canvasInfield/back/lining'
 import { fingerCover } from 'src/container/canvasInfield/back/fingerCover'
+import { listBelt } from 'src/container/canvasInfield/back/listBelt'
 
 export const useCanvasInfieldBack = (ctx: CanvasRenderingContext2D, state: State): void => {
   // 裏革
   linings(ctx, state.linings.color)
   // 捕球面 / ウェブ下折り返し
   catchSurFace(ctx, state.catchFace.color)
-  // 親指指袋_手口ベルト
+  // 親指指袋_手口ベルト(下地)
   thumbAndListBelt(ctx, state.thumbWeb.color)
+  // 手口ベルト
+  listBelt(ctx, state.listBelt.color)
   // 人差し指＿右
   indexRight(ctx, state.indexWeb.color)
   // 人差し指＿左
@@ -52,7 +55,7 @@ export const useCanvasInfieldBack = (ctx: CanvasRenderingContext2D, state: State
   // ウェブ本体
   web(ctx, state.web.color)
   // ステッチ
-  stitch(ctx, state.stitch.color, state.fingerGuardType.value == 'standard')
+  stitch(ctx, state.stitch.color, state.fingerGuardType.value == 'pad', 'h_web')
   // 革紐
   leatherStrap(ctx, state.strap.color)
   // 小指掛け紐
