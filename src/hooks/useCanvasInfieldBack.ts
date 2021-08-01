@@ -46,7 +46,7 @@ export const useCanvasInfieldBack = (ctx: CanvasRenderingContext2D, state: State
   // ハミダシ
   hamidashi(ctx, state.hamidashi.color)
   // 指カバー
-  state.fingerGuardType.value == 'standard' && fingerCover(ctx, state.indexCover.color)
+  state.fingerGuardType.value == 'pad' && fingerCover(ctx, state.indexCover.color)
   // ヘリ革
   edges(ctx, state.edge.color)
   // ウェブ本体

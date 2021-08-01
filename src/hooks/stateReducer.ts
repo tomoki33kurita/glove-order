@@ -65,7 +65,7 @@ const baseInitialState = {
   coreMaterialHardness: { label: '普通', value: 'normal' },
   coreMaterialThickness: { label: '普通', value: 'normal' },
   leatherHardness: { label: '普通', value: 'normal' },
-  fingerGuardType: { label: 'スタンダード', value: 'standard' }
+  fingerGuardType: { label: '無し', value: 'none' }
 }
 
 const colorInitialState = {
