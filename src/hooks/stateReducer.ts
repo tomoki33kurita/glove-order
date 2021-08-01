@@ -43,6 +43,7 @@ import {
   SET_UNDER_WEB_COLOR,
   SET_BOOMERANG_COLOR
 } from 'src/constants/ActionTypes'
+import { liningsObjs } from 'src/constants/radioObjs/coloring'
 
 export const initialEmbroState = {
   id: 0,
@@ -162,6 +163,10 @@ export const reducer = (state: State, action: Action): State => {
         indexCover: action.all,
         // indexAndThumb: action.all,
         listBelt: action.all,
+        // 裏革にはない色が「全体」として指定されたら、裏革のみ既存stateを維持させる
+        // 裏革にもある色が「全体」として指定されたらもちろん反映を許可
+        linings: liningsObjs.some((x) => x.color === action.all.color) ? action.all : state.linings, // 裏革
+        strap: action.all, // 革紐
         // 内野手用グラブ
         thumbOut: action.all,
         thumbWeb: action.all,
