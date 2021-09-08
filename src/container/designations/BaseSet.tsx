@@ -110,7 +110,7 @@ const BaseSet: React.FC<Props> = ({ state, value, dispatch }) => {
         handleChange={handle.dominantArm}
       />
       <SelectCard
-        summary={'ミットの大きさ'}
+        summary={'グラブ・ミットの大きさ'}
         selectedLabel={mittSize.label}
         defaultValue={mittSize.value}
         objects={mittSizeObjs}

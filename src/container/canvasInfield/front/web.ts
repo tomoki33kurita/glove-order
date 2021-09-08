@@ -14,18 +14,18 @@ export const web = (ctx: CanvasRenderingContext2D, color: string): void => {
   ctx.fill()
   ctx.stroke()
   ctx.closePath()
-  
+
   // ウェブ
   ctx.beginPath()
   ctx.moveTo(240, 275) // 左＿上
   ctx.quadraticCurveTo(261, 296, 275, 326) // 左＿右下
   ctx.quadraticCurveTo(304, 249, 366, 209) // 右＿下
-  ctx.quadraticCurveTo(361, 152, 361, 152) // 
+  ctx.quadraticCurveTo(361, 152, 361, 152) //
   ctx.quadraticCurveTo(359, 141, 353, 142) // 右＿上
   ctx.quadraticCurveTo(273, 192, 240, 275) // 左＿上
   ctx.fill()
   ctx.stroke()
-  ctx.closePath()  
+  ctx.closePath()
 
   // ウェブ縦
   ctx.beginPath()
@@ -36,6 +36,5 @@ export const web = (ctx: CanvasRenderingContext2D, color: string): void => {
   ctx.quadraticCurveTo(254, 199, 241, 237) // 左＿上
   ctx.fill()
   ctx.stroke()
-  ctx.closePath()  
-
+  ctx.closePath()
 }

@@ -38,22 +38,6 @@ const Index: React.FC = () => {
           ))}
         </Grid> */}
 
-        {/* ゴールドオーダー / シルバーオーダー */}
-        {/* <Box component={'h3'} mb={0}>
-          オーダー種類を選択してね
-        </Box>
-        <Grid container>
-          {selectOrders.map((order) => (
-            <Grid item key={order.name} xs={12} sm={6}>
-              <Button variant={order.link === stateOrder ? 'contained' : 'outlined'} style={{ width: '100%' }} onClick={() => setOrder(order.link)}>
-                <Box width={'100%'} height={'77px'} lineHeight={'77px'} fontSize={'18px'}>
-                  {order.name}
-                </Box>
-              </Button>
-            </Grid>
-          ))}
-        </Grid> */}
-
         {/* グローブ / ファーストミット / キャッチャーミット */}
         <Box component={'h3'} mb={0}>
           ポジションを選択
